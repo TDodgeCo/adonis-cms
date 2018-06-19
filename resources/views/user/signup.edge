@@ -1,5 +1,10 @@
 @layout('main')
 @section('content')
+  @if(old('notification'))
+    <div class="alert alert-danger">
+      {{ old('notification') }}
+    </div>
+  @endif
   <form id="postForm" action="/signup" method="POST">
     {{ csrfField() }}
     <div class="form-group">
@@ -22,7 +27,8 @@
       <input type="password" id="confirmPassword" class="form-control" placeholder="Password" onkeyup="checkPass(); return false;">
       <span id="confirmMessage" class="alert-danger"></span>
     </div>
-    <button id="signupButton" type="button" class="btn btn-primary">Submit</button>
+    <button id="signupButton" type="submit" class="btn btn-primary">Submit</button>
   </form>
-  {{ script('./js/add.js')}}
+  <small>Already have an account? <a href="/login">Log in</a>.</small>
+  {{ script('./js/auth-helpers.js')}}
 @endsection

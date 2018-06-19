@@ -12,9 +12,19 @@
         <li class="nav-item">
           <a class="nav-link" href="/posts">Posts</a>
         </li>
+        @if(auth.user)
         <li class="nav-item">
           <a class="nav-link" href="/posts/add">Add Posts</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/logout">Logout</a>
+        </li>
+        @endif
+        @if(!auth.user)
+          <li class="nav-item">
+            <a class="nav-link" href="/signup">Signup/Login</a>
+          </li>
+        @endif
       </ul>
     </div>
   </div>
