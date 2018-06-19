@@ -8,9 +8,9 @@
   <form id="postForm" action="/signup" method="POST">
     {{ csrfField() }}
     <div class="form-group">
-      <label>Username</label>
-      <input type="text" id="username" name="username" class="form-control" aria-describedby="emailHelp" placeholder="Enter username" value="{{ old('username', '') }}">
-      {{ elIf('<span class="text-danger">$self</span>', getErrorFor('username'), hasErrorFor('username')) }}
+      <label>Name</label>
+      <input type="text" id="name" name="name" class="form-control" aria-describedby="emailHelp" placeholder="Enter name" value="{{ old('name', '') }}">
+      {{ elIf('<span class="text-danger">$self</span>', getErrorFor('name'), hasErrorFor('name')) }}
     </div>
     <div class="form-group">
       <label>Email address</label>
@@ -25,6 +25,7 @@
     <div class="form-group">
       <label>Confirm Password</label>
       <input type="password" id="confirmPassword" class="form-control" placeholder="Password" onkeyup="checkPass(); return false;">
+      {{-- TODO minimum password length --}}
       <span id="confirmMessage" class="alert-danger"></span>
     </div>
     <button id="signupButton" type="submit" class="btn btn-primary">Submit</button>

@@ -24,6 +24,7 @@ Route.post('/posts', 'PostController.store')
 
 Route.get('/signup', 'UserController.index')
 Route.post('/signup', 'UserController.store')
+Route.post('/invite', 'UserController.invite')
 Route.on('/login').render('user.login')
 Route.post('/login', 'UserController.login')
 Route.get('/account', 'UserController.account').middleware('auth')

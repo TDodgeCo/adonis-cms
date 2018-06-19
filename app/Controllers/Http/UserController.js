@@ -10,12 +10,25 @@ class UserController {
   }
 
   async store ({ request, auth, response }) {
-    const userData = request.only(['username', 'email', 'password'])
-    console.log('user data is ' + userData.username + ' ' + userData.email)
-    const user = await User.create(userData)
+    const userData = request.only(['name', 'email', 'password'])
+    await User.create(userData)
 
     await auth.attempt(userData.email, userData.password)
     return response.redirect('account')
+  }
+
+  async invite ({ request, auth, response, session }) {
+    let userData = request.only([ 'name', 'email', 'password', 'admin'])
+    console.log(userData)
+    if (userData.admin) {
+      userData.admin = true
+      await User.create(userData)
+      session.flash({ notification: 'Admin User Added!'})
+      return response.redirect('/account')
+      }
+    console.log('is invite, non admin')
+    session.flash({ notification: 'User Added!'})
+    return response.redirect('/account')
   }
 
   async login ({ request, auth, response }) {
@@ -30,7 +43,10 @@ class UserController {
   }
 
   async account ({ view }) {
-    return view.render('account')
+    const users = await User.all()
+    return view.render('account', {
+      users: users.toJSON()
+    })
     console.log(session.all())
   }
 }
