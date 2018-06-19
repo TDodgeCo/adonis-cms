@@ -17,6 +17,7 @@ class PostController {
 
   async details ({ params, view }) {
     const post = await Post.findBy('slug', params.slug)
+    console.log('pm2 watch is working')
     return view.render('posts.details', {
       post: post
     })
