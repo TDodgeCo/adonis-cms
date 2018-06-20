@@ -27,6 +27,7 @@ class UserController {
       return response.redirect('/account')
       }
     console.log('is invite, non admin')
+    await User.create(userData)
     session.flash({ notification: 'User Added!'})
     return response.redirect('/account')
   }

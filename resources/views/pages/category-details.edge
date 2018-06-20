@@ -1,0 +1,143 @@
+@layout('layouts.category-layout')
+@section('content')
+<section class="header-title">
+	<div class="container">
+		<div class="row">
+			<div class="title">
+				{{-- TODO change css to allow h1 and render properly --}}
+				<h2>{{ post.title }}</h2>
+			</div>
+		</div>
+	</div>
+</section>
+<section class="page-nav">
+	<div class="container">
+		<div class="row">
+			<ul>
+				<li>Solutions</li>
+				<li><i class="fa fa-angle-right" aria-hidden="true"></i></li>
+				<li><span>{{ post.title }}</span></li>
+			</ul>
+		</div>
+	</div>
+</section>
+<section class="Mechanical-engineering">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-3">
+				<div class="special-links">
+					<ul>
+						<li><a class="active" href="Material-Scienceand-Engineering.html">Material Science and Engineering</a></li>
+						<li><a href="chemical-research.html">Chemical Research</a></li>
+						<li><a href="power-and-energy.html">Power and Energy</a></li>
+						<li><a href="Mechanical-Engineering.html">Mechanical Engineering</a></li>
+						<li><a href="Petroleum-and-Gas.html">Petroleum and Gas</a></li>
+						<li><a href="Facture-Process.html">Facture Process</a></li>
+					</ul>
+				</div>
+				<div class="download">
+					<h4><a href="#">Download Brochure</a> </h4>
+				</div>
+				<div class="contact">
+					<h4>Contact Us for Help</h4>
+					<p>Contact with us through our representative or submit a business inquiry online.</p>
+					<a href="contact.html">CONTACT US</a>
+				</div>
+			</div>
+			<div class="col-md-9">
+				<div class="img-box">
+					<div class="first"><img src="../img/mech1.jpg" alt="img" /> </div>
+					<div class="second"><img src="../img/mech2.jpg" alt="img" /> </div>
+				</div>
+				<div class="text">
+					{{{ post.body }}}
+				</div>
+				<div class="icon-box-wraper">
+					<div class="row">
+						<div class="clearfix"></div>
+						<div class="col-md-4">
+							<div class="box">
+								<div class="icon-box"><img src="../img/fabrique.png" alt="img" /> </div>
+								<h3>Creditable Integrity</h3>
+								<p>
+									Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae
+								</p>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="box">
+								<div class="icon-box"><img src="../img/team-work.png" alt="img" /> </div>
+								<h3>Effective Team Work</h3>
+								<p>
+									Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae
+								</p>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="box">
+								<div class="icon-box"><img src="../img/advice.png" alt="img" /> </div>
+								<h3>Advice consulting</h3>
+								<p>
+									Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="questions-sol">
+					<div id="accordion" role="tablist">
+						<div class="toggle">
+							<div class="toggle-heading" role="tab">
+								<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne"> <i class="fa fa-plus"></i>What is do i have to tell you a few lorem?<i class="fa fa-minus"></i></a>
+							</div>
+							<div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-expanded="false">
+								<div class="toggle-body">
+									<p>
+										Lorem ipsum dolor sit amet, consectetur adi pisi cing elit, sed do eiusmod tempor exercitationemut labore. Love life’s sweetest reward Let it flow it floats back to you.
+									</p>
+								</div>
+							</div>
+						</div>
+						<div class="toggle">
+							<div class="toggle-heading" role="tab">
+								<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseOne"><i class="fa fa-plus"></i> What is do i have to tell you a few lorem?<i class="fa fa-minus"></i></a>
+							</div>
+							<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-expanded="false">
+								<div class="toggle-body">
+									<p>
+										Lorem ipsum dolor sit amet, consectetur adi pisi cing elit, sed do eiusmod tempor exercitationemut labore. Love life’s sweetest reward Let it flow it floats back to you.
+									</p>
+								</div>
+							</div>
+						</div>
+						<div class="toggle">
+							<div class="toggle-heading" role="tab">
+								<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseOne"> <i class="fa fa-plus"></i>What is do i have to tell you a few lorem?<i class="fa fa-minus"></i></a>
+							</div>
+							<div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-expanded="false">
+								<div class="toggle-body">
+									<p>
+										Lorem ipsum dolor sit amet, consectetur adi pisi cing elit, sed do eiusmod tempor exercitationemut labore. Love life’s sweetest reward Let it flow it floats back to you.
+									</p>
+								</div>
+							</div>
+						</div>
+						<div class="toggle">
+							<div class="toggle-heading" role="tab">
+								<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="true" aria-controls="collapseOne"> <i class="fa fa-plus"></i>What is do i have to tell you a few lorem?<i class="fa fa-minus"></i></a>
+							</div>
+							<div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-expanded="false">
+								<div class="toggle-body">
+									<p>
+										Lorem ipsum dolor sit amet, consectetur adi pisi cing elit, sed do eiusmod tempor exercitationemut labore. Love life’s sweetest reward Let it flow it floats back to you.
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+@endsection
