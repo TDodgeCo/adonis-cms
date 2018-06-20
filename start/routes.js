@@ -16,6 +16,7 @@
 const Route = use('Route')
 
 Route.on('/').render('home')
+Route.on('/category').render('pages.category')
 
 Route.get('/posts', 'PostController.index')
 Route.get('/posts/add', 'PostController.add').middleware('auth')
