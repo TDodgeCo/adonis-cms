@@ -10,9 +10,10 @@
     @each(post in posts)
       <li class="list-group-item">
         <a class="d-block float-left" href="/posts/{{post.slug}}">{{ post.title }}</a>
-        <form action="{{ '/posts/' + post.id + '?_method=DELETE'}}" method="post">
+        <form id="delete" action="{{ '/posts/' + post.id + '?_method=DELETE'}}"
+        method="post" onsubmit="return confirm('Do you really want to delete this page?')">
           {{ csrfField() }}
-          <button type="submit" class="btn btn-danger d-block float-right" name="button">Delete</button>
+          <button type="submit" id="submit" class="btn btn-danger d-block float-right" name="button">Delete</button>
         </form>
         <a href="/posts/edit/{{post.id}}" class="btn btn-primary d-block float-right">Edit</a>
       </li>

@@ -13,7 +13,9 @@ class UserController {
   async store ({ request, auth, response }) {
     const userData = request.only(['name', 'email', 'password'])
     const user = await User.create(userData)
-    await Mail.send('emails.welcome', userData.toJSON(), (message) => {
+    user.sessions = 2
+    await user.save()
+    await Mail.send('emails.welcome', userData, (message) => {
           message
             .to(user.email)
             .from(Env.get('MAIL_USERNAME'))
@@ -24,6 +26,12 @@ class UserController {
   }
 
   async invite ({ request, auth, response, session }) {
+    if (auth.user.admin === 0) {
+      return response.json({
+        status: 'error',
+        message: 'You are not authorized to do that.'
+      })
+    }
     let userData = request.only([ 'name', 'email', 'password', 'admin'])
     if (userData.admin) {
       userData.admin = true
@@ -51,6 +59,9 @@ class UserController {
   async login ({ request, auth, response }) {
     const user = request.only(['email', 'password'])
     await auth.attempt(user.email, user.password)
+    const userSession = await User.find(auth.user.id)
+    userSession.sessions = userSession.sessions + 1
+    await userSession.save()
     return response.redirect('account')
   }
 
@@ -59,7 +70,10 @@ class UserController {
     return response.redirect('/')
   }
 
-  async account ({ view }) {
+  async account ({ view, auth, response }) {
+    if (auth.user.sessions === 1) {
+      return response.redirect('/set-password')
+    }
     const users = await User.all()
     return view.render('account', {
       users: users.toJSON()
@@ -67,9 +81,10 @@ class UserController {
     console.log(session.all())
   }
 
-  async test ({ request }) {
+  async resetPassword ({ request, params, view, session, auth }) {
 
   }
+
 }
 
 module.exports = UserController

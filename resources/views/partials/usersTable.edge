@@ -1,0 +1,50 @@
+<tr>
+  <th scope="row">{{user.id}}</th>
+  <td>{{user.name}}</td>
+  <td>{{user.email}}</td>
+  <td>{{user.admin}}</td>
+  <td>{{user.created_at}}</td>
+  <td>{{user.updated_at}}</td>
+  <td>
+    <form class="" action="index.html" method="post">
+      <button type="button" name="button">Reset</button>
+    </form>
+  </td>
+  <td>
+    <button type="button" data-toggle="modal" data-target="#editModal{{user.id}}">
+      Edit
+    </button>
+  </td>
+</tr>
+<div class="modal fade" id="editModal{{user.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">New User Info</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="postForm" action="/edit" method="POST">
+          {{ csrfField() }}
+          <div class="form-group">
+            <label>Name</label>
+            <input type="text" id="name" name="name" class="form-control" aria-describedby="emailHelp" placeholder="Enter name" value="{{ user.name }}">
+            {{ elIf('<span class="text-danger">$self</span>', getErrorFor('name'), hasErrorFor('name')) }}
+          </div>
+          <div class="form-group">
+            <label>Email address</label>
+            <input type="email" id="email" name="email" class="form-control" aria-describedby="emailHelp" placeholder="Enter email" value="{{ user.email }}">
+            {{ elIf('<span class="text-danger">$self</span>', getErrorFor('email'), hasErrorFor('email')) }}
+          </div>
+          <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" name="admin" id="admin">
+            <label class="form-check-label">Admin?</label>
+          </div>
+          <button id="signupButton" type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
