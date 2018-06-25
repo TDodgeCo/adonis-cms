@@ -23,6 +23,8 @@ Route.get('/posts/add', 'PostController.add').middleware('auth')
 Route.get('/posts/edit/:id', 'PostController.edit').middleware('auth')
 Route.get('/posts/:slug', 'PostController.details')
 Route.post('/posts', 'PostController.store')
+Route.put('/posts/:id', 'PostController.update')
+Route.delete('/posts/:id', 'PostController.destroy')
 
 Route.get('/signup', 'UserController.index')
 Route.post('/signup', 'UserController.store')

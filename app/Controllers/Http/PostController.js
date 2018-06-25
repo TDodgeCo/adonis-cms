@@ -56,6 +56,44 @@ class PostController {
     })
   }
 
+  async update ({ params, request, view, response, session }) {
+    let slug = request.input('title')
+    slug = replaceAll(slug, ' ', '-').toLowerCase()
+    const data = {
+      id: params.id,
+      title: request.input('title'),
+      slug: slug,
+      body: request.input('body')
+    }
+    const validation = await validateAll(data, {
+      title: 'required|min:3|max:255',
+      body: 'required|min:100'
+    })
+    if (validation.fails()) {
+      session
+        .withErrors(validation.messages())
+        .flashAll()
+      return view.render('posts.edit', {
+        post: data
+      })
+    }
+    const post = await Post.find(params.id)
+    post.title = data.title
+    post.body = data.body
+
+    await post.save()
+    session.flash({ notification: 'Post updated!'})
+    return response.redirect('/posts')
+  }
+
+  async destroy ({ params, session, response}) {
+    const post = await Post.find(params.id)
+    await post.delete()
+
+    session.flash({ notification: 'Post deleted!' })
+    return response.redirect('/posts')
+  }
+
 }
 
 module.exports = PostController

@@ -9,9 +9,12 @@
   <ul class="list-group">
     @each(post in posts)
       <li class="list-group-item">
-        <a href="/posts/{{post.slug}}">{{ post.title }}</a>
-        <a href="/posts/delete/{{post.id}}" class="btn btn-dark d-block float-right">Delete</a>
-        <a href="/posts/edit/{{post.id}}" class="btn btn-primary d-block float-right">Edit</a>        
+        <a class="d-block float-left" href="/posts/{{post.slug}}">{{ post.title }}</a>
+        <form action="{{ '/posts/' + post.id + '?_method=DELETE'}}" method="post">
+          {{ csrfField() }}
+          <button type="submit" class="btn btn-danger d-block float-right" name="button">Delete</button>
+        </form>
+        <a href="/posts/edit/{{post.id}}" class="btn btn-primary d-block float-right">Edit</a>
       </li>
     @endeach
   </ul>
