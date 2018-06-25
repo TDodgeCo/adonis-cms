@@ -81,8 +81,13 @@ class UserController {
     console.log(session.all())
   }
 
-  async resetPassword ({ request, params, view, session, auth }) {
-
+  async resetPassword ({ request, view, session, auth }) {
+    const user = auth.current.user
+    let password = await Hash.make(request.input('password'))
+    user.password = password
+    await user.save()
+    session.flash({ notification: 'Password Updated!'})
+    response.redirect('/account')
   }
 
 }
