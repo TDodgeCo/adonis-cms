@@ -49,6 +49,13 @@ class PostController {
     return response.redirect('/posts')
   }
 
+  async edit ({ view, params }) {
+    const post = await Post.findBy('id', params.id)
+    return view.render('posts.edit', {
+      post: post
+    })
+  }
+
 }
 
 module.exports = PostController

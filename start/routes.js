@@ -20,6 +20,7 @@ Route.on('/category').render('pages.category-details')
 
 Route.get('/posts', 'PostController.index')
 Route.get('/posts/add', 'PostController.add').middleware('auth')
+Route.get('/posts/edit/:id', 'PostController.edit').middleware('auth')
 Route.get('/posts/:slug', 'PostController.details')
 Route.post('/posts', 'PostController.store')
 

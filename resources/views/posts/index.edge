@@ -8,7 +8,11 @@
   @endif
   <ul class="list-group">
     @each(post in posts)
-      <li class="list-group-item"><a href="/posts/{{post.slug}}">{{ post.title }}</a></li>
+      <li class="list-group-item">
+        <a href="/posts/{{post.slug}}">{{ post.title }}</a>
+        <a href="/posts/delete/{{post.id}}" class="btn btn-dark d-block float-right">Delete</a>
+        <a href="/posts/edit/{{post.id}}" class="btn btn-primary d-block float-right">Edit</a>        
+      </li>
     @endeach
   </ul>
 @endsection

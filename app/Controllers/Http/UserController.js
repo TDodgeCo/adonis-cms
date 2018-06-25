@@ -2,6 +2,7 @@
 const User = use('App/Models/User')
 const Hash = use('Hash')
 const Mail = use('Mail')
+const Env = use('Env')
 const { validateAll } = use('Validator')
 
 class UserController {
@@ -11,23 +12,38 @@ class UserController {
 
   async store ({ request, auth, response }) {
     const userData = request.only(['name', 'email', 'password'])
-    await User.create(userData)
-
+    const user = await User.create(userData)
+    await Mail.send('emails.welcome', userData.toJSON(), (message) => {
+          message
+            .to(user.email)
+            .from(Env.get('MAIL_USERNAME'))
+            .subject('Welcome to GAB')
+        })
     await auth.attempt(userData.email, userData.password)
     return response.redirect('account')
   }
 
   async invite ({ request, auth, response, session }) {
     let userData = request.only([ 'name', 'email', 'password', 'admin'])
-    console.log(userData)
     if (userData.admin) {
       userData.admin = true
       await User.create(userData)
+      await Mail.send('emails.welcome', userData, (message) => {
+            message
+              .to(userData.email)
+              .from(Env.get('MAIL_USERNAME'))
+              .subject('New Account Created - Great American Buildings')
+          })
       session.flash({ notification: 'Admin User Added!'})
       return response.redirect('/account')
       }
-    console.log('is invite, non admin')
     await User.create(userData)
+    await Mail.send('emails.welcome', userData, (message) => {
+          message
+            .to(userData.email)
+            .from(Env.get('MAIL_USERNAME'))
+            .subject('New Account Created - Great American Buildings')
+        })
     session.flash({ notification: 'User Added!'})
     return response.redirect('/account')
   }
@@ -49,6 +65,10 @@ class UserController {
       users: users.toJSON()
     })
     console.log(session.all())
+  }
+
+  async test ({ request }) {
+
   }
 }
 

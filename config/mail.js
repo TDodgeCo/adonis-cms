@@ -12,7 +12,7 @@ module.exports = {
   | define a driver too. TODO setup mailhog for dev testings
   |
   */
-  connection: Env.get('MAIL_CONNECTION', 'smtp'),
+  connection: 'smtp', //Env.get('MAIL_CONNECTION', 'smtp'),
 
   /*
   |--------------------------------------------------------------------------
@@ -25,8 +25,8 @@ module.exports = {
   smtp: {
     driver: 'smtp',
     pool: true,
-    port: 2525,
-    host: '',
+    port: 587,
+    host: 'smtp.gmail.com',
     secure: false,
     auth: {
       user: Env.get('MAIL_USERNAME'),
@@ -78,8 +78,8 @@ module.exports = {
   */
   mailgun: {
     driver: 'mailgun',
-    domain: Env.get('sandboxface706a807c40b1a985c9ee9da31189.mailgun.org'),
-    apiKey: Env.get('4c6774f13715eb35c3d0b505f7be0202-0470a1f7-f1fe3f86'),
+    domain: Env.get('MAILGUN_DOMAIN'),
+    apiKey: Env.get('MAILGUN_KEY'),
     extras: {}
   }
 }
