@@ -6,8 +6,12 @@
   <td>{{user.created_at}}</td>
   <td>{{user.updated_at}}</td>
   <td>
-    <form class="" action="index.html" method="post">
-      <button type="button" name="button">Reset</button>
+    <form onsubmit="confirm('Are you sure you want to reset this users password?')" action="{{'/set-password/?_method=PUT'}}" method="POST">
+      {{ csrfField() }}
+      <input type="number" name="id" value="{{user.id}}" hidden>
+      <button type="submit" name="button">
+        Reset
+      </button>
     </form>
   </td>
   <td>

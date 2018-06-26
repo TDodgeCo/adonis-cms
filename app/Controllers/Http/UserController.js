@@ -81,13 +81,45 @@ class UserController {
     console.log(session.all())
   }
 
-  async resetPassword ({ request, view, session, auth }) {
+  async resetPassword ({ request, response, session, auth }) {
+    if (request.input('id')) {
+      const user = await User.findBy('id', request.input('id'))
+      console.log('current hashed pass is: ' + user.password)
+      const dirtyPass = String(Date.now() * 3)
+      console.log('dirtyPass is initially: ' + dirtyPass)
+      user.password = dirtyPass
+      console.log('String(Date.now() * 3) = ' + dirtyPass)
+      await user.save()
+      // make sure the hashes match
+      const hashedPass = await user.password
+      console.log('login password is now: ' + hashedPass)
+      const isSame = await Hash.verify(dirtyPass, user.password)
+      if (isSame) {
+        const userDetails = {
+          name: user.name,
+          email: user.email,
+          tempPass: dirtyPass,
+        }
+        await Mail.send('emails.reset-password', userDetails, (message) => {
+              message
+                .to(userDetails.email)
+                .from(Env.get('MAIL_USERNAME'))
+                .subject('Password Reset Instructions - Great American Buildings')
+            })
+      }
+      return console.log(isSame)
+    }
     const user = auth.current.user
-    let password = await Hash.make(request.input('password'))
-    user.password = password
+    user.password = request.input('password')
     await user.save()
-    session.flash({ notification: 'Password Updated!'})
-    response.redirect('/account')
+    const isSame = await Hash.verify(request.input('password'), user.password)
+    console.log(isSame)
+    if(isSame) {
+      session.flash({ notification: 'Password Updated!'})
+      return response.redirect('/account')
+    }
+    session.flash({ notification: 'Something went wrong. Try again.'})
+    return response.redirect('back')
   }
 
 }
