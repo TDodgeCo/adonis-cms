@@ -9,8 +9,8 @@
   <h1>Hello {{ auth.user.name }}</h1>
   @if(!auth.user.admin)
     <a href="/set-password">
-      <button type="button" class="btn btn-primary" >
-        Reset Password
+      <button type="button" class="btn btn-danger" >
+        Reset Your Password
       </button>
     </a>
   @endif
@@ -18,8 +18,8 @@
     <p>You have admininistrator privileges.</p>
     @include('components.createUserForm')
     <a href="/set-password">
-      <button type="button" class="btn btn-primary" >
-        Reset Password
+      <button type="button" class="btn btn-danger" >
+        Reset Your Password
       </button>
     </a>
     {{-- Display/Update Users --}}

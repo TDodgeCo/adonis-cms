@@ -84,15 +84,11 @@ class UserController {
   async resetPassword ({ request, response, session, auth }) {
     if (request.input('id')) {
       const user = await User.findBy('id', request.input('id'))
-      console.log('current hashed pass is: ' + user.password)
-      const dirtyPass = String(Date.now() * 3)
-      console.log('dirtyPass is initially: ' + dirtyPass)
+      const dirtyPass = await Hash.make(String(Date.now() * 3))
       user.password = dirtyPass
-      console.log('String(Date.now() * 3) = ' + dirtyPass)
       await user.save()
       // make sure the hashes match
       const hashedPass = await user.password
-      console.log('login password is now: ' + hashedPass)
       const isSame = await Hash.verify(dirtyPass, user.password)
       if (isSame) {
         const userDetails = {
