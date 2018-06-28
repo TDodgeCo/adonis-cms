@@ -2,8 +2,6 @@
 
 This is the fullstack boilerplate for AdonisJs, it comes pre-configured with.
 
-# MERCURY MAIL SERVER - SET IT UP
-
 1. Bodyparser
 2. Session
 3. Authentication
@@ -31,3 +29,15 @@ Run the following command to run startup migrations.
 ```js
 adonis migration:run
 ```
+
+
+# ToDo
+- Create models for leads and customers
+- Create lead account view
+- Create customer account view
+- Tie in SFDC
+- Persist SFDC data to local DB
+- Setup category directories and post functionality
+- Get sidebar links displaying appropriately
+- Actual blog?
+
