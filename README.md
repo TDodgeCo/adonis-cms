@@ -32,9 +32,11 @@ adonis migration:run
 
 
 # ToDo
-- Create models for leads and customers
+- Create models for leads, customers, salespeople and managers
+- Create 
 - Create lead account view
 - Create customer account view
+- Create sales/manager views
 - Tie in SFDC
 - Persist SFDC data to local DB
 - Setup category directories and post functionality
