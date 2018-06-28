@@ -1,0 +1,23 @@
+@layout('main')
+@section('content')
+<form action="/test" enctype="multipart/form-data" method="post">
+  {{ csrfField() }}
+  <input type="file" name="test-images[]" multiple>
+  <button type="submit" name="button">Submit</button>
+</form>
+<div class="col">
+  <img src="images/residential-steel-buildings-1.jpeg" alt="">
+</div>
+<div class="col">
+  <img src="images/residential-steel-buildings-2.jpeg" alt="">
+</div>
+<div class="col">
+  <img src="images/residential-steel-buildings-3.jpeg" alt="">
+</div>
+<div class="col">
+  <img src="images/residential-steel-buildings-4.jpeg" alt="">
+</div>
+<div class="col">
+  <img src="images/residential-steel-buildings-5.jpeg" alt="">
+</div>
+@endsection

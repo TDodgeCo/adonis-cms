@@ -28,10 +28,14 @@ Route.delete('/posts/:id', 'PostController.destroy')
 
 Route.get('/signup', 'UserController.index')
 Route.post('/signup', 'UserController.store')
-Route.post('/invite', 'UserController.invite')
+Route.post('/invite', 'UserController.invite').middleware('auth')
 Route.on('/set-password').render('user.set-password').middleware('auth')
 Route.put('/set-password', 'UserController.resetPassword').middleware('auth')
 Route.on('/login').render('user.login')
 Route.post('/login', 'UserController.login')
 Route.get('/account', 'UserController.account').middleware('auth')
 Route.get('/logout', 'Usercontroller.logout')
+
+// Test Stuff
+Route.get('/test', 'TestController.index')
+Route.post('/test', 'TestController.save')

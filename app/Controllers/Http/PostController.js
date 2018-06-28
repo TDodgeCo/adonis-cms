@@ -1,5 +1,6 @@
 'use strict'
 const Post = use('App/Models/Post')
+const Helpers = use('Helpers')
 const { validateAll } = use('Validator')
 
 function replaceAll(str, find, replace) {
@@ -30,7 +31,7 @@ class PostController {
     let slug = request.input('title')
     slug = replaceAll(slug, ' ', '-').toLowerCase()
     const data = {
-      title: request.input('title'),
+      title: request.input('title').toUpperCase(),
       slug: slug,
       body: request.input('body')
     }
@@ -44,6 +45,18 @@ class PostController {
         .flashAll()
       return response.redirect('back')
     }
+    // save images
+    const files = request.file('post-images', {
+      type: 'image',
+      size: '2mb'
+    })
+    let count = 0
+    files.moveAll(Helpers.publicPath('images/' + slug + '/'), (file) => {
+      count++
+      return {
+        name: slug + '-' + count + '.' + file.subtype
+      }
+    })
     await Post.create(data)
     session.flash({ notification: 'Post Added!'})
     return response.redirect('/posts')
