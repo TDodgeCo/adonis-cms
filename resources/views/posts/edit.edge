@@ -20,6 +20,7 @@
     <input id="body" type="text" name="body" value="{{ post.body }}" hidden>
     <span id="bodyError"></span>
     {{ elIf('<span class="text-danger">$self</span>', getErrorFor('body'), hasErrorFor('body')) }}
+    {{-- TODO Add edit functionality for images --}}
     <button id="saveButton" class="btn btn-primary" type="button" name="button">Submit</button>
   </form>
 

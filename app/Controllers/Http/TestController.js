@@ -12,9 +12,6 @@ class TestController {
       type: 'image',
       size: '2mb'
     })
-    const arr = files._files
-    console.log(arr.length)
-    const slug = 'residential-steel-buildings'
     let count = 0
     files.moveAll(Helpers.publicPath('images'), (file) => {
       count++

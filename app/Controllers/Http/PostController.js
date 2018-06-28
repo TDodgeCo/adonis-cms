@@ -70,6 +70,7 @@ class PostController {
   }
 
   async update ({ params, request, view, response, session }) {
+    // TODO add edit funcitonality for post images
     let slug = request.input('title')
     slug = replaceAll(slug, ' ', '-').toLowerCase()
     const data = {
