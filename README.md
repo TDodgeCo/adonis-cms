@@ -40,4 +40,6 @@ adonis migration:run
 - Setup category directories and post functionality
 - Get sidebar links displaying appropriately
 - Actual blog?
-
+- Setup Stripe as payment provider
+- Setup Spec sheet generator
+- Setup Contract Generator through docusign
