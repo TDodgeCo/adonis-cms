@@ -24,7 +24,7 @@ class UserController {
             .from(Env.get('MAIL_USERNAME'))
             .subject('Welcome to GAB')
         })
-    await auth.attempt(userData.email, userData.password)
+    await auth.remember(true).attempt(userData.email, userData.password)
     return response.redirect('account')
   }
   /**
@@ -65,7 +65,7 @@ class UserController {
   **/
   async login ({ request, auth, response }) {
     const user = request.only(['email', 'password'])
-    await auth.attempt(user.email, user.password)
+    await auth.remember(true).attempt(user.email, user.password)
     const userSession = await User.find(auth.user.id)
     userSession.sessions = userSession.sessions + 1
     await userSession.save()
