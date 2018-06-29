@@ -8,6 +8,9 @@ function replaceAll(str, find, replace) {
 }
 
 class PostController {
+  /**
+  * Show all posts - routed from /posts
+  **/
   async index ({ view }) {
     const posts = await Post.all()
     return view.render('posts.index', {
@@ -15,18 +18,24 @@ class PostController {
       posts: posts.toJSON()
     })
   }
-
+  /**
+  **  Compiled post/page - shows customer facing content
+  **/
   async details ({ params, view }) {
     const post = await Post.findBy('slug', params.slug)
     return view.render('pages.category-details', {
       post: post
     })
   }
-
+  /**
+  **  Shows the edit post view
+  **/
   async add ({ view }) {
     return view.render('posts.add')
   }
-
+  /**
+  **  stores the content created from edit post view
+  **/
   async store ({ request, response, session }) {
     let slug = request.input('title')
     slug = replaceAll(slug, ' ', '-').toLowerCase()
@@ -61,14 +70,18 @@ class PostController {
     session.flash({ notification: 'Post Added!'})
     return response.redirect('/posts')
   }
-
+  /**
+  **  Shows the view to edit a previously created post
+  **/
   async edit ({ view, params }) {
     const post = await Post.findBy('id', params.id)
     return view.render('posts.edit', {
       post: post
     })
   }
-
+  /**
+  **  Handles the business logic of editing a previously created view
+  **/
   async update ({ params, request, view, response, session }) {
     // TODO add edit funcitonality for post images
     let slug = request.input('title')
@@ -99,7 +112,9 @@ class PostController {
     session.flash({ notification: 'Post updated!'})
     return response.redirect('/posts')
   }
-
+  /**
+  **  Deletes a post
+  **/
   async destroy ({ params, session, response}) {
     const post = await Post.find(params.id)
     await post.delete()

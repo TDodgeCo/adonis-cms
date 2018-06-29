@@ -6,6 +6,9 @@ const Env = use('Env')
 const { validateAll } = use('Validator')
 
 class UserController {
+  /**
+  **  Currently shows the signup page. TODO Refactor to API || stronger passwords
+  **/
   async index ({ view }) {
     return view.render('user.signup')
   }
@@ -24,7 +27,9 @@ class UserController {
     await auth.attempt(userData.email, userData.password)
     return response.redirect('account')
   }
-
+  /**
+  **  Allows an admin to create and invite a new user TODO stronger passwords
+  **/
   async invite ({ request, auth, response, session }) {
     if (auth.user.admin === 0) {
       return response.json({
@@ -55,7 +60,9 @@ class UserController {
     session.flash({ notification: 'User Added!'})
     return response.redirect('/account')
   }
-
+  /**
+  **  Logs the user in
+  **/
   async login ({ request, auth, response }) {
     const user = request.only(['email', 'password'])
     await auth.attempt(user.email, user.password)
@@ -64,12 +71,16 @@ class UserController {
     await userSession.save()
     return response.redirect('account')
   }
-
+  /**
+  **  Logs the user out
+  **/
   async logout ({ auth, response }) {
     await auth.logout()
     return response.redirect('/')
   }
-
+  /**
+  **  shows the account page. admins can view and edit users
+  **/
   async account ({ view, auth, response }) {
     if (auth.user.sessions === 1) {
       return response.redirect('/set-password')
@@ -80,7 +91,9 @@ class UserController {
     })
     console.log(session.all())
   }
-
+  /**
+  **  resets a users password
+  **/
   async resetPassword ({ request, response, session, auth }) {
     if (request.input('id')) {
       const user = await User.findBy('id', request.input('id'))
