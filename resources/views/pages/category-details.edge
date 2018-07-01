@@ -1,4 +1,8 @@
 @layout('layouts.category-layout')
+@section('head')
+<title>{{ post.title }}</title>
+<meta name="description" content="{{ post.description }}">
+@endsection
 @section('content')
 <section class="header-title">
 	<div class="container">

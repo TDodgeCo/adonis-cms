@@ -42,10 +42,12 @@ class PostController {
     const data = {
       title: request.input('title').toUpperCase(),
       slug: slug,
+      description: request.input('description'),
       body: request.input('body')
     }
     const validation = await validateAll(data, {
       title: 'required|min:3|max:255',
+      description: 'required|min:10|max:255',
       body: 'required|min:100'
     })
     if (validation.fails()) {
@@ -89,11 +91,13 @@ class PostController {
     const data = {
       id: params.id,
       title: request.input('title'),
+      description: request.input('description'),
       slug: slug,
       body: request.input('body')
     }
     const validation = await validateAll(data, {
       title: 'required|min:3|max:255',
+      description: 'required|min:10|max:255',
       body: 'required|min:100'
     })
     if (validation.fails()) {
@@ -106,6 +110,7 @@ class PostController {
     }
     const post = await Post.find(params.id)
     post.title = data.title
+    post.description = data.description
     post.body = data.body
 
     await post.save()
