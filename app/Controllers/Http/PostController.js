@@ -1,5 +1,7 @@
 'use strict'
 const Post = use('App/Models/Post')
+const Faq = use('App/Models/Faq')
+const Database = use('Database')
 const Helpers = use('Helpers')
 const { validateAll } = use('Validator')
 
@@ -23,8 +25,12 @@ class PostController {
   **/
   async details ({ params, view }) {
     const post = await Post.findBy('slug', params.slug)
+    console.log(post.id)
+    const faqs = await Database.from('faqs').where('post_id', post.id)
+    console.log(faqs)
     return view.render('pages.category-details', {
-      post: post
+      post: post,
+      faqs: faqs
     })
   }
   /**
@@ -68,7 +74,13 @@ class PostController {
         name: slug + '-' + count + '.' + file.subtype
       }
     })
-    await Post.create(data)
+    const newPost = await Post.create(data)
+    console.log(newPost.id)
+    const faqs = request.collect(['faq_title', 'faq_body'])
+    faqs.forEach(function(faq) {
+      faq.post_id = newPost.id
+    })
+    await Faq.createMany(faqs)
     session.flash({ notification: 'Post Added!'})
     return response.redirect('/posts')
   }
