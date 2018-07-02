@@ -17,8 +17,11 @@
                 <p>
                   <span class="add">ADDRESS</span>
                   <br>
-                  <span>20c Factory Street,<br>
-                      Newyork, NY 10205</span>
+                  <span>
+                    20c Factory Street,
+                    <br>
+                    Newyork, NY 10205
+                  </span>
                 </p>
               </div>
             </li>
@@ -75,6 +78,24 @@
                   <li><a href="index-four.html">Home Four</a></li>
                 </ul>
               </li>
+              <li><a href="news.html">Metal Buildings</a>
+                <ul class="dropdown-submenu">
+                  @each(post in posts)
+                    @if(post.directory === 'metal-buildings')
+                    <li><a href="/metal-buildings/{{post.slug}}">{{post.title}}</a></li>
+                    @endif
+                  @endeach
+                </ul>
+              </li>
+              <li><a href="shop.html">Regional</a>
+                <ul class="dropdown-submenu">
+                  @each(post in posts)
+                    @if(post.directory === 'regional')
+                    <li><a href="/regional/{{post.slug}}">{{post.title}}</a></li>
+                    @endif
+                  @endeach
+                </ul>
+              </li>
               <li><a href="about_us.html">About
                   </a>
                 <ul class="dropdown-submenu">
@@ -84,7 +105,7 @@
                 </ul>
               </li>
               <li><a href="#">Solutions</a>
-                <ul class="dropdown-submenu">
+                <ul class="dropdown-submenu">                  
                   <li><a href="Material-Scienceand-Engineering.html">Material Science and Engineering</a></li>
                   <li><a href="chemical-research.html">Chemical Research</a></li>
                   <li><a href="power-and-energy.html">Power and Energy</a></li>
@@ -97,19 +118,6 @@
                 <ul class="dropdown-submenu">
                   <li><a href="projects.html">Projects</a></li>
                   <li><a href="single-project.html">Single Project</a></li>
-                </ul>
-              </li>
-              <li><a href="news.html">News</a>
-                <ul class="dropdown-submenu">
-                  <li><a href="news-big.html">News Big View</a></li>
-                  <li><a href="news-single.html">Single News</a></li>
-                </ul>
-              </li>
-              <li><a href="shop.html">Shop</a>
-                <ul class="dropdown-submenu">
-                  <li><a href="shop-details.html">Product Details</a></li>
-                  <li><a href="card-page.html">Cart Page</a></li>
-                  <li><a href="Checkout-Page.html">Checkout Page</a></li>
                 </ul>
               </li>
               <li><a href="contact.html">Contact</a></li>

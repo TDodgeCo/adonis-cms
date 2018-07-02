@@ -2,47 +2,47 @@
 ***************** Master Stylesheet for Finance Pro************************
 ***************************************************************************
 =========================== Content Index =================================
-* 1. Miscelnious styles  
-* 2. top-line section styles 
-* 3. header styles 
-* 4. main-menu styles 
-* 5. slider styles 
-* 6. offer-wraper section styles 
-* 7. our-projects section styles 
-* 8. quote section styles 
-* 9. about section styles 
-* 10. numbers section styles 
-* 11. news section styles 
-* 12. our-team section styles 
-* 13. testimonials section styles 
-* 14. contact section styles 
-* 15. partners section styles 
-* 16. quote-request section styles 
-* 17. main-footer section styles 
-* 18. footer-bottom section styles 
-* 19. about us page styles styles 
-* 20. our team page styles styles 
-* 21. our faq page styles styles 
-* 22. testimonials page styles styles 
-* 23. Mechanical Engineering page styles styles 
-* 24. Mechanical Engineering page styles styles 
-* 25. power and energy page styles styles 
-* 26.petroleum and gas page styles styles 
-* 27.facture process page styles styles 
-* 28.projects page styles styles 
-* 29.single project page styles styles 
-* 30.news page styles styles 
-* 31.news-big page styles styles 
-* 32.news-single page styles styles 
+* 1. Miscelnious styles
+* 2. top-line section styles
+* 3. header styles
+* 4. main-menu styles
+* 5. slider styles
+* 6. offer-wraper section styles
+* 7. our-projects section styles
+* 8. quote section styles
+* 9. about section styles
+* 10. numbers section styles
+* 11. news section styles
+* 12. our-team section styles
+* 13. testimonials section styles
+* 14. contact section styles
+* 15. partners section styles
+* 16. quote-request section styles
+* 17. main-footer section styles
+* 18. footer-bottom section styles
+* 19. about us page styles styles
+* 20. our team page styles styles
+* 21. our faq page styles styles
+* 22. testimonials page styles styles
+* 23. Mechanical Engineering page styles styles
+* 24. Mechanical Engineering page styles styles
+* 25. power and energy page styles styles
+* 26.petroleum and gas page styles styles
+* 27.facture process page styles styles
+* 28.projects page styles styles
+* 29.single project page styles styles
+* 30.news page styles styles
+* 31.news-big page styles styles
+* 32.news-single page styles styles
 * 33.shop page styles styles
-* 34.shop details page styles styles 
-* 35.shop cart page styles styles 
-* 36.contact page styles styles 
+* 34.shop details page styles styles
+* 35.shop cart page styles styles
+* 36.contact page styles styles
 * 37.check-out page styles styles
 ***************************************************************************
 **************************************************************************/
 /***************************************
-* 1. Miscelnious styles 
+* 1. Miscelnious styles
 ****************************************/
 
 
@@ -72,7 +72,7 @@ body {
 }
 /***************************************
  * DEFAULT HOME PAGE STYLES
-* 2. top-line section styles 
+* 2. top-line section styles
 ****************************************/
 .top-line {
 	background: #F4F4F4;
@@ -86,15 +86,15 @@ body {
 }
 
 /***************************************
-* 3. header styles 
+* 3. header styles
 ****************************************/
 .main-header {
 	padding: 30px 0 19px 0;
-	
+
 }
 .main-header .logo{
 	margin-top: 10px;
-	
+
 }
 .main-header ul {
 	list-style-type: none;
@@ -166,7 +166,7 @@ body {
 .main-header .social-icons ul li {
 	display: inline-block;
 	margin-left: 7px;
-	
+
 }
 .main-header .social-icons ul li a {
 	display: block;
@@ -182,14 +182,14 @@ body {
 .main-header .social-icons ul li a:hover {
 	background: #fbad1a;
 }
-        
-      
+
+
 /***************************************
-* 4. main-menu styles 
+* 4. main-menu styles
 ****************************************/
 .main-menu-one {
 	background: #072d4d;
-	
+
 }
 #main-navigation-wrapper.navbar-default {
 	background: transparent;
@@ -231,7 +231,7 @@ body {
   background-color: #fff;
   background-clip: padding-box;
   padding: 0;
-  
+
   border: none;
   border-radius: 0;
   display: block;
@@ -356,17 +356,17 @@ body {
     position: fixed !important;
     margin: 0;
     animation: fadeItIn 1s;
-    z-index: 1000;    
+    z-index: 1000;
     min-height: 70px !important;
     background: #072d4d;
     -webkit-box-shadow: 0px 2px 8px -3px rgba(0,0,0,0.47);
 -moz-box-shadow: 0px 2px 8px -3px rgba(0,0,0,0.47);
 box-shadow: 0px 2px 8px -3px rgba(0,0,0,0.47);
-    
+
         }
 
 /***************************************
-* 5. main slider section styles 
+* 5. main slider section styles
 ****************************************/
 
 
@@ -504,7 +504,7 @@ box-shadow: 0px 2px 8px -3px rgba(0,0,0,0.47);
   font-size: 55px;
   line-height: 55px;
   font-weight: 700;
- 
+
   -webkit-animation-delay: .5s;
           animation-delay: .5s;
 }
@@ -525,7 +525,7 @@ box-shadow: 0px 2px 8px -3px rgba(0,0,0,0.47);
 }
 
 #minimal-bootstrap-carousel .carousel-caption a.thm-button {
-    
+
   -webkit-animation-delay: 1.5s;
           animation-delay: 1.5s;
 }
@@ -578,7 +578,7 @@ box-shadow: 0px 2px 8px -3px rgba(0,0,0,0.47);
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
     margin-right: 20px;
-    
+
 }
 #minimal-bootstrap-carousel .slide-3 .carousel-caption .thm-button {
    padding: 12px 33px;
@@ -589,7 +589,7 @@ box-shadow: 0px 2px 8px -3px rgba(0,0,0,0.47);
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
     margin-right: 20px;
-    
+
 }
 
 #minimal-bootstrap-carousel .slide-1 .carousel-caption .thm-button {
@@ -601,7 +601,7 @@ box-shadow: 0px 2px 8px -3px rgba(0,0,0,0.47);
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
     margin-right: 20px;
-    
+
 }
 #minimal-bootstrap-carousel .slide-1 .carousel-caption .thm-button.inverse{
   padding: 12px 33px;
@@ -612,7 +612,7 @@ box-shadow: 0px 2px 8px -3px rgba(0,0,0,0.47);
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
     margin-right: 20px;
-    
+
 }
 #minimal-bootstrap-carousel .slide-2 .carousel-caption .thm-button.inverse{
    padding: 12px 33px;
@@ -623,7 +623,7 @@ box-shadow: 0px 2px 8px -3px rgba(0,0,0,0.47);
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
     margin-right: 20px;
-    
+
 }
 #minimal-bootstrap-carousel .slide-3 .carousel-caption .thm-button.inverse{
    padding: 12px 33px;
@@ -634,7 +634,7 @@ box-shadow: 0px 2px 8px -3px rgba(0,0,0,0.47);
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
     margin-right: 20px;
-    
+
 }
 
 #minimal-bootstrap-carousel .slide-2 .carousel-caption h2 {
@@ -663,7 +663,7 @@ box-shadow: 0px 2px 8px -3px rgba(0,0,0,0.47);
 }
 
 #minimal-bootstrap-carousel .slide-2 .carousel-caption .thm-button {
- 
+
   -webkit-animation-delay: 2s !important;
           animation-delay: 2s !important;
 }
@@ -697,7 +697,7 @@ box-shadow: 0px 2px 8px -3px rgba(0,0,0,0.47);
 }
 
 /***************************************
-* 6. offer-wraper section styles 
+* 6. offer-wraper section styles
 ****************************************/
 .offer-wraper {
 	padding: 80px 0;
@@ -797,7 +797,7 @@ box-shadow: 0px 2px 8px -3px rgba(0,0,0,0.47);
 	margin-top: 40px;
 }
 /***************************************
-* 7. our-projects section styles 
+* 7. our-projects section styles
 ****************************************/
 .our-projects {
 	padding: 60px 0;
@@ -898,7 +898,7 @@ box-shadow: 0px 2px 8px -3px rgba(0,0,0,0.47);
 	background: #fbad1a;
 }
 /***************************************
-* 8. quote section styles 
+* 8. quote section styles
 ****************************************/
 .quote {
 	padding: 35px 0;
@@ -913,7 +913,7 @@ box-shadow: 0px 2px 8px -3px rgba(0,0,0,0.47);
 	color: #FFFFFF;
 }
 /***************************************
-* 9. about section styles 
+* 9. about section styles
 ****************************************/
 .about {
 	padding: 80px 0;
@@ -956,16 +956,16 @@ box-shadow: 0px 2px 8px -3px rgba(0,0,0,0.47);
 	font-family: 'Poppins', sans-serif;
 	font-weight: 600;
 	line-height: 27px;
-	
+
 }
 .about ul li i{
-	
+
 	font-size: 13px;
 	color: #252525;
-	
+
 	font-weight: 600;
 	margin-right: 5px;
-	
+
 }
 .about .button{
     clear: both;
@@ -979,31 +979,31 @@ box-shadow: 0px 2px 8px -3px rgba(0,0,0,0.47);
     font-size: 14px;
     font-weight: bold;
     padding: 11px 33px;
-    
+
     margin-top: 20PX;
-    
+
     clear: both;
 }
 .about a:hover {
     color: #fbad1a;
 }
 .about .picture-wraper  {
-   
-    
+
+
 }
 
 .about .picture-wraper .first {
     overflow: hidden;
     float: right;
-    
+
 }
 
 /***************************************
-* 10. numbers section styles 
+* 10. numbers section styles
 ****************************************/
 .numbers {
     padding: 80px 0;
-    
+
     background: url(../img/numbers.jpg)  center top;
 }
 
@@ -1017,15 +1017,15 @@ box-shadow: 0px 2px 8px -3px rgba(0,0,0,0.47);
     font-weight: 800;
 }
 .numbers h2 span{
-    
+
     color: #FFFFFF;
-    
+
 }
 .numbers .number-box {
     text-align: left;
     margin: 0;
     font-size: 46px;
-    
+
     font-family: 'Poppins', sans-serif;
 
     font-weight: 500;
@@ -1038,7 +1038,7 @@ box-shadow: 0px 2px 8px -3px rgba(0,0,0,0.47);
     text-align: left;
     margin: 0;
     font-size: 14px;
-    
+
     font-family: 'Poppins', sans-serif;
 
     font-weight: 300;
@@ -1056,11 +1056,11 @@ box-shadow: 0px 2px 8px -3px rgba(0,0,0,0.47);
     margin-top: 20px;
 }
 /***************************************
-* 11. news section styles 
+* 11. news section styles
 ****************************************/
 .news {
     padding: 80px 0;
-    
+
     background: url(../img/bg2.jpg) center top;
 }
 
@@ -1145,7 +1145,7 @@ box-shadow: 0px 2px 8px -3px rgba(0,0,0,0.47);
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
     line-height: 40px;
-   
+
 }
 
 .news .questions h2 {
@@ -1214,7 +1214,7 @@ box-shadow: 0px 2px 8px -3px rgba(0,0,0,0.47);
     line-height: 25px;
 }
 /***************************************
-* 12. our-team section styles 
+* 12. our-team section styles
 ****************************************/
 .our-team {
      padding: 80px 0;
@@ -1246,7 +1246,7 @@ box-shadow: 0px 2px 8px -3px rgba(0,0,0,0.47);
     color:#3d3d3d;
     font-weight: 300;
     line-height: 25px;
-    
+
 }
 .our-team .team-text a.btn {
     padding: 10px 29px;
@@ -1260,7 +1260,7 @@ box-shadow: 0px 2px 8px -3px rgba(0,0,0,0.47);
     width: 229px;
     display: inline-block;
     margin-right: 21px;
-    
+
 }
 .our-team  .members .member figure{
     width: 229px;
@@ -1313,7 +1313,7 @@ box-shadow: 0px 2px 8px -3px rgba(0,0,0,0.47);
   line-height: 40px;
 }
 .our-team  .members .member + .member + .member{
-    
+
     margin-right: 0px;
 }
 .our-team  .members .member .author-info{
@@ -1351,7 +1351,7 @@ box-shadow: 0px 2px 8px -3px rgba(0,0,0,0.47);
     color: #707070;
 }
 /***************************************
-* 13. testimonials section styles 
+* 13. testimonials section styles
 ****************************************/
 .testimonials {
     padding: 80px 0;
@@ -1440,7 +1440,7 @@ border-top-width: 29px;
 }
 
 /***************************************
-* 14. contact section styles 
+* 14. contact section styles
 ****************************************/
 .contact {
     padding: 80px 0;
@@ -1487,7 +1487,7 @@ border-top-width: 29px;
     background: #FFFFFF;
 }
 .contact form {
-   
+
     margin-top: 30px;
 }
 .contact form input[type="text"]{
@@ -1540,7 +1540,7 @@ border-top-width: 29px;
     margin-left: 15px;
 }
 /***************************************
-* 15. partners section styles 
+* 15. partners section styles
 ****************************************/
 
 .partners {
@@ -1576,7 +1576,7 @@ border-top-width: 29px;
     background: #FFFFFF;
 }
 /***************************************
-* 16. quote-request section styles 
+* 16. quote-request section styles
 ****************************************/
 .quote-request {
     padding: 40px 0;
@@ -1585,7 +1585,7 @@ border-top-width: 29px;
 .quote-request h4{
      text-align: left;
    margin-top:10px;
-    
+
     font-size: 20px;
     color: #FFFFFF;
     font-family: 'Poppins', sans-serif;
@@ -1605,7 +1605,7 @@ border-top-width: 29px;
 }
 
 /***************************************
-* 17. main-footer section styles 
+* 17. main-footer section styles
 ****************************************/
 .main-footer {
     padding: 80px 0;
@@ -1613,7 +1613,7 @@ border-top-width: 29px;
 }
 .main-footer .sec-tab{
     padding-left: 50px;
-   
+
 }
 .main-footer h2{
    text-align: left;
@@ -1665,19 +1665,19 @@ border-top-width: 29px;
 
 .main-footer .solutions {
     margin-top: 60px;
-    
+
 }
 .main-footer .solutions li{
     margin-top: 20px;
-    
+
 }
 .main-footer .solutions li a:hover{
-    color: #fbad1a;   
+    color: #fbad1a;
 }
 .main-footer .solutions li a{
     color: #F4F4F4;
     font-weight: 300;
-    transition: all .3s ease;   
+    transition: all .3s ease;
 }
 
 .main-footer .footer-news p {
@@ -1687,7 +1687,7 @@ border-top-width: 29px;
 .main-footer .footer-news p span{
     color: #9e9e9e;
     line-height: 30px;
-    
+
 }
 .main-footer .contact-info li{
      margin-top: 30px;
@@ -1695,15 +1695,15 @@ border-top-width: 29px;
 }
 .main-footer .contact-info .address{
     float: left;
-    
-    
+
+
 }
 .main-footer .contact-info .address a{
-    color: #F4F4F4; 
-    transition: all .3s ease;   
+    color: #F4F4F4;
+    transition: all .3s ease;
 }
 .main-footer .contact-info .address a:hover{
-    color: #fbad1a;   
+    color: #fbad1a;
 }
 .main-footer .contact-info li {
     color: #F4F4F4;
@@ -1718,10 +1718,10 @@ border-top-width: 29px;
     float:left;
     font-size: 24px;
     width: 35px;
-    
+
 }
 /***************************************
-* 18. footer-bottom section styles 
+* 18. footer-bottom section styles
 ****************************************/
 .footer-bottom {
     padding: 30px 0;
@@ -1737,7 +1737,7 @@ border-top-width: 29px;
     width: 50px;
     height: 40px;
     text-align:center;
-    background: #fbad1a;  
+    background: #fbad1a;
     position: fixed;
     bottom: 30px;
     right: 30px;
@@ -1748,15 +1748,15 @@ border-top-width: 29px;
     transition: all 0.3s ease;
 }
 /***************************************
-* 19. about us page styles styles 
+* 19. about us page styles styles
 ****************************************/
 
 
-.header-title {
+/* .header-title {
     padding-top:127px;
     height:280px;
-    background: url(../img/pages-header.jpg) no-repeat center top;
-}
+    background: url(https://images.unsplash.com/photo-1530518309799-9db5fc42276b?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=b784735a7a03b5fee7bf5cc1150957ed&auto=format&fit=crop&w=1375&q=80) no-repeat cover center top;
+} */
 .header-title h2{
     text-align: center;
     margin: 0;
@@ -1782,7 +1782,7 @@ border-top-width: 29px;
 
 .page-nav ul li span{
    color: #fbad1a;
-    
+
 }
 .overview {
     padding: 80px 0;
@@ -1828,7 +1828,7 @@ border-top-width: 29px;
 }
 .overview ul{
    list-style-type: none;
-   padding: 0; 
+   padding: 0;
 }
 .overview ul li{
    font-weight: 300;
@@ -1854,11 +1854,11 @@ border-top-width: 29px;
    float: right;
    width: 49%;
    overflow: hidden;
-   
+
 }
 .adventages{
-   padding: 80px 0; 
-   
+   padding: 80px 0;
+
     background: url(../img/about-bg.jpg) no-repeat center top;
 }
 
@@ -1891,7 +1891,7 @@ border-top-width: 29px;
 
 .our-team .title{
     margin-bottom: 70px;
-    
+
 }
 
 .our-team .title h2 {
@@ -1913,12 +1913,12 @@ border-top-width: 29px;
 }
 
 .achivment {
-     padding: 80px 0; 
+     padding: 80px 0;
 }
 
 .achivment .title{
     margin-bottom: 70px;
-    
+
 }
 
 .achivment .title h2 {
@@ -1940,7 +1940,7 @@ border-top-width: 29px;
 }
 
 /***************************************
-* 20. our team page styles styles 
+* 20. our team page styles styles
 ****************************************/
 .our-team-page {
      padding: 80px 0;
@@ -1974,7 +1974,7 @@ border-top-width: 29px;
     color:#3d3d3d;
     font-weight: 300;
     line-height: 25px;
-    
+
 }
 .our-team-page .team-text a.btn {
     padding: 10px 29px;
@@ -1988,7 +1988,7 @@ border-top-width: 29px;
     width: 229px;
     display: inline-block;
     margin-right: 21px;
-    
+
 }
 .our-team-page  .members .member figure{
     width: 229px;
@@ -2042,7 +2042,7 @@ border-top-width: 29px;
   line-height: 40px;
 }
 .our-team-page .members .member + .member + .member{
-    
+
     margin-right: 0px;
 }
 .our-team-page .members .member .author-info{
@@ -2083,7 +2083,7 @@ border-top-width: 29px;
 
 
 /***************************************
-* 21. our faq page styles styles 
+* 21. our faq page styles styles
 ****************************************/
 
 
@@ -2170,7 +2170,7 @@ border-top-width: 29px;
 
 
 /***************************************
-* 22. testimonials page styles styles 
+* 22. testimonials page styles styles
 ****************************************/
 .testimonials-page {
     padding: 80px 0;
@@ -2195,7 +2195,7 @@ box-shadow: 0px 0px 40px -21px rgba(0,0,0,0.39);
 .testimonials-page figure{
     width: 70px;
     height: 70px;
-    
+
     overflow:hidden;
     border-radius:50%;
     margin-left: 80px;
@@ -2216,7 +2216,7 @@ box-shadow: 0px 0px 40px -21px rgba(0,0,0,0.39);
    color: #fbad1a;
 }
 /***************************************
-* 23. Mechanical Engineering page styles styles 
+* 23. Mechanical Engineering page styles styles
 ****************************************/
 
 .Mechanical-engineering {
@@ -2274,12 +2274,12 @@ box-shadow: 0px 0px 40px -21px rgba(0,0,0,0.39);
     font-size:14px;
     line-height: 24px;
     margin-top: 5px;
-    
+
 }
 .Mechanical-engineering .contact a{
     font-size:14px;
     line-height: 45px;
-    
+
     color: #fbad1a;
 }
 .Mechanical-engineering .img-box {
@@ -2336,7 +2336,7 @@ box-shadow: 0px 0px 40px -21px rgba(0,0,0,0.39);
 
 
 /***************************************
-* 24. Mechanical Engineering page styles styles 
+* 24. Mechanical Engineering page styles styles
 ****************************************/
 
 .chemical-research {
@@ -2406,12 +2406,12 @@ box-shadow: 0px 0px 40px -21px rgba(0,0,0,0.39);
     font-size:14px;
     line-height: 24px;
     margin-top: 5px;
-    
+
 }
 .chemical-research .contact a{
     font-size:14px;
     line-height: 45px;
-    
+
     color: #fbad1a;
 }
 
@@ -2456,7 +2456,7 @@ box-shadow: 0px 0px 40px -21px rgba(0,0,0,0.39);
     color: #3c3c3c;
 }
 /***************************************
-* 25. power and energy page styles styles 
+* 25. power and energy page styles styles
 ****************************************/
 .power-and-energy {
     padding: 80px 0;
@@ -2513,12 +2513,12 @@ box-shadow: 0px 0px 40px -21px rgba(0,0,0,0.39);
     font-size:14px;
     line-height: 24px;
     margin-top: 5px;
-    
+
 }
 .power-and-energy .contact a{
     font-size:14px;
     line-height: 45px;
-    
+
     color: #fbad1a;
 }
 .power-and-energy .img-box {
@@ -2561,7 +2561,7 @@ box-shadow: 0px 0px 40px -21px rgba(0,0,0,0.39);
     color: #3c3c3c;
 }
 /***************************************
-* 26.petroleum and gas page styles styles 
+* 26.petroleum and gas page styles styles
 ****************************************/
 .petroleum-and-gas {
     padding: 80px 0;
@@ -2618,12 +2618,12 @@ box-shadow: 0px 0px 40px -21px rgba(0,0,0,0.39);
     font-size:14px;
     line-height: 24px;
     margin-top: 5px;
-    
+
 }
 .petroleum-and-gas .contact a{
     font-size:14px;
     line-height: 45px;
-    
+
     color: #fbad1a;
 }
 
@@ -2651,7 +2651,7 @@ box-shadow: 0px 0px 40px -21px rgba(0,0,0,0.39);
 }
 .petroleum-and-gas .sec-wraper .first{
    overflow: hidden;
-    
+
 }
 .petroleum-and-gas .sec-wraper .second {
     clear: both;
@@ -2688,7 +2688,7 @@ box-shadow: 0px 0px 40px -21px rgba(0,0,0,0.39);
 }
 
 /***************************************
-* 27.facture process page styles styles 
+* 27.facture process page styles styles
 ****************************************/
 .facture-process {
     padding: 80px 0;
@@ -2745,12 +2745,12 @@ box-shadow: 0px 0px 40px -21px rgba(0,0,0,0.39);
     font-size:14px;
     line-height: 24px;
     margin-top: 5px;
-    
+
 }
 .facture-process .contact a{
     font-size:14px;
     line-height: 45px;
-    
+
     color: #fbad1a;
 }
 
@@ -2776,7 +2776,7 @@ box-shadow: 0px 0px 40px -21px rgba(0,0,0,0.39);
 }
 .facture-process .sec-wraper .first{
    overflow: hidden;
-    
+
 }
 .facture-process .sec-wraper .second {
     clear: both;
@@ -2813,7 +2813,7 @@ box-shadow: 0px 0px 40px -21px rgba(0,0,0,0.39);
     color: #3c3c3c;
 }
 /***************************************
-* 28.projects page styles styles 
+* 28.projects page styles styles
 ****************************************/
 .projects-section {
     padding: 80px 0;
@@ -2854,7 +2854,7 @@ box-shadow: 0px 0px 40px -21px rgba(0,0,0,0.39);
 }
 .projects-section .overlay .text{
     display:inline-block;
-   white-space: nowrap;  
+   white-space: nowrap;
   text-align:center;
   position: absolute;
   overflow: hidden;
@@ -2865,7 +2865,7 @@ box-shadow: 0px 0px 40px -21px rgba(0,0,0,0.39);
 }
 .projects-section .overlay .text2{
     display:inline-block;
-   white-space: nowrap;  
+   white-space: nowrap;
   text-align:center;
   position: absolute;
   overflow: hidden;
@@ -2885,12 +2885,12 @@ box-shadow: 0px 0px 40px -21px rgba(0,0,0,0.39);
   color:#FFFFFF;
 }
 
-.portfolioFilter a.current { 
+.portfolioFilter a.current {
     font-weight:bold;
 }
 
 /***************************************
-* 29.single project page styles styles 
+* 29.single project page styles styles
 ****************************************/
 
 .single-project {
@@ -2922,7 +2922,7 @@ box-shadow: 0px 0px 40px -21px rgba(0,0,0,0.39);
     padding-left: 14px;
     font-weight: 300;
     color: #292929;
-    
+
 }
 .single-project .left-wraper .first-block{
     margin-top: 40px;
@@ -2957,7 +2957,7 @@ box-shadow: 0px 0px 40px -21px rgba(0,0,0,0.39);
     margin-bottom: 22px;
 }
 /***************************************
-* 30.news page styles styles 
+* 30.news page styles styles
 ****************************************/
 .news-section {
     padding: 80px 0;
@@ -2996,12 +2996,12 @@ box-shadow: 0px 0px 40px -21px rgba(0,0,0,0.39);
     font-size:16px;
     color:#ffffff;
     background:#fbad1a;
-    
+
     border: none;
 }
 .news-section .blog-info .category-widget {
    margin-top: 50px;
-    
+
 }
 .news-section .blog-info .category-widget ul {
     list-style-type: none;
@@ -3017,11 +3017,11 @@ box-shadow: 0px 0px 40px -21px rgba(0,0,0,0.39);
     position: relative;
     -webkit-transition: color .4s ease;
     transition: color .4s ease;
-    
+
 }
 .news-section .blog-info .category-widget ul li a:hover{
      color: #fbad1a;
-    
+
 }
 .news-section .blog-info .category-widget ul li a:before {
     content: "\f105";
@@ -3033,30 +3033,30 @@ box-shadow: 0px 0px 40px -21px rgba(0,0,0,0.39);
 }
 .news-section .blog-info .news-widget{
    margin-top: 50px;
-    
+
 }
 .news-section .blog-info .news-widget .news-item{
-   
-    
+
+
     margin-bottom: 13px;
     min-height: 50px;
     padding: 8px 0px 8px 0px;
     color: #cccccc;
     border-bottom: 1px solid #f1f1f1;
-    
+
 }
 .news-section .blog-info .news-widget .news-item p{
-   
+
     color: #fbad1a;
     font-weight: 300;
-    
+
 }
 .news-section .blog-info .instigram-widget p{
     font-size:14px;
     font-weight: 300;
     color: #292929;
 }
-.news-section .blog-info .news-widget .news-item figure {        
+.news-section .blog-info .news-widget .news-item figure {
     width: 90px;
     height: 90px;
     float: left;
@@ -3077,23 +3077,23 @@ box-shadow: 0px 0px 40px -21px rgba(0,0,0,0.39);
 }
 
 .news-section .blog-info .news-widget h5 a:hover{
-   
-    
+
+
     color: #fbad1a;
 }
 .news-section .blog-info .tags-widget{
    margin-top: 50px;
-    
+
 }
 .news-section .blog-info .tags-widget ul{
    list-style-type: none;
     padding-left: 0;
-    
+
 }
 .news-section .blog-info .tags-widget ul li{
    display: inline-block;
    margin: 0 3px 5px;
-    
+
 }
 .news-section .blog-info .tags-widget ul li a{
     text-decoration:none;
@@ -3108,27 +3108,27 @@ box-shadow: 0px 0px 40px -21px rgba(0,0,0,0.39);
   text-align: center;
   padding: 0 14px;
    -webkit-transition: all .4s ease;
-    transition: all .4s ease; 
+    transition: all .4s ease;
 }
 
 .news-section .blog-info .tags-widget ul li a:hover{
  color: #FFFFFF;
-  background: #fbad1a;  
+  background: #fbad1a;
 }
 .news-section .blog-info .instigram-widget {
    margin-top: 50px;
-    
+
 }
 .news-section .blog-info .instigram-widget ul{
    list-style-type: none;
-    
+
 }
 .news-section .blog-info .instigram-widget ul li{
    display: inline-block;
    margin: 0 2px 5px;
    width: 80px;
    height: 80px;
-   overflow: hidden; 
+   overflow: hidden;
 }
 
 .news-section .pagination {
@@ -3177,12 +3177,12 @@ box-shadow: 0px 0px 40px -21px rgba(0,0,0,0.39);
 }
 
 .news-section .news-wraper .news-box a{
-    
+
     color: #fbad1a;
-   
+
 }
 /***************************************
-* 31.news-big page styles styles 
+* 31.news-big page styles styles
 ****************************************/
 
 
@@ -3219,16 +3219,16 @@ box-shadow: 0px 0px 30px -9px rgba(0,0,0,0.34);
 }
 .news-section .news-wraper-big .news-box .text-box {
   padding-top: 10px;
-  padding-bottom: 10px; 
-   
+  padding-bottom: 10px;
+
 }
 .news-section .news-wraper-big .news-box .text-box a{
   color: #fbad1a;
-   
+
 }
 .news-section .news-wraper-big .news-box .text-box i{
   margin-right: 5px;
-   
+
 }
 .news-section .news-wraper-big .news-box .text {
     padding-top: 13px;
@@ -3253,7 +3253,7 @@ box-shadow: 0px 0px 30px -9px rgba(0,0,0,0.34);
 }
 
 /***************************************
-* 32.news-single page styles styles 
+* 32.news-single page styles styles
 ****************************************/
 
 
@@ -3262,7 +3262,7 @@ box-shadow: 0px 0px 30px -9px rgba(0,0,0,0.34);
     width: 100%;
     height:440px;
     overflow: hidden;
-    margin-bottom: 20px;   
+    margin-bottom: 20px;
 }
 .news-section .left-wraper .news_one-single h4{
     font-size: 23px;
@@ -3273,19 +3273,19 @@ box-shadow: 0px 0px 30px -9px rgba(0,0,0,0.34);
 }
 .news-section .news_one-single ul{
    list-style-type: none;
-    
+
 }
 .news-section .news_one-single ul li{
    display: inline-block;
    margin: 0 2px 5px;
-   
-   overflow: hidden; 
+
+   overflow: hidden;
 }
 .news-section .news_one-single ul li a{
    margin-right: 10px;
    text-decoration:none;
     display: inline-block;
-   
+
     color: #8a8a8a;
     font-style: italic;
 }
@@ -3307,7 +3307,7 @@ box-shadow: 0px 0px 30px -9px rgba(0,0,0,0.34);
     line-height:24px;
     color: #353535;
     font-weight: 300;
-    
+
 }
 .news-section .related-posts {
     overflow: hidden;
@@ -3320,7 +3320,7 @@ box-shadow: 0px 0px 30px -9px rgba(0,0,0,0.34);
 
 .news-section .related-posts .header{
     margin-bottom: 30px;
-    
+
 }
 .news_one-single .owl-carousel .image{
     height: 200px;
@@ -3399,7 +3399,7 @@ box-shadow: 0px 0px 30px -9px rgba(0,0,0,0.34);
 
 .news-section .left-wraper .post-author{
     margin-bottom: 60px;
-    
+
 }
 .news-section .left-wraper .post-author h4{
     font-size: 18px;
@@ -3413,7 +3413,7 @@ box-shadow: 0px 0px 30px -9px rgba(0,0,0,0.34);
     line-height:26px;
     color: #353535;
     font-weight: 300;
-    
+
 }
 .news-section .left-wraper .post-author .img-box{
     width: 100px;
@@ -3481,13 +3481,13 @@ box-shadow: 0px 0px 30px -9px rgba(0,0,0,0.34);
     border-radius: 0px;
 }
 .news-section .btn:hover {
-   
+
     color: #FFFFFF;
-    
+
 }
 
 /***************************************
-* 33.shop page styles styles 
+* 33.shop page styles styles
 ****************************************/
 
 .shop-section {
@@ -3528,12 +3528,12 @@ box-shadow: 0px 0px 30px -9px rgba(0,0,0,0.34);
     font-size:16px;
     color:#ffffff;
     background:#fbad1a;
-    
+
     border: none;
 }
 .shop-section .blog-info .category-widget {
    margin-top: 50px;
-    
+
 }
 .shop-section .blog-info .category-widget ul {
     list-style-type: none;
@@ -3549,11 +3549,11 @@ box-shadow: 0px 0px 30px -9px rgba(0,0,0,0.34);
     position: relative;
     -webkit-transition: color .4s ease;
     transition: color .4s ease;
-    
+
 }
 .shop-section .blog-info .category-widget ul li a:hover{
      color: #fbad1a;
-    
+
 }
 .shop-section .blog-info .category-widget ul li a:before {
     content: "\f105";
@@ -3565,31 +3565,31 @@ box-shadow: 0px 0px 30px -9px rgba(0,0,0,0.34);
 }
 .shop-section .blog-info .news-widget{
    margin-top: 50px;
-    
+
 }
 .shop-section .blog-info .news-widget .news-item{
-   
-    
+
+
     margin-bottom: 13px;
     min-height: 50px;
     padding: 8px 0px 8px 0px;
     color: #cccccc;
-    
-    
+
+
 }
 .shop-section .blog-info .news-widget .news-item p{
-   
+
     color: #fbad1a;
     font-weight: 300;
-    
+
 }
 .shop-section .blog-info .news-widget .news-item ul{
-   
+
     list-style-type: none;
-    
+
 }
 .shop-section .blog-info .news-widget .news-item ul li{
-   
+
     display: inline-block;
     color: #fbad1a;
 }
@@ -3598,7 +3598,7 @@ box-shadow: 0px 0px 30px -9px rgba(0,0,0,0.34);
     font-weight: 300;
     color: #292929;
 }
-.shop-section .blog-info .news-widget .news-item figure {        
+.shop-section .blog-info .news-widget .news-item figure {
     width: 73px;
     height: 73px;
     float: left;
@@ -3619,23 +3619,23 @@ box-shadow: 0px 0px 30px -9px rgba(0,0,0,0.34);
 }
 
 .shop-section .blog-info .news-widget h5 a:hover{
-   
-    
+
+
     color: #fbad1a;
 }
 .shop-section .blog-info .tags-widget{
    margin-top: 50px;
-    
+
 }
 .shop-section .blog-info .tags-widget ul{
    list-style-type: none;
     padding-left: 0;
-    
+
 }
 .shop-section .blog-info .tags-widget ul li{
    display: inline-block;
    margin: 0 3px 5px;
-    
+
 }
 .shop-section .blog-info .tags-widget ul li a{
     text-decoration:none;
@@ -3650,27 +3650,27 @@ box-shadow: 0px 0px 30px -9px rgba(0,0,0,0.34);
   text-align: center;
   padding: 0 14px;
    -webkit-transition: all .4s ease;
-    transition: all .4s ease; 
+    transition: all .4s ease;
 }
 
 .shop-section .blog-info .tags-widget ul li a:hover{
  color: #FFFFFF;
-  background: #fbad1a;  
+  background: #fbad1a;
 }
 .shop-section .blog-info .price-widget {
    margin-top: 50px;
-    
+
 }
 .shop-section .blog-info .instigram-widget ul{
    list-style-type: none;
-    
+
 }
 .shop-section .blog-info .instigram-widget ul li{
    display: inline-block;
    margin: 0 2px 5px;
    width: 80px;
    height: 80px;
-   overflow: hidden; 
+   overflow: hidden;
 }
 .shop-section .product-wraper .product {
     margin-bottom: 40px;
@@ -3703,7 +3703,7 @@ box-shadow: 0px 0px 30px -9px rgba(0,0,0,0.34);
     color: #fbad1a;
 }
 
-.shop-section .product-wraper .product a{  
+.shop-section .product-wraper .product a{
 
    padding: 9px 21px;
     background: #fbad1a;
@@ -3723,7 +3723,7 @@ box-shadow: 0px 0px 30px -9px rgba(0,0,0,0.34);
 }
 .shop-section .navigation ul li{
     display: inline-block;
-    
+
 }
 .shop-section .navigation ul li a{
     color: #626262;
@@ -3738,7 +3738,7 @@ box-shadow: 0px 0px 30px -9px rgba(0,0,0,0.34);
     background: #fbad1a;
 }
 /***************************************
-* 34.shop details page styles styles 
+* 34.shop details page styles styles
 ****************************************/
 
 .shop-section .detailed-product .text-box ul{
@@ -3793,7 +3793,7 @@ box-shadow: 0px 0px 30px -9px rgba(0,0,0,0.34);
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
     font-size:12px;
-   
+
 }
 .shop-section .detailed-product .text-box .tag {
    margin-top: 25px;
@@ -3882,7 +3882,7 @@ box-shadow: 0px 0px 30px -9px rgba(0,0,0,0.34);
 }
 
 /***************************************
-* 35.shop cart page styles styles 
+* 35.shop cart page styles styles
 ****************************************/
 
 
@@ -3964,7 +3964,7 @@ box-shadow: 0px 0px 30px -9px rgba(0,0,0,0.34);
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
     font-size:12px;
-   
+
 }
 .cart-page .cart-total {
     margin-top: 80px;
@@ -4008,11 +4008,11 @@ box-shadow: 0px 0px 30px -9px rgba(0,0,0,0.34);
   padding: 10px 18px;
   position: relative;
   width: 50%;
-  
+
 }
 .cart-page .cart-total li span.second .radio input{
  margin-top: 10px;
-  
+
 }
 
 .cart-page .cart-total li.radio-row span.first{
@@ -4024,7 +4024,7 @@ box-shadow: 0px 0px 30px -9px rgba(0,0,0,0.34);
     font-weight: 300;
 }
 .cart-page .cart-total li.radio-row span.second .radio label{
-   
+
     font-weight: 300;
 }
 
@@ -4060,7 +4060,7 @@ box-shadow: 0px 0px 30px -9px rgba(0,0,0,0.34);
 }
 
 /***************************************
-* 36.contact page styles styles 
+* 36.contact page styles styles
 ****************************************/
 
 
@@ -4080,7 +4080,7 @@ box-shadow: 0px 0px 30px -9px rgba(0,0,0,0.34);
     font-weight: 800;
 }
 .contact_us-second header p{
-    
+
     margin-top: 20px;
 }
 
@@ -4100,7 +4100,7 @@ box-shadow: 0px 0px 30px -9px rgba(0,0,0,0.34);
     font-weight: 300;
     color:#b8b8b8;
 }
-.form-grp textarea{ 
+.form-grp textarea{
     max-width: 100%;
     max-height: 200px;
     font-weight: 300;
@@ -4167,10 +4167,10 @@ box-shadow: 0px 0px 30px -9px rgba(0,0,0,0.34);
     box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.20);
 }
 .map-section .outer-container .info-container address{
-  
+
 }
 .keep-in .social-icons li {
-    
+
     list-style-type: none;
     line-height: 34px;
     display: inline-block;
@@ -4180,17 +4180,17 @@ box-shadow: 0px 0px 30px -9px rgba(0,0,0,0.34);
     background: #dadada;
     margin-right: 7px;
     text-align: center;
-    
+
 }
 .keep-in ul.social-icons {
     padding: 0;
-   
-    
+
+
 }
 .keep-in ul.social-icons li a{
     color: #fbad1a;
-   
-    
+
+
 }
 .contact-box {
     margin-top: 25px;
@@ -4218,7 +4218,7 @@ box-shadow: 0px 0px 30px -9px rgba(0,0,0,0.34);
 }
 
 /***************************************
-* 37.check-out page styles styles 
+* 37.check-out page styles styles
 ****************************************/
 
 .checkout {
@@ -4241,13 +4241,13 @@ box-shadow: 0px 0px 30px -9px rgba(0,0,0,0.34);
     color: #fbad1a;
 }
 .checkout form label{
-    
+
     font-weight: 400;
     color:#464646;
 }
 .checkout form label span{
-    
-    
+
+
     color:red;
 }
 .checkout form input[type="text"]{
@@ -4306,7 +4306,7 @@ box-shadow: 0px 0px 30px -9px rgba(0,0,0,0.34);
     overflow: hidden;
 }
 .checkout .order .details ul li .first{
-   
+
   color: #222222;
   display: block;
   float: left;
@@ -4318,7 +4318,7 @@ box-shadow: 0px 0px 30px -9px rgba(0,0,0,0.34);
   width: 60%;
 }
 .checkout .order .details ul li .first-pad{
-   
+
   color: #222222;
   display: block;
   float: left;
@@ -4361,11 +4361,11 @@ box-shadow: 0px 0px 30px -9px rgba(0,0,0,0.34);
 }
 
 .checkout .order .details ul li .first-pad input{
-   
+
  margin-right: 5px;
 }
 .checkout .order .details ul li .first-pad img{
-   
+
  margin-left: 8px;
 }
 .checkout .order .details ul li.gray{
@@ -4401,11 +4401,11 @@ box-shadow: 0px 0px 30px -9px rgba(0,0,0,0.34);
 
 /***************************************
  *  HOME PAGE TWO  STYLES
-* 1. main header styles 
-* 2. main-menu styles 
-* 3. why-choose-us styles 
-* 4. our projects styles 
-* 5. about-us styles 
+* 1. main header styles
+* 2. main-menu styles
+* 3. why-choose-us styles
+* 4. our projects styles
+* 5. about-us styles
 ****************************************/
 
 #main-header {
@@ -4453,12 +4453,12 @@ box-shadow: 0px 0px 30px -9px rgba(0,0,0,0.34);
 .top-line-two  .social-icons ul li {
     display: inline-block;
     margin-left: 16px;
-    
+
 }
 .top-line-two  .social-icons ul li a {
     display: block;
-    
-    
+
+
     text-align: center;
     line-height: 34px;
     color: #FFFFFF;
@@ -4469,7 +4469,7 @@ box-shadow: 0px 0px 30px -9px rgba(0,0,0,0.34);
     color: #fbad1a;
 }
 /***************************************
-* 4. main-menu styles 
+* 4. main-menu styles
 ****************************************/
 .main-menu-two .logo{
   margin-top: 10px;
@@ -4518,7 +4518,7 @@ box-shadow: 0px 0px 30px -9px rgba(0,0,0,0.34);
   background-color: #fff;
   background-clip: padding-box;
   padding: 0;
-  
+
   border: none;
   border-radius: 0;
   display: block;
@@ -4625,16 +4625,16 @@ box-shadow: 0px 0px 30px -9px rgba(0,0,0,0.34);
     position: fixed !important;
     margin: 0;
     animation: fadeItIn 1s;
-    z-index: 1000;    
+    z-index: 1000;
     min-height: 70px !important;
     background: #072d4d;
     -webkit-box-shadow: 0px 2px 8px -3px rgba(0,0,0,0.47);
 -moz-box-shadow: 0px 2px 8px -3px rgba(0,0,0,0.47);
 box-shadow: 0px 2px 8px -3px rgba(0,0,0,0.47);
-    
+
         }
 /***************************************
-* 5. slider styles 
+* 5. slider styles
 ****************************************/
 #minimal-bootstrap-carousel {
     z-index: 0;
@@ -4643,7 +4643,7 @@ box-shadow: 0px 2px 8px -3px rgba(0,0,0,0.47);
     height: 900px;
 }
 
-#minimal-bootstrap-carousel .slide-3 .carousel-caption h2.gray{ 
+#minimal-bootstrap-carousel .slide-3 .carousel-caption h2.gray{
    color: #414141;
 }
 
@@ -4654,7 +4654,7 @@ box-shadow: 0px 2px 8px -3px rgba(0,0,0,0.47);
 
 
 /***************************************
-* 5. slider styles 
+* 5. slider styles
 ****************************************/
 
 .why-choose-us {
@@ -4685,16 +4685,16 @@ box-shadow: 0px 2px 8px -3px rgba(0,0,0,0.47);
     margin-top: 120px;
 }
 .why-choose-us .item {
-   
+
     margin-right: 10px;
-    
+
 }
 .why-choose-us .item .img-box {
     height: 262px;
     position: relative;
     overflow: hidden;
-    
-    
+
+
 }
 .why-choose-us .item .img-box .bottom-content {
     position: absolute;
@@ -4706,7 +4706,7 @@ box-shadow: 0px 2px 8px -3px rgba(0,0,0,0.47);
     transition: .4s ease-out;
 }
 .why-choose-us .item .img-box .bottom-content .icon-box{
-    
+
     float:left;
     background: #fbad1a;
     height: 60px;
@@ -4720,7 +4720,7 @@ box-shadow: 0px 2px 8px -3px rgba(0,0,0,0.47);
 .why-choose-us .item .img-box .bottom-content .text-box h4{
     line-height: 40px;
     margin-left: 15px;
-    
+
 }
 .why-choose-us .item .img-box .bottom-content .icon-box i{
     color: #FFFFFF;
@@ -4777,7 +4777,7 @@ font-size: 38px;
 font-weight: 300;
 }
 /***************************************
-* 5. our projects styles 
+* 5. our projects styles
 ****************************************/
 
 .our-projects-two {
@@ -4826,7 +4826,7 @@ font-weight: 300;
 }
 .our-projects-two .full-width-slider .item .image .overlay{
     position: absolute;
-   
+
   overflow: hidden;
   width: 100%;
   height: 0%;
@@ -4835,7 +4835,7 @@ font-weight: 300;
   opacity: 0;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
   bottom: 0px;
- 
+
   -webkit-transition: .3s ease-out;
   transition: .3s ease-out;
   background: linear-gradient(to bottom,transparent 20%,#000000);
@@ -4852,7 +4852,7 @@ font-weight: 300;
 }
 
 .our-projects-two .full-width-slider .item .image .overlay .text{
-  
+
   color: #FFFFFF;
   margin-top: 99px;
   text-align: center;
@@ -4866,7 +4866,7 @@ font-weight: 300;
 
 
 
-.our-projects-two .full-width-slider .item .image .overlay .button a{  
+.our-projects-two .full-width-slider .item .image .overlay .button a{
     border: none;
     background: #fbad1a;
     color: #ffffff;
@@ -4878,7 +4878,7 @@ font-weight: 300;
     text-align: center;
     margin-left: 33%;
     margin-top: 180px;
-    
+
 }
 
 
@@ -5020,7 +5020,7 @@ font-weight: 300;
 -moz-box-shadow: 0px 0px 32px -8px rgba(0,0,0,0.38);
 box-shadow: 0px 0px 32px -8px rgba(0,0,0,0.38);
 }
-   
+
 .latest-news .item .text-box{
     overflow: hidden;
     border: 1px solid #515151;
@@ -5057,7 +5057,7 @@ box-shadow: 0px 0px 32px -8px rgba(0,0,0,0.38);
 
 .testimonials-two {
     padding: 80px 0;
-  
+
     position: relative;
     background: url(../img/bg.jpg) no-repeat center top;
 }
@@ -5159,7 +5159,7 @@ border-top-width: 29px;
     color: #252525;
     font-family: 'Poppins', sans-serif;
     font-weight: 800;
-   
+
 }
 .about-us-third h2:before {
     content: "";
@@ -5204,9 +5204,9 @@ border-top-width: 29px;
     font-size: 14px;
     font-weight: bold;
     padding: 11px 33px;
-    
+
     margin-top: 20PX;
-    
+
     clear: both;
 }
 .about-us-third a:hover {
@@ -5313,7 +5313,7 @@ border-top-width: 29px;
 }
 .our-projects-three .full-width-slider .item .image .overlay{
     position: absolute;
-   
+
   overflow: hidden;
   width: 100%;
   height: 0%;
@@ -5322,7 +5322,7 @@ border-top-width: 29px;
   opacity: 0;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
   bottom: 0px;
- 
+
   -webkit-transition: .3s ease-out;
   transition: .3s ease-out;
   background: linear-gradient(to bottom,transparent 20%,#000000);
@@ -5339,7 +5339,7 @@ border-top-width: 29px;
 }
 
 .our-projects-three .full-width-slider .item .image .overlay .text{
-  
+
   color: #FFFFFF;
   margin-top: 99px;
   text-align: center;
@@ -5356,7 +5356,7 @@ border-top-width: 29px;
 
 
 
-.our-projects-three .full-width-slider .item .image .overlay .button a{  
+.our-projects-three .full-width-slider .item .image .overlay .button a{
     border: none;
     background: #fbad1a;
     color: #ffffff;
@@ -5368,7 +5368,7 @@ border-top-width: 29px;
     text-align: center;
     margin-left: 33%;
     margin-top: 180px;
-    
+
 }
 
 
@@ -5425,7 +5425,7 @@ border-top-width: 29px;
 -moz-box-shadow: 0px 0px 32px -8px rgba(0,0,0,0.38);
 box-shadow: 0px 0px 32px -8px rgba(0,0,0,0.38);
 }
-   
+
 .latest-news-third .item .text-box{
     overflow: hidden;
     border: 1px solid #515151;
@@ -5481,7 +5481,7 @@ box-shadow: 0px 0px 32px -8px rgba(0,0,0,0.38);
     color: #252525;
     font-family: 'Poppins', sans-serif;
     font-weight: 800;
-    
+
 }
 .testimonials-three h2:before {
     content: "";
@@ -5498,12 +5498,12 @@ box-shadow: 0px 0px 32px -8px rgba(0,0,0,0.38);
 }
 .testimonials-three blockquote {
     position: relative;
-    
+
     padding: 20px 40px 40px 40px;
     font-size: 16px;
     line-height: 29px;
-   
- 
+
+
     color: #3e3e3e;
     text-align:center;
     font-family: 'Poppins', sans-serif;
@@ -5523,7 +5523,7 @@ box-shadow: 0px 0px 32px -8px rgba(0,0,0,0.38);
     height: 75px;
     border-radius: 50%;
     overflow: hidden;
-    
+
     margin-right: 10px;
 }
 
@@ -5557,11 +5557,11 @@ box-shadow: 0px 0px 32px -8px rgba(0,0,0,0.38);
 }
 
 .testimonials-three .owl-theme .owl-nav .owl-next{
-    
+
     margin-left: 400px;
 }
 .testimonials-three .owl-theme .owl-nav .owl-prev{
-    
+
     margin-right: 400px;
 }
 
@@ -5598,7 +5598,7 @@ box-shadow: 0px 0px 32px -8px rgba(0,0,0,0.38);
     line-height: 30px;
 }
 .contact-three .contact-wraper{
-    
+
     position: relative;
     padding: 20px;
     overflow: hidden;
@@ -5612,7 +5612,7 @@ box-shadow: 0px 0px 32px -8px rgba(0,0,0,0.38);
     border: 4px solid #fbad1a;
 }
 .contact-three form {
-   
+
     margin-top: 30px;
 }
 .contact-three form input[type="text"]{
@@ -5784,7 +5784,7 @@ box-shadow: 0px 0px 32px -8px rgba(0,0,0,0.38);
 	z-index: 1000;
 	width: 100%;
 }
-.main-menu-four-wraper { 
+.main-menu-four-wraper {
 	background: #FFFFFF;
 	height: 70px;
 }
@@ -5804,7 +5804,7 @@ box-shadow: 0px 0px 32px -8px rgba(0,0,0,0.38);
 	color: #1a1a1a;
 	text-transform: uppercase;
 	display: block;
-	
+
 	font-weight: bold;
 	margin: 0;
 }
@@ -5828,7 +5828,7 @@ box-shadow: 0px 0px 32px -8px rgba(0,0,0,0.38);
   background-color: #fff;
   background-clip: padding-box;
   padding: 0;
-  
+
   border: none;
   border-radius: 0;
   display: block;
@@ -5910,13 +5910,13 @@ box-shadow: 0px 0px 32px -8px rgba(0,0,0,0.38);
     position: fixed !important;
     margin: 0;
     animation: fadeItIn 1s;
-    z-index: 1000;    
+    z-index: 1000;
     min-height: 70px !important;
     background: #FFFFFF;
     -webkit-box-shadow: 0px 2px 8px -3px rgba(0,0,0,0.47);
 -moz-box-shadow: 0px 2px 8px -3px rgba(0,0,0,0.47);
 box-shadow: 0px 2px 8px -3px rgba(0,0,0,0.47);
-    
+
         }
 
 
@@ -5932,7 +5932,7 @@ box-shadow: 0px 2px 8px -3px rgba(0,0,0,0.47);
     color: #252525;
     font-family: 'Poppins', sans-serif;
     font-weight: 800;
-   
+
 }
 .about-us-four h2:before {
     content: "";
@@ -5977,9 +5977,9 @@ box-shadow: 0px 2px 8px -3px rgba(0,0,0,0.47);
     font-size: 14px;
     font-weight: bold;
     padding: 11px 33px;
-    
+
     margin-top: 20PX;
-    
+
     clear: both;
 }
 
@@ -6000,7 +6000,7 @@ box-shadow: 0px 2px 8px -3px rgba(0,0,0,0.47);
     color: #FFFFFF;
     font-family: 'Poppins', sans-serif;
     font-weight: 800;
-    
+
 }
 .testimonials-four h2:before {
     content: "";
@@ -6017,11 +6017,11 @@ box-shadow: 0px 2px 8px -3px rgba(0,0,0,0.47);
 }
 .testimonials-four blockquote {
     position: relative;
-    
+
     padding: 20px 40px 40px 40px;
     font-size: 16px;
     line-height: 29px;
-   
+
  border:none;
     color: #FFFFFF;
     text-align:center;
@@ -6042,7 +6042,7 @@ box-shadow: 0px 2px 8px -3px rgba(0,0,0,0.47);
     height: 75px;
     border-radius: 50%;
     overflow: hidden;
-    
+
     margin-right: 10px;
 }
 
@@ -6076,30 +6076,10 @@ box-shadow: 0px 2px 8px -3px rgba(0,0,0,0.47);
 }
 
 .testimonials-four .owl-theme .owl-nav .owl-next{
-    
+
     margin-left: 400px;
 }
 .testimonials-four .owl-theme .owl-nav .owl-prev{
-    
+
     margin-right: 400px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

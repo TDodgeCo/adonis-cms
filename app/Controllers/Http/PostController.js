@@ -21,15 +21,21 @@ class PostController {
     })
   }
   /**
-  **  Compiled post/page - shows customer facing content
+  **  Compiled post/page - shows customer facing content || Pulls navigation links for sidebar and main
   **/
-  async details ({ params, view }) {
+  async details ({ params, view, request }) {
     const post = await Post.findBy('slug', params.slug)
-    console.log(post.id)
-    const faqs = await Database.from('faqs').where('post_id', post.id)
-    console.log(faqs)
+    let url = request.url()
+    url = url.split('/').splice(1)
+    console.log(url)
+    let sidebarNav = await Database.from('posts').where('directory', url[0]).orderBy('slug', 'asc')
+    const posts = await Database.select('*').from('posts').orderBy('slug', 'asc')
+    const faqs = await Database.from('faqs').where('post_id', post.id).orderBy('faq_title', 'asc')
     return view.render('pages.category-details', {
       post: post,
+      posts: posts,
+      url: url[1],
+      sidebar: sidebarNav,
       faqs: faqs
     })
   }
@@ -72,6 +78,13 @@ class PostController {
       return response.redirect('back')
     }
     // save images
+    const heroImg = request.file('hero-image', {
+      type: 'image',
+      size: '2mb'
+    })
+    await heroImg.move(Helpers.publicPath('images/' + slug + '/'),  {
+      name: slug + '-header' + '.' + heroImg.subtype
+    })
     const files = request.file('post-images', {
       type: 'image',
       size: '2mb'

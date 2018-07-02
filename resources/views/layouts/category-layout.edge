@@ -15,14 +15,13 @@
 		{{ style('./vendor/css/bootstrap.min.css') }}
 		{{ style('./vendor/css/style.css') }}
 		{{ style('./vendor/css/responsive.css') }}
-
 		<!-- Replace favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
 		<link rel="shortcut icon" href="/favicon.ico">
 		<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 	</head>
 
 	<body>
-		@include('inc.category-nav')
+		@include('partials.category-nav')
 		@!section('content')
 
 		<section class="quote-request">
@@ -66,12 +65,9 @@
 					<div class="col-md-3 sec-tab">
 						<h2>Our Solutions</h2>
 						<ul class="solutions">
-							<li><a href="#"> Science and Engineering</a></li>
-							<li><a href="#">Chemical Research</a></li>
-							<li><a href="#">Power and Energy</a></li>
-							<li><a href="#">Mechanical Engineering</a></li>
-							<li><a href="#">Petroleum and Gas</a></li>
-							<li><a href="#">Facture Process</a></li>
+							@each(item in sidebar)
+								<li><a href="/{{item.directory}}/{{item.slug}}">{{item.title}}</a> </li>
+							@endeach
 						</ul>
 					</div>
 					<div class="col-md-3">
