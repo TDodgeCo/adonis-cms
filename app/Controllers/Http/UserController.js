@@ -37,7 +37,7 @@ class UserController {
         message: 'You are not authorized to do that.'
       })
     }
-    let userData = request.only([ 'name', 'email', 'password', 'admin'])
+    let userData = request.only([ 'name', 'email', 'password', 'admin' ])
     if (userData.admin) {
       userData.admin = true
       await User.create(userData)
