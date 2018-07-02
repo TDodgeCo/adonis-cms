@@ -25,25 +25,25 @@ function checkPass () {
 function createNewFaqInput () {
   var number = 0
   var faqCount = document.getElementById('addFaq')
-  var container = document.getElementById('faq')
-  var div = document.createElement('div')
+  var container = document.getElementById('faqInputDiv')
   var br = document.createElement('br')
 
   function appendFaq () {
-    var h5 = document.createElement('h5')
-    h5.innerHTML = 'FAQ ' + number
-    h5.classList.add('m-t-1', 'm-b-1')
+    var div = document.createElement('div')
     var inputTitleLabel = document.createElement('label')
     var titleLabel = document.createTextNode('Title')
     var inputTitle = document.createElement('input')
     var inputBodyLabel = document.createElement('label')
     var bodyLabel = document.createTextNode('Body')
     var inputBody = document.createElement('input')
+    var h5 = document.createElement('h5')
+    h5.innerHTML = 'FAQ ' + number
+    h5.classList.add('mt-2')
     inputTitle.type = 'text'
-    inputTitle.name = 'faq-title-' + (number)
+    inputTitle.name = 'faq_title[' + (number - 1) + ']'
     inputTitle.classList.add('form-control')
     inputBody.type = 'text'
-    inputBody.name = 'faq-body-' + (number)
+    inputBody.name = 'faq_body[' + (number - 1) + ']'
     inputBody.classList.add('form-control')
     inputTitleLabel.appendChild(titleLabel)
     inputBodyLabel.appendChild(bodyLabel)

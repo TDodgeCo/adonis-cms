@@ -90,54 +90,22 @@
 				</div>
 				<div class="questions-sol">
 					<div id="accordion" role="tablist">
+						@each(faq in faqs)
 						<div class="toggle">
 							<div class="toggle-heading" role="tab">
-								<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne"> <i class="fa fa-plus"></i>What is do i have to tell you a few lorem?<i class="fa fa-minus"></i></a>
+								<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{$loop.index}}" aria-expanded="true" aria-controls="collapseOne">
+									<i class="fa fa-plus"></i>{{ faq.faq_title }}<i class="fa fa-minus"></i>
+								</a>
 							</div>
-							<div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-expanded="false">
+							<div id="collapse{{$loop.index}}" class="panel-collapse collapse" role="tabpanel" aria-expanded="false">
 								<div class="toggle-body">
 									<p>
-										Lorem ipsum dolor sit amet, consectetur adi pisi cing elit, sed do eiusmod tempor exercitationemut labore. Love life’s sweetest reward Let it flow it floats back to you.
+										{{ faq.faq_body }}
 									</p>
 								</div>
 							</div>
 						</div>
-						<div class="toggle">
-							<div class="toggle-heading" role="tab">
-								<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseOne"><i class="fa fa-plus"></i> What is do i have to tell you a few lorem?<i class="fa fa-minus"></i></a>
-							</div>
-							<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-expanded="false">
-								<div class="toggle-body">
-									<p>
-										Lorem ipsum dolor sit amet, consectetur adi pisi cing elit, sed do eiusmod tempor exercitationemut labore. Love life’s sweetest reward Let it flow it floats back to you.
-									</p>
-								</div>
-							</div>
-						</div>
-						<div class="toggle">
-							<div class="toggle-heading" role="tab">
-								<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseOne"> <i class="fa fa-plus"></i>What is do i have to tell you a few lorem?<i class="fa fa-minus"></i></a>
-							</div>
-							<div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-expanded="false">
-								<div class="toggle-body">
-									<p>
-										Lorem ipsum dolor sit amet, consectetur adi pisi cing elit, sed do eiusmod tempor exercitationemut labore. Love life’s sweetest reward Let it flow it floats back to you.
-									</p>
-								</div>
-							</div>
-						</div>
-						<div class="toggle">
-							<div class="toggle-heading" role="tab">
-								<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="true" aria-controls="collapseOne"> <i class="fa fa-plus"></i>What is do i have to tell you a few lorem?<i class="fa fa-minus"></i></a>
-							</div>
-							<div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-expanded="false">
-								<div class="toggle-body">
-									<p>
-										Lorem ipsum dolor sit amet, consectetur adi pisi cing elit, sed do eiusmod tempor exercitationemut labore. Love life’s sweetest reward Let it flow it floats back to you.
-									</p>
-								</div>
-							</div>
-						</div>
+						@endeach
 					</div>
 				</div>
 			</div>

@@ -7,8 +7,8 @@ class FaqSchema extends Schema {
     this.create('faqs', (table) => {
       table.increments()
       table.integer('post_id')
-      table.string('title')
-      table.text('body')
+      table.string('faq_title')
+      table.text('faq_body')
       table.timestamps()
     })
   }
