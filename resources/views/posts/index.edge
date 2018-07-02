@@ -9,7 +9,7 @@
   <ul class="list-group">
     @each(post in posts)
       <li class="list-group-item">
-        <a class="d-block float-left" href="/posts/{{post.slug}}">{{ post.title }}</a>
+        <a class="d-block float-left" href="/{{post.directory}}/{{post.slug}}">{{ post.title }}</a>
         <form id="delete" action="{{ '/posts/' + post.id + '?_method=DELETE'}}"
         method="post" onsubmit="return confirm('Do you really want to delete this page?')">
           {{ csrfField() }}

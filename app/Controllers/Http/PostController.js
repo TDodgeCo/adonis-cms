@@ -39,6 +39,14 @@ class PostController {
   async add ({ view }) {
     return view.render('posts.add')
   }
+
+  async template ({ view, request, response }) {
+    const template = request.input('template')
+    console.log(template)
+    return view.render('posts.add', {
+      template: template
+    })
+  }
   /**
   **  stores the content created from edit post view
   **/
@@ -47,6 +55,7 @@ class PostController {
     slug = replaceAll(slug, ' ', '-').toLowerCase()
     const data = {
       title: request.input('title').toUpperCase(),
+      directory: request.input('directory'),
       slug: slug,
       description: request.input('description'),
       body: request.input('body')

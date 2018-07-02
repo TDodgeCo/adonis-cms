@@ -25,6 +25,12 @@ Route.get('/posts/:slug', 'PostController.details')
 Route.post('/posts', 'PostController.store')
 Route.put('/posts/:id', 'PostController.update')
 Route.delete('/posts/:id', 'PostController.destroy')
+Route.get('/choose-template', 'PostController.template')
+
+Route.post('/metal-buildings', 'PostController.store')
+Route.post('/regional', 'PostController.store')
+Route.get('/regional/:slug', 'PostController.details')
+Route.get('/metal-buildings/:slug', 'PostController.details')
 
 Route.get('/signup', 'UserController.index')
 Route.post('/signup', 'UserController.store')

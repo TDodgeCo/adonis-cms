@@ -1,5 +1,6 @@
-<form id="postForm" action="/posts" enctype="multipart/form-data" method="POST">
+<form id="postForm" action="/{{template}}" enctype="multipart/form-data" method="POST">
   {{ csrfField() }}
+  <input type="text" name="directory" value="{{template}}" hidden>
   <div class="form-group">
     <label>Title</label>
     <input id="title" type="text" name="title" class="form-control" placeholder="Title..." value="{{ old('title', '') }}">
