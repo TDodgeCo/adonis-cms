@@ -25,10 +25,12 @@ function checkPass () {
 function createNewFaqInput () {
   var number = 0
   var faqCount = document.getElementById('addFaq')
+  var faqDestroyOne = document.getElementById('faqDestroyOne')
   var container = document.getElementById('faqInputDiv')
   var br = document.createElement('br')
 
   function appendFaq () {
+    if (!container) {console.log(container)}
     var div = document.createElement('div')
     var inputTitleLabel = document.createElement('label')
     var titleLabel = document.createTextNode('Title')
@@ -59,6 +61,13 @@ function createNewFaqInput () {
   faqCount.addEventListener('click', function () {
     number = number + 1
     appendFaq()
+  })
+
+  faqDestroyOne.addEventListener('click', function () {
+    number = number - 1
+    var faqContainer = document.getElementById('faqInputDiv')
+    var killDiv = faqContainer.getElementsByTagName('div')
+    faqContainer.removeChild(faqContainer.lastChild)
   })
 }
 window.onload = createNewFaqInput()

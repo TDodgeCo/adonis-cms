@@ -6,38 +6,7 @@
   <a href="/posts">Go Back</a>
   <hr>
   <h1>Add Post</h1>
-  <form id="postForm" action="/posts" enctype="multipart/form-data" method="POST">
-    {{ csrfField() }}
-    <div class="form-group">
-      <label>Title</label>
-      <input id="title" type="text" name="title" class="form-control" placeholder="Title..." value="{{ old('title', '') }}">
-      {{ elIf('<span class="text-danger">$self</span>', getErrorFor('title'), hasErrorFor('title')) }}
-    </div>
-    <div class="form-group">
-      <label>Description</label>
-      <textarea id="description" name="description" class="form-control" rows="1" cols="80"></textarea>
-    </div>
-    <div class="form-group">
-      <label>Body</label>
-      <div id="editor" class="form-control"></div>
-    </div>
-    <input id="body" type="text" name="body" value="{{ old('body', '') }}" hidden>
-    <span id="bodyError"></span>
-    {{ elIf('<span class="text-danger">$self</span>', getErrorFor('body'), hasErrorFor('body')) }}
-    <hr>
-    <div id="faq">
-      <h3>F.A.Q.'s</h3>
-      <br>
-      <div id="faqInputDiv">
-      </div>
-    </div>
-    <button id="addFaq" type="button" name="button">Add Another</button>
-    <hr>
-    <label>Body Images</label>
-    <input type="file" name="post-images[]" multiple>
-    <small>IMAGES MUST BE JPG. First image: 500x334 - Second image: 330x334</small>
-    <button id="saveButton" class="btn btn-primary float-right" type="button" name="button">Submit</button>
-  </form>
+  @include('posts.templates.buildings-regional')
 
   <div id="content"></div>
 
