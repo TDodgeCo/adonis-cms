@@ -19,8 +19,14 @@ class TestController {
         name: slug + '-' + count + '.' + file.subtype
       }
     })
-
     return view.render('test.test')
+  }
+
+  async test ({ params, response }) {
+    response.json({
+      state: params.state,
+      dealer: params.dealer
+    })
   }
 }
 

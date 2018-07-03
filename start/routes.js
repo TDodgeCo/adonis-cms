@@ -45,3 +45,4 @@ Route.get('/logout', 'Usercontroller.logout')
 // Test Stuff
 Route.get('/test', 'TestController.index')
 Route.post('/test', 'TestController.save')
+Route.get('/builders/:state/:dealer', 'TestController.test')
