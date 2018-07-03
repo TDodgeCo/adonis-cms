@@ -16,11 +16,30 @@
 const Factory = use('Factory')
 const Hash = use('Hash')
 
+
 Factory.blueprint('App/Models/User', async (faker) => {
   return {
     name: faker.username(),
     email: faker.email(),
     password: await Hash.make(faker.password())
+  }
+})
+
+Factory.blueprint('App/Models/Post', async (faker) => {
+  return {
+    slug: faker.string(),
+    directory: 'regional',
+    description: faker.sentence(),
+    title: faker.sentence(),
+    body: faker.paragraph()
+  }
+})
+
+Factory.blueprint('App/Models/Faq', async (faker) => {
+  return {
+    post_id: faker.integer({ min: 1, max: 20}),
+    faq_title: faker.sentence(),
+    faq_body: faker.paragraph()
   }
 })
 

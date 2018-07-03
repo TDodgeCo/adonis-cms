@@ -2,7 +2,7 @@
 
 /*
 |--------------------------------------------------------------------------
-| QuoteSeeder
+| PostSeeder
 |--------------------------------------------------------------------------
 |
 | Make use of the Factory instance to seed database with dummy data or
@@ -12,10 +12,10 @@
 
 const Factory = use('Factory')
 
-class QuoteSeeder {
+class PostSeeder {
   async run () {
-    const quotes = await Factory.model('App/Models/Quote').createMany(60)
+    const posts = await Factory.model('App/Models/Post').createMany(20)
   }
 }
 
-module.exports = QuoteSeeder
+module.exports = PostSeeder
