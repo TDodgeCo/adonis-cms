@@ -1,0 +1,76 @@
+
+
+<div class="modal fade" id="quoteModal{{quote.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">New User Info</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-header">
+        <h1 class="text-center">SUPER BASIC DATA INTERPOLATION</h1>
+      </div>
+      <div class="modal-body">
+        <p>Quote Recipient: {{ user.name }}</p>
+        <p>Quote ID: {{ quote.id }}</p>
+        <p>Estimator: {{ quote.estimator }}</p>
+        <div>
+          <h3>Quote Location</h3>
+          <p>Street: {{ quote.street_address }}</p>
+          <p>Street 2: {{ quote.street_address_2 }}</p>
+          <p>City: {{ quote.city }}</p>
+          <p>State: {{ quote.state }}</p>
+          <p>Zip Code: {{ quote.zip }}</p>
+        </div>
+        <div>
+          <h3>Building Details</h3>
+          <p>Width: {{ quote.bldg_width }}</p>
+          <p>Length: {{ quote.bldg_length }}</p>
+          <p>Height: {{ quote.bldg_height }}</p>
+          <p>Roof Pitch: {{ quote.roof_pitch }}</p>
+          <div>
+            <h5>Doors</h5>
+            <p>Overhead Doors: {{ quote.overhead_doors }}</p>
+            <p>Rollup Doors: {{ quote.rollup_doors }}</p>
+            <p>Man Doors: {{ quote.man_doors }}</p>
+            <p>Windows: {{ quote.windows }}</p>
+          </div>
+          <div>
+            <h5>Insulation</h5>
+            <p>Roof: {{ quote.roof_insulation }}</p>
+            <p>Walls: {{ quote.wall_insulation }}</p>
+          </div>
+        </div>
+        <div>
+          <h5>Aesthetics</h5>
+          <p>Frame Style: {{ quote.frame_style }}</p>
+          <p>Wainscot: {{ quote.wainscot }}</p>
+          <p>Wall Color: <span style="width: 15px; height: 15px; background-color: {{ quote.wall_color }}"></span></p>
+          <p>Trim Color: <span style="width: 15px; height: 15px; background-color: {{ quote.trim_color }}"></span></p>
+          <p>Roof Color: {{ quote.roof_color }}</p>
+        </div>
+        <div>
+          <h5>Structural Loads</h5>
+          <p>Wind Exposure: {{ quote.exposure }}</p>
+          <p>Snow Load: {{ quote.snow_load }}</p>
+          <p>Wind Load: {{ quote.wind_load }}</p>
+          <p>Seismic: {{ quote.seismic }}</p>
+          <p>Collateral Load: {{ quote.collateral_load }}</p>
+          <p>Live Load: {{ quote.live_load }}</p>
+          <p>Other Loads: {{ quote.other_load }}</p>
+          <p>Building Code: {{ quote.building_code }}</p>
+          <p>Primary Frames: {{ quote.frame_coating }}</p>
+          <p>Secondary Frames: {{ quote.secondary_coating }}</p>
+          <p>Building Weight: {{ quote.weight }}</p>
+        </div>
+        <div>
+          <h5>Financial</h5>
+          <p>Price: {{ quote.price }}</p>
+          <p>Deposit: {{ quote.deposit }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

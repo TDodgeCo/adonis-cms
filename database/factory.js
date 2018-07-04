@@ -45,7 +45,7 @@ Factory.blueprint('App/Models/Faq', async (faker) => {
 
 Factory.blueprint('App/Models/Quote', async (faker) => {
   return {
-    user_id: faker.integer({ min: 1, max: 15}),
+    user_id: 16,
     estimator: faker.name(),
     street_address: faker.address(),
     street_address_2: 'none',
@@ -62,6 +62,8 @@ Factory.blueprint('App/Models/Quote', async (faker) => {
     roof_color: faker.color(),
     snow_load: faker.integer({ min: 0, max: 100 }),
     wind_load: faker.integer({ min: 115, max: 180 }),
-    weight: faker.integer({ min: 2500, max: 100000 })
+    weight: faker.integer({ min: 2500, max: 100000 }),
+    price: faker.integer({ min: 10000, max: 350000 }),
+    deposit: faker.integer({ min: 2500, max: 87500 })
   }
 })

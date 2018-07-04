@@ -1,8 +1,20 @@
 'use strict'
 
-const Factory = use('Factory')
+const User = use('App/Models/User')
+const Quote = use('App/Models/Quote')
+const Database = use('Database')
 
 class QuoteController {
+
+  async index ({ response, auth, view }) {
+    const user = auth.current.user
+    const quotes = await Database.from('quotes').where('user_id', user.id)
+    console.log(quotes.length)
+    return view.render('account.quotes', {
+      quotes: quotes,
+      user: user
+    })
+  }
 
 }
 

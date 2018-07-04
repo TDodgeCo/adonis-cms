@@ -22,10 +22,10 @@ Route.get('/posts', 'PostController.index')
 Route.get('/posts/add', 'PostController.add').middleware('auth')
 Route.get('/posts/edit/:id', 'PostController.edit').middleware('auth')
 Route.get('/posts/:slug', 'PostController.details')
-Route.post('/posts', 'PostController.store')
-Route.put('/posts/:id', 'PostController.update')
-Route.delete('/posts/:id', 'PostController.destroy')
-Route.get('/choose-template', 'PostController.template')
+Route.post('/posts', 'PostController.store').middleware('auth')
+Route.put('/posts/:id', 'PostController.update').middleware('auth')
+Route.delete('/posts/:id', 'PostController.destroy').middleware('auth')
+Route.get('/choose-template', 'PostController.template').middleware('auth')
 
 Route.post('/metal-buildings', 'PostController.store')
 Route.post('/regional', 'PostController.store')
@@ -41,6 +41,8 @@ Route.on('/login').render('user.login')
 Route.post('/login', 'UserController.login')
 Route.get('/account', 'UserController.account').middleware('auth')
 Route.get('/logout', 'Usercontroller.logout')
+
+Route.get('account/quotes', 'QuoteController.index').middleware('auth')
 
 // Test Stuff
 Route.get('/test', 'TestController.index')

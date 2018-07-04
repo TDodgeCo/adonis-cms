@@ -12,7 +12,7 @@ class QuoteSchema extends Schema {
       table.string('street_address_2')
       table.string('city')
       table.string('state')
-      table.integer('zip').unsigned().notNullable()
+      table.string('zip').notNullable()
       table.integer('bldg_width').unsigned().notNullable()
       table.integer('bldg_length').unsigned().notNullable()
       table.integer('bldg_height').unsigned().notNullable()
@@ -39,6 +39,8 @@ class QuoteSchema extends Schema {
       table.integer('collateral_load').unsigned().defaultTo(1)
       table.integer('live_load').unsigned().defaultTo(20)
       table.integer('other_load').unsigned().defaultTo(0)
+      table.integer('price').unsigned()
+      table.integer('deposit').unsigned()
       table.timestamps()
     })
   }
