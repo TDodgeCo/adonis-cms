@@ -45,7 +45,7 @@ Factory.blueprint('App/Models/Faq', async (faker) => {
 
 Factory.blueprint('App/Models/Quote', async (faker) => {
   return {
-    user_id: 32,
+    user_id: 16,
     estimator: faker.name(),
     street_address: faker.address(),
     street_address_2: 'none',

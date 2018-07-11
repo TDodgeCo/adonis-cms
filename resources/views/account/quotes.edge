@@ -14,7 +14,7 @@
     </div>
   @endif
   <div class="container">
-    <h3 class="text-center">Hi {{user.name.split(' ').splice(0,1).join('')}}. Here's a list of the quotes that you've received so far.</h3>
+    <h3 class="text-center">Hi {{user.name.split(' ').splice(0,1).join('')}}. Here's a list of the quotes that you've created so far.</h3>
     <div class="row">
       @each(quote in quotes)
       @include('partials.quoteModal')
