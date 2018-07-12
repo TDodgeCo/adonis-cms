@@ -40,6 +40,8 @@ class QuoteSchema extends Schema {
       table.string('building_code').defaultTo('IBC-15')
       table.string('frame_coating').defaultTo('Gray Oxide')
       table.string('secondary_coating').defaultTo('G90 Galvanized')
+      table.string('gutters')
+      table.text('framed_openings')
       table.integer('weight').unsigned()
       table.integer('collateral_load').unsigned().defaultTo(1)
       table.integer('live_load').unsigned().defaultTo(20)
