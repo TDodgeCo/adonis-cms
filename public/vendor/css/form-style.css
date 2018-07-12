@@ -927,3 +927,32 @@ Form Wizard Styles
  .addon {
 	 margin-top: 15px;
  }
+ button.gab-btn-blue {
+	 padding: 10px 29px;
+		background: #072d4d;
+		color: #FFFFFF;
+		border: none;
+		border-radius: 0px;
+		font-family: 'Poppins', sans-serif;
+		font-weight: 400;
+		margin-left: 15px;
+		margin-top: 20px;
+ }
+ button.gab-btn-yellow {
+	padding: 10px 29px;
+	 background: #fbad1a;
+	 color: #FFFFFF;
+	 border: none;
+	 border-radius: 0px;
+	 font-family: 'Poppins', sans-serif;
+	 font-weight: 400;
+	 margin-left: 15px;
+	 margin-top: 20px;
+ }
+ button.gab-btn-yellow:hover, button.gab-btn-blue:hover {
+	color: #072d4d;
+	background: #fff;
+	padding: 9px 28px;
+	border: 1px solid #232323;
+	transition: ease-in .4s;
+ }
