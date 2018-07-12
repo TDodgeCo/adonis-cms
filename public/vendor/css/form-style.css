@@ -897,16 +897,19 @@ Form Wizard Styles
  }
 
  .nav-pills.nav-wizard>li:hover:not(:last-child) a:after {
-	 border-color: transparent transparent transparent #aaa;
+	 border-color: transparent transparent transparent #fbad1a;
+	 transition: ease-in .2s;
  }
 
  .nav-pills.nav-wizard>li:hover:not(:first-child) a:before {
-	 border-color: #aaa #aaa #aaa transparent;
+	 border-color: #fbad1a #fbad1a #fbad1a transparent;
+	 transition: ease-in .2s;
  }
 
  .nav-pills.nav-wizard>li:hover a {
-	 background-color: #aaa;
+	 background-color: #fbad1a;
 	 color: #fff;
+	 transition: ease-in .2s;
  }
 
  .nav-pills.nav-wizard>li.active:not(:last-child) a:after {
