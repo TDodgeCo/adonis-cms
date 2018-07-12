@@ -930,6 +930,9 @@ Form Wizard Styles
  .addon {
 	 margin-top: 15px;
  }
+ .btn-group .gab-btn-blue, .btn-group .gab-btn-yellow {
+	 width: 50%;
+ }
  button.gab-btn-blue {
 	 padding: 10px 29px;
 		background: #072d4d;

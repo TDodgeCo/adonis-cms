@@ -2,14 +2,15 @@
 
 const Model = use('Model')
 
-class Order extends Model {
-  // order has - customer, salesperson, project
+class ProjectManager extends Model {
+  // project manager has - customer, order, project
+
   customer () {
     return this.belongsTo('App/Models/Customer')
   }
 
-  salesperson () {
-    return this.belongsTo('App/Models/Salesperson')
+  order () {
+    return this.belongsTo('App/Models/Order')
   }
 
   project () {
@@ -17,4 +18,4 @@ class Order extends Model {
   }
 }
 
-module.exports = Order
+module.exports = ProjectManager
