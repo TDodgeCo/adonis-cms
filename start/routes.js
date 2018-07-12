@@ -16,6 +16,7 @@
 const Route = use('Route')
 
 Route.on('/').render('home')
+Route.on('/quote-request').render('pages.quote-request')
 Route.on('/category').render('pages.category-details')
 
 Route.get('/posts', 'PostController.index')

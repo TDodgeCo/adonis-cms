@@ -1,53 +1,170 @@
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-  Launch demo modal
-</button>
+@layout('layouts.form-layout')
+@section('content')
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">New User Info</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form id="postForm" action="/invite" method="POST">
-          {{ csrfField() }}
-          <div class="form-group">
-            <label>Name</label>
-            <input type="text" id="name" name="name" class="form-control" aria-describedby="emailHelp" placeholder="Enter name" value="{{ old('name', '') }}">
-            {{ elIf('<span class="text-danger">$self</span>', getErrorFor('name'), hasErrorFor('name')) }}
+<div style="margin: 40px 0;">
+  <section class="checkout">
+    <div class="container">
+      <div class="row">
+        <form action="" method="post">
+          <div class="col-sm-12 col-md-6">
+            <div class="title">
+              <h2>Billing Details</h2>
+            </div>
+            <ul class="nav nav-pills nav-wizard" role="tablist">
+              <li class="active"><a href="#quote" data-toggle="tab">Quote</a></li>
+              <li><a href="#addons" data-toggle="tab">Addons</a></li>
+              <li><a href="#options" data-toggle="tab">Options</a></li>
+              <li><a href="#freight" data-toggle="tab">Freight</a></li>
+              <li><a href="#complete" data-toggle="tab">Complete</a></li>
+            </ul>
+            <div class="tab-content">
+              <div role="tabpanel" class="tab-pane fade in active" id="quote">
+                <div class="billing" style="margin-top: 10px;">
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <div class="col-sm-12">
+                        <div class="form-grp">
+                          <label>Building Width<span>*</span></label>
+                          <input id="bldg_width" placeholder="e.g. 40'" type="number" name="bldg_width">
+                        </div>
+                      </div>
+                      <div class="col-sm-12">
+                        <div class="form-grp">
+                          <label>Building Length<span>*</span></label>
+                          <input class="form-control" id="bldg_length" placeholder="e.g. 60'" type="number" name="bldg_length">
+                        </div>
+                      </div>
+                      <div class="col-sm-12">
+                        <div class="form-grp">
+                          <label>Building Height<span>*</span></label>
+                          <input id="bldg_height" placeholder="e.g. 14'" type="number" name="bldg_height">
+                        </div>
+                      </div>
+                      <div class="col-sm-12">
+                        <div class="form-grp">
+                          <label>Roof Pitch<span>*</span></label>
+                          <input id="roof_pitch" placeholder="e.g. 2:12" type="text" name="roof_pitch">
+                        </div>
+                      </div>
+                      <div class="col-sm-3 col-sm-offset-9">
+                        <div class="form-group">
+                          <button class="btn btn-primary pull-right" type="button" name="button">Next</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div role="tabpanel" class="tab-pane fade" id="addons">
+                <div class="billing" style="margin-top: 10px;">
+                  <div class="row">
+                    <div class="col-sm-12 addon">
+                      <div class="form-grp">
+                        <div class="col-sm-9">
+                          <label>Overhead Doors<span>*</span></label>
+                          <select id="overhead_door" name="overhead_door">
+                            <option value="test1">Test1</option>
+                            <option value="test2">Test2</option>
+                            <option value="test3">Test3</option>
+                            <option value="test4">Test4</option>
+                          </select>
+                        </div>
+                        <div class="col-sm-3">
+                          <label>Quantity</label>
+                          <input type="number" name="overhead_quant" placeholder="0">
+                        </div>
+                        <div class="col-sm-12">
+                          <input type="checkbox" name="overhead_insulation">
+                          <label>Insulated?</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-12 addon">
+                      <div class="form-grp">
+                        <div class="col-sm-9">
+                          <label>Man Doors<span>*</span></label>
+                          <select id="man_door" name="man_door">
+                            <option value="test1">Test1</option>
+                            <option value="test2">Test2</option>
+                            <option value="test3">Test3</option>
+                            <option value="test4">Test4</option>
+                          </select>
+                        </div>
+                        <div class="col-sm-3">
+                          <label>Quantity</label>
+                          <input type="number" name="man_door_quant" placeholder="0">
+                        </div>
+                        <div class="col-sm-12">
+                          <input type="checkbox" name="man_door_insulation">
+                          <label>Insulated?</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-12 addon">
+                      <div class="form-grp">
+                        <div class="col-sm-9">
+                          <label>Windows<span>*</span></label>
+                          <select id="window" name="window">
+                            <option value="test1">Test1</option>
+                            <option value="test2">Test2</option>
+                            <option value="test3">Test3</option>
+                            <option value="test4">Test4</option>
+                          </select>
+                        </div>
+                        <div class="col-sm-3">
+                          <label>Quantity</label>
+                          <input type="number" name="window_quant" placeholder="0">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-12 addon">
+                      <div class="form-grp">
+                        <div class="col-sm-6">
+                          <label>Roof Insulation<span>*</span></label>
+                          <select id="roof_insulation" name="roof_insulation">
+                            <option value="3_inch">3" R10</option>
+                            <option value="4_inch">4" R13"</option>
+                            <option value="6_inch">6" R19</option>
+                            <option value="8_inch">8" R25</option>
+                            <option value="9.5_inch">10" R32</option>
+                            <option value="10_innch">12" R38</option>
+                            <option value="other">Other</option>
+                          </select>
+                        </div>
+                        <div class="col-sm-6">
+                          <label>Wall Insulation<span>*</span></label>
+                          <select id="wall_insulation" name="wall_insulation">
+                            <option value="3_inch">3" R10</option>
+                            <option value="4_inch">4" R13"</option>
+                            <option value="6_inch">6" R19</option>
+                            <option value="8_inch">8" R25</option>
+                            <option value="9.5_inch">10" R32</option>
+                            <option value="10_innch">12" R38</option>
+                            <option value="other">Other</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-3 col-sm-offset-9">
+                      <div class="form-group">
+                        <button class="btn btn-primary pull-right" type="button" name="button">Next</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div role="tabpanel" class="tab-pane fade" id="options">3</div>
+              <div role="tabpanel" class="tab-pane fade" id="freight">4</div>
+              <div role="tabpanel" class="tab-pane fade" id="complete">5</div>
+            </div>
           </div>
-          <div class="form-group">
-            <label>Email address</label>
-            <input type="email" id="email" name="email" class="form-control" aria-describedby="emailHelp" placeholder="Enter email" value="{{ old('email', '') }}">
-            {{ elIf('<span class="text-danger">$self</span>', getErrorFor('email'), hasErrorFor('email')) }}
+          <div class="col-md-6">
+            @include('partials.your-order')
           </div>
-          <div class="form-group">
-            <label>Password</label>
-            <input type="password" id="password" name="password" class="form-control" placeholder="Password" value="{{ old('password', '') }}">
-            {{ elIf('<span class="text-danger">$self</span>', getErrorFor('password'), hasErrorFor('password')) }}
-          </div>
-          <div class="form-group">
-            <label>Confirm Password</label>
-            <input type="password" id="confirmPassword" class="form-control" placeholder="Password" onkeyup="checkPass(); return false;">
-            {{-- TODO minimum password length --}}
-            <span id="confirmMessage" class="alert-danger"></span>
-          </div>
-          <div class="form-group form-check">
-            <input type="checkbox" class="form-check-input" name="admin" id="admin">
-            <label class="form-check-label">Admin?</label>
-          </div>
-          <button id="signupButton" type="submit" class="btn btn-primary">Submit</button>
         </form>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
     </div>
-  </div>
+  </section>
 </div>
+{{ script('./js/quote-request.js') }}
+@endsection

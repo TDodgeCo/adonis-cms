@@ -18,12 +18,12 @@ class UserController {
     const user = await User.create(userData)
     user.sessions = 2
     await user.save()
-    await Mail.send('emails.welcome', userData, (message) => {
-          message
-            .to(user.email)
-            .from(Env.get('MAIL_USERNAME'))
-            .subject('Welcome to GAB')
-        })
+    // await Mail.send('emails.welcome', userData, (message) => {
+    //       message
+    //         .to(user.email)
+    //         .from(Env.get('MAIL_USERNAME'))
+    //         .subject('Welcome to GAB')
+    //     })
     await auth.remember(true).attempt(userData.email, userData.password)
     return response.redirect('account')
   }

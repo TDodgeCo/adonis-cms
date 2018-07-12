@@ -4,7 +4,7 @@ const Helpers = use('Helpers')
 
 class TestController {
   async index ({ view }) {
-    return view.render('test.test')
+    return view.render('test')
   }
 
   async save ({ request, response, view, session }) {

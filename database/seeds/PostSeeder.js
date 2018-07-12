@@ -14,7 +14,7 @@ const Factory = use('Factory')
 
 class PostSeeder {
   async run () {
-    const posts = await Factory.model('App/Models/Post').createMany(20)
+    const posts = await Factory.model('App/Models/Post').createMany(5)
   }
 }
 

@@ -12,10 +12,10 @@
 
 const Factory = use('Factory')
 
-class QuoteSeeder {
-  async run () {
-    const quotes = await Factory.model('App/Models/Quote').createMany(60)
-  }
-}
-
-module.exports = QuoteSeeder
+// class QuoteSeeder {
+//   async run () {
+//     const quotes = await Factory.model('App/Models/Quote').createMany(60)
+//   }
+// }
+//
+// module.exports = QuoteSeeder
