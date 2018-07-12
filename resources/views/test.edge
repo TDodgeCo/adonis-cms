@@ -8,13 +8,13 @@
         <form action="" method="post">
           <div class="col-sm-12 col-md-6">
             <div class="title">
-              <h2>Billing Details</h2>
+              <h2>Building Details</h2>
             </div>
             <ul class="nav nav-pills nav-wizard" role="tablist">
               <li class="active"><a href="#quote" data-toggle="tab">Quote</a></li>
               <li><a href="#addons" data-toggle="tab">Addons</a></li>
               <li><a href="#options" data-toggle="tab">Options</a></li>
-              <li><a href="#freight" data-toggle="tab">Freight</a></li>
+              <li><a href="#personal" data-toggle="tab">Details</a></li>
               <li><a href="#complete" data-toggle="tab">Complete</a></li>
             </ul>
             <div class="tab-content">
@@ -197,7 +197,7 @@
                     <div class="col-sm-12">
                       <div class="col-sm-12">
                         <div class="checkbox">
-                          <span>Framed Openings <small>Please describe where you would like them.</small> </span>
+                          <span>Framed Openings <small>Please describe in detail where you would like them.</small> </span>
                           <textarea class="form-control" cols="40" rows="5" id="framed_openings" name="framed_openings"></textarea>
                         </div>
                       </div>
@@ -210,8 +210,52 @@
                   </div>
                 </div>
               </div>
-              <div role="tabpanel" class="tab-pane fade" id="freight">4</div>
-              <div role="tabpanel" class="tab-pane fade" id="complete">5</div>
+              <div role="tabpanel" class="tab-pane fade" id="personal">
+                <div class="billing" style="margin-top: 10px;">
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <div class="col-sm-12">
+                        <div class="form-grp">
+                          <label>Name<span>*</span></label>
+                          <input id="name" placeholder="First and last name" type="text" name="name">
+                        </div>
+                      </div>
+                      <div class="col-sm-12">
+                        <div class="form-grp">
+                          <label>Company Name<span>*</span></label>
+                          <input id="company_name" placeholder="Acme Co LLC" type="text" name="company_name">
+                        </div>
+                      </div>
+                      <div class="col-sm-12">
+                        <div class="form-grp">
+                          <label>Email<span>*</span></label>
+                          <input id="email" placeholder="you@example.com" type="email" name="email">
+                        </div>
+                      </div>
+                      <div class="col-sm-12">
+                        <div class="form-grp">
+                          <label>Phone<span>*</span></label>
+                          <input id="phone" placeholder="Your primary phone number" type="text" name="phone">
+                        </div>
+                      </div>
+                      <div class="col-sm-12">
+                        <div class="form-grp">
+                          <label>Zip Code<span>*</span></label>
+                          <input id="zip" placeholder="Zip code where you'll be building" type="text" name="zip">
+                        </div>
+                      </div>
+                      <div class="col-sm-3 col-sm-offset-9">
+                        <div class="form-group">
+                          <button class="btn btn-primary pull-right" type="button" name="button">Next</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div role="tabpanel" class="tab-pane fade" id="complete">
+                All finished! We'll have a price in your inbox in no time.
+              </div>
             </div>
           </div>
           <div class="col-md-6">
