@@ -19,9 +19,14 @@ class UserController {
     const userData = request.only(['first_name', 'last_name', 'email', 'password'])
     const user = await User.create(userData)
     user.sessions = 2
-    user.ip_address = request.ip()
-    user.captured_from = request.originalUrl()
     await user.save()
+    const activityDetails = {
+      login_url: request.originalUrl(),
+      login_ip_address: request.ip(),
+      user_id: auth.user.id
+    }
+    await Activity.create(activityDetails)
+
     // await Mail.send('emails.welcome', userData, (message) => {
     //       message
     //         .to(user.email)
@@ -92,8 +97,11 @@ class UserController {
   **  shows the account page. admins can view and edit users
   **/
   async account ({ view, auth, response }) {
-    if (auth.user.sessions === 1) {
-      return response.redirect('/set-password')
+    const user = auth.user
+    if (user.sessions === 1) {
+      return response.redirect('/set-password', {
+        user: auth.user.first_name
+      })
     }
     const users = await User.all()
     return view.render('account', {
@@ -111,7 +119,14 @@ class UserController {
       user.password = dirtyPass
       user.ip_address = request.ip()
       user.captured_from = request.originalUrl()
+      user.sessions = user.sessions + 1
       await user.save()
+      const activityDetails = {
+        login_url: request.originalUrl(),
+        login_ip_address: request.ip(),
+        user_id: auth.user.id
+      }
+      await Activity.create(activityDetails)
       // make sure the hashes match
       const hashedPass = await user.password
       const isSame = await Hash.verify(dirtyPass, user.password)
@@ -128,10 +143,11 @@ class UserController {
                 .subject('Password Reset Instructions - Great American Buildings')
             })
       }
-      return console.log(isSame)
+      return response.redirect('/account')
     }
     const user = auth.current.user
     user.password = request.input('password')
+    user.sessions = user.sessions + 1
     await user.save()
     const isSame = await Hash.verify(request.input('password'), user.password)
     console.log(isSame)

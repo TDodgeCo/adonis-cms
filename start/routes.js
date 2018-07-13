@@ -39,10 +39,16 @@ Route.post('/invite', 'UserController.invite').middleware('auth')
 Route.on('/set-password').render('user.set-password').middleware('auth')
 Route.put('/set-password', 'UserController.resetPassword').middleware('auth')
 Route.on('/login').render('user.login')
+Route.get('/login/:tempPass', async ({ params, view }) => {
+  return view.render('user.login', {
+    tempPass: params.tempPass
+  })
+})
 Route.post('/login', 'UserController.login')
 Route.get('/account', 'UserController.account').middleware('auth')
 Route.get('/logout', 'Usercontroller.logout')
 
+Route.post('/quote-request', 'CustomerController.store')
 Route.get('account/quotes', 'QuoteController.index').middleware('auth')
 
 // Test Stuff

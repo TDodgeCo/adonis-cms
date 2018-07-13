@@ -1,0 +1,25 @@
+<h2> Hello {{ first_name }}, </h2>
+<p>
+  Thanks for taking the time to fill out a quote request with Great American Buildings.
+  <br>
+  Going forward, you'll manage your relationship with Great American through our State of the art
+  Project Portal. Here you can review all of your estimates, purchase buildings, make payments and communicate
+  with your designated representative.
+  <br>
+  Your temporary password is: <b id="tempPass">{{ tempPass }}</b>
+  <br>
+  Please sign in <a href="http://localhost:3333/login/{{tempPass}}">here</a> with your email and the temporary password.
+
+  <form class="" action="index.html" method="post">
+    <a href="http://localhost:3333/login/{{ tempPass }}">
+        <button type="submit"
+        style="padding: 10px 20px; background-color: #232323; color: #fff; border-style: none;">
+        Login
+      </button>
+    </a>
+  </form>
+
+  <h3>Please pay attention to what you've highlighted. It's easy to accidentally highlight an extra 'space' at the beginning or end.</h3>
+  <br>
+  You may change your password from the account page once you've logged in.
+</p>
