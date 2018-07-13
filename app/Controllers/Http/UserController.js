@@ -1,5 +1,6 @@
 'use strict'
 const User = use('App/Models/User')
+const Activity = use('App/Models/Activity')
 const Hash = use('Hash')
 const Mail = use('Mail')
 const Env = use('Env')
@@ -14,9 +15,11 @@ class UserController {
   }
 
   async store ({ request, auth, response }) {
-    const userData = request.only(['name', 'email', 'password'])
+    const userData = request.only(['first_name', 'last_name', 'email', 'password'])
     const user = await User.create(userData)
     user.sessions = 2
+    user.ip_address = request.ip()
+    user.captured_from = request.originalUrl()
     await user.save()
     // await Mail.send('emails.welcome', userData, (message) => {
     //       message
@@ -37,11 +40,11 @@ class UserController {
         message: 'You are not authorized to do that.'
       })
     }
-    let userData = request.only([ 'name', 'email', 'password', 'admin' ])
+    let userData = request.only([ 'first_name', 'last_name', 'email', 'password', 'admin' ])
     if (userData.admin) {
       userData.admin = true
       await User.create(userData)
-      await Mail.send('emails.welcome', userData, (message) => {
+      await Mail.send('emails.welcome-invite', userData, (message) => {
             message
               .to(userData.email)
               .from(Env.get('MAIL_USERNAME'))
@@ -65,9 +68,14 @@ class UserController {
   **/
   async login ({ request, auth, response }) {
     const user = request.only(['email', 'password'])
+    const activityDetails = {
+      login_url: request.originalUrl(),
+      login_ip_address: request.ip()
+    }
     await auth.remember(true).attempt(user.email, user.password)
     const userSession = await User.find(auth.user.id)
     userSession.sessions = userSession.sessions + 1
+    userSession.activity().attach(activityDetails)
     await userSession.save()
     return response.redirect('account')
   }
@@ -99,13 +107,15 @@ class UserController {
       const user = await User.findBy('id', request.input('id'))
       const dirtyPass = await Hash.make(String(Date.now() * 3))
       user.password = dirtyPass
+      user.ip_address = request.ip()
+      user.captured_from = request.originalUrl()
       await user.save()
       // make sure the hashes match
       const hashedPass = await user.password
       const isSame = await Hash.verify(dirtyPass, user.password)
       if (isSame) {
         const userDetails = {
-          name: user.name,
+          name: user.first_name,
           email: user.email,
           tempPass: dirtyPass,
         }

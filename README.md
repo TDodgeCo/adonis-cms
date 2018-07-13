@@ -1,3 +1,12 @@
+# APP SPECIFIC STUFF
+
+User Permissions Column on User Migration:
+1 Editor
+2 Salesperson
+3 Project Manager
+4 Dealer
+5 Customer
+
 # Adonis fullstack application
 
 This is the fullstack boilerplate for AdonisJs, it comes pre-configured with.
@@ -33,7 +42,7 @@ adonis migration:run
 
 # ToDo
 - Create models for leads, customers, salespeople and managers
-- Create 
+- Create
 - Create lead account view
 - Create customer account view
 - Create sales/manager views
