@@ -23,7 +23,7 @@ class UserController {
     const activityDetails = {
       login_url: request.originalUrl(),
       login_ip_address: request.ip(),
-      user_id: auth.user.id
+      user_id: user.id
     }
     await Activity.create(activityDetails)
 
