@@ -9,6 +9,7 @@ class ActivitySchema extends Schema {
       table.string('login_ip_address')
       table.string('login_url')
       table.string('page_visited')
+      table.integer('user_id')
       table.timestamps()
     })
   }

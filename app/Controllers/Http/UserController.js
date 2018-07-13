@@ -1,6 +1,7 @@
 'use strict'
 const User = use('App/Models/User')
 const Activity = use('App/Models/Activity')
+const Database = use('Database')
 const Hash = use('Hash')
 const Mail = use('Mail')
 const Env = use('Env')
@@ -68,15 +69,16 @@ class UserController {
   **/
   async login ({ request, auth, response }) {
     const user = request.only(['email', 'password'])
-    const activityDetails = {
-      login_url: request.originalUrl(),
-      login_ip_address: request.ip()
-    }
     await auth.remember(true).attempt(user.email, user.password)
     const userSession = await User.find(auth.user.id)
     userSession.sessions = userSession.sessions + 1
-    userSession.activity().attach(activityDetails)
     await userSession.save()
+    const activityDetails = {
+      login_url: request.originalUrl(),
+      login_ip_address: request.ip(),
+      user_id: auth.user.id
+    }
+    await Activity.create(activityDetails)
     return response.redirect('account')
   }
   /**
