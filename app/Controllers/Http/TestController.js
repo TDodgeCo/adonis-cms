@@ -21,7 +21,7 @@ class TestController {
     })
     return view.render('test.test')
   }
-
+  
   async test ({ params, response }) {
     response.json({
       state: params.state,

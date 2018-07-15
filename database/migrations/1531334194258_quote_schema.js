@@ -6,7 +6,7 @@ class QuoteSchema extends Schema {
   up () {
     this.create('quotes', (table) => {
       table.increments()
-      table.integer('user_id').unsigned() // This will become "assigned_to" and point to the sales person
+      // This will become "assigned_to" and point to the sales person
       table.integer('customer_id').unsigned()
       table.foreign('customer_id').references('customers.customer_id')
       table.string('estimator')
@@ -24,7 +24,7 @@ class QuoteSchema extends Schema {
       table.boolean('overhead_insulation').defaultTo(false)
       table.string('man_door')
       table.integer('man_door_quant').unsigned().defaultTo(0)
-      table.string('window').unsigned().defaultTo(0)
+      table.string('window').defaultTo(0)
       table.integer('window_quant').unsigned().defaultTo(0)
       table.string('roof_insulation').defaultTo('None')
       table.string('wall_insulation').defaultTo('None')
