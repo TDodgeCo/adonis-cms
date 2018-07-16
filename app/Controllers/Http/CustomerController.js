@@ -6,6 +6,7 @@ const Hash = use('Hash')
 const Mail = use('Mail')
 const Env = use('Env')
 const { validateAll } = use('Validator')
+const axios = use('axios')
 
 function replaceAll(str, find, replace) {
     return str.replace(new RegExp(find, 'g'), replace);
@@ -49,7 +50,7 @@ class CustomerController {
         })
       }
       const quoteData = {
-        user_id: newUser.id,
+        customer_id: newUser.id,
         bldg_width: quote.bldg_width,
         bldg_length: quote.bldg_length,
         bldg_height: quote.bldg_height,
@@ -67,10 +68,22 @@ class CustomerController {
         wainscot: quote.wainscot,
         gutters: quote.gutters,
         framed_openings: quote.framed_openings,
-        zip: quote.zip
+        bldg_zip: quote.zip
       }
       const customer = await Quote.create(quoteData) // const only for testing
-      return console.log(customer)
+
+      quoteData.name = newUser.first_name
+      quoteData.email = newUser.email
+      quoteData.phone = newUser.phone
+      console.log(quoteData)
+      axios.post('https://api.hubapi.com/contacts/v1/contact/?hapikey=' + Env.get('HAPI_KEY'), {
+        quoteData
+      }).then( response => {
+        console.log(response)
+      }).catch( err => {
+        console.log('error: ' + err)
+      })
+
     } catch (error) {
       return console.log('error: ' + error)
     }

@@ -6,19 +6,14 @@ class QuoteSchema extends Schema {
   up () {
     this.create('quotes', (table) => {
       table.increments()
-<<<<<<< HEAD:database/migrations/1531501957340_quote_schema.js
-      table.integer('user_id').unsigned() // This will become "assigned_to" and point to the sales person
-=======
+      table.integer('customer_id').notNullable()
       // This will become "assigned_to" and point to the sales person
-      table.integer('customer_id').unsigned()
-      table.foreign('customer_id').references('customers.customer_id')
->>>>>>> 440d4d4c030d423b54d19c32068052de10ab4a70:database/migrations/1531334194258_quote_schema.js
       table.string('estimator')
-      table.string('street_address').notNullable()
-      table.string('street_address_2')
-      table.string('city')
-      table.string('state')
-      table.string('zip').notNullable()
+      table.string('bldg_street_address').notNullable()
+      table.string('bldg_street_address_2')
+      table.string('bldg_city')
+      table.string('bldg_state')
+      table.string('bldg_zip').notNullable()
       table.integer('bldg_width').unsigned().notNullable()
       table.integer('bldg_length').unsigned().notNullable()
       table.integer('bldg_height').unsigned().notNullable()
@@ -28,13 +23,8 @@ class QuoteSchema extends Schema {
       table.boolean('overhead_insulation').defaultTo(false)
       table.string('man_door')
       table.integer('man_door_quant').unsigned().defaultTo(0)
-<<<<<<< HEAD:database/migrations/1531501957340_quote_schema.js
       table.string('bldg_window')
       table.integer('bldg_window_quant').unsigned().defaultTo(0)
-=======
-      table.string('window').defaultTo(0)
-      table.integer('window_quant').unsigned().defaultTo(0)
->>>>>>> 440d4d4c030d423b54d19c32068052de10ab4a70:database/migrations/1531334194258_quote_schema.js
       table.string('roof_insulation').defaultTo('None')
       table.string('wall_insulation').defaultTo('None')
       table.string('frame_style').defaultTo('Gable')
@@ -42,7 +32,8 @@ class QuoteSchema extends Schema {
       table.string('wall_color').defaultTo('Polar White')
       table.string('trim_color').defaultTo('Koko Brown')
       table.string('roof_color').defaultTo('Galvalume')
-      table.integer('snow_load').unsigned().defaultTo(0)
+      table.integer('roof_snow_load').unsigned().defaultTo(0)
+      table.integer('ground_snow_load').unsigned().defaultTo(0)
       table.integer('wind_load').unsigned().defaultTo(115)
       table.string('exposure').defaultTo('C')
       table.string('seismic').defaultTo('D')
