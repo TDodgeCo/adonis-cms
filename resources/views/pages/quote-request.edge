@@ -1,173 +1,278 @@
-@layout('layouts.category-layout')
-@section('head')
-<title>{{ post.title }}</title>
-<meta name="description" content="{{ post.description }}">
-<style media="screen">
-.header-title {
-		padding-top:127px;
-		height:280px;
-		background: url(../images/{{ post.slug }}/{{ post.slug }}-header.jpeg) no-repeat center top;
-}
-</style>
-@endsection
+@layout('layouts.form-layout')
 @section('content')
-<section class="checkout">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="costumer">
-          <p>Returning Costumer? <span><a href="#">Click here to login</a></span></p>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-6">
-        <div class="billing">
-          <div class="title">
-            <h2>Billing Details</h2>
-          </div>
-          <form action="#" method="POST" class="contact-form">
-            <div class="row">
-              <div class="col-md-6">
-                <div class="form-grp">
-                  <label>First Name<span>*</span></label>
-                  <input id="name" placeholder="Name" type="text" name="name">
+
+<div style="margin: 40px 0;">
+  <section class="checkout">
+    <div class="container">
+      <div class="row">
+        <form action="/quote-request" method="post">
+          {{ csrfField() }}
+          <div class="col-sm-12 col-md-6">
+            <div class="title">
+              <h2>Building Details</h2>
+            </div>
+            <ul class="nav nav-pills nav-wizard" role="tablist">
+              <li class="active"><a href="#quote" data-toggle="tab">Quote</a></li>
+              <li><a href="#addons" data-toggle="tab">Addons</a></li>
+              <li><a href="#options" data-toggle="tab">Options</a></li>
+              <li><a href="#personal" data-toggle="tab">Details</a></li>
+              <li><a href="#complete" data-toggle="tab">Complete</a></li>
+            </ul>
+            <div class="tab-content">
+              <div role="tabpanel" class="tab-pane fade in active" id="quote">
+                <div class="billing" style="margin-top: 10px;">
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <div class="col-sm-12">
+                        <div class="form-grp">
+                          <label>Building Width<span>*</span></label>
+                          <input id="bldg_width" placeholder="e.g. 40'" type="number" name="bldg_width">
+                        </div>
+                      </div>
+                      <div class="col-sm-12">
+                        <div class="form-grp">
+                          <label>Building Length<span>*</span></label>
+                          <input class="form-control" id="bldg_length" placeholder="e.g. 60'" type="number" name="bldg_length">
+                        </div>
+                      </div>
+                      <div class="col-sm-12">
+                        <div class="form-grp">
+                          <label>Building Height<span>*</span></label>
+                          <input id="bldg_height" placeholder="e.g. 14'" type="number" name="bldg_height">
+                        </div>
+                      </div>
+                      <div class="col-sm-12">
+                        <div class="form-grp">
+                          <label>Roof Pitch<span>*</span></label>
+                          <input id="roof_pitch" placeholder="e.g. 2:12" type="text" name="roof_pitch">
+                        </div>
+                      </div>
+                      <div class="col-sm-3 col-sm-offset-9">
+                        <div class="form-group details">
+                          <button class="gab-btn-blue pull-right" type="button" name="button">NEXT</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div class="col-md-6">
-                <div class="form-grp">
-                  <label>Last name<span>*</span></label>
-                  <input id="LasrName" placeholder="Last Name" type="text" name="last name">
+              <div role="tabpanel" class="tab-pane fade" id="addons">
+                <div class="billing" style="margin-top: 10px;">
+                  <div class="row">
+                    <div class="col-sm-12 addon">
+                      <div class="form-grp">
+                        <div class="col-sm-9">
+                          <label>Overhead Doors<span>*</span></label>
+                          <select id="overhead_door" name="overhead_door">
+                            <option value="test1">Test1</option>
+                            <option value="test2">Test2</option>
+                            <option value="test3">Test3</option>
+                            <option value="test4">Test4</option>
+                          </select>
+                        </div>
+                        <div class="col-sm-3">
+                          <label>Quantity</label>
+                          <input type="number" name="overhead_quant" placeholder="0">
+                        </div>
+                        <div class="col-sm-12">
+                          <input type="checkbox" name="overhead_insulation">
+                          <label>Insulated?</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-12 addon">
+                      <div class="form-grp">
+                        <div class="col-sm-9">
+                          <label>Man Doors<span>*</span></label>
+                          <select id="man_door" name="man_door">
+                            <option value="test1">Test1</option>
+                            <option value="test2">Test2</option>
+                            <option value="test3">Test3</option>
+                            <option value="test4">Test4</option>
+                          </select>
+                        </div>
+                        <div class="col-sm-3">
+                          <label>Quantity</label>
+                          <input type="number" name="man_door_quant" placeholder="0">
+                        </div>
+                        <div class="col-sm-12">
+                          <input type="checkbox" name="man_door_insulation">
+                          <label>Insulated?</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-12 addon">
+                      <div class="form-grp">
+                        <div class="col-sm-9">
+                          <label>Windows<span>*</span></label>
+                          <select id="window" name="bldg_window">
+                            <option value="test1">Test1</option>
+                            <option value="test2">Test2</option>
+                            <option value="test3">Test3</option>
+                            <option value="test4">Test4</option>
+                          </select>
+                        </div>
+                        <div class="col-sm-3">
+                          <label>Quantity</label>
+                          <input type="number" name="bldg_window_quant" placeholder="0">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-12 addon">
+                      <div class="form-grp">
+                        <div class="col-sm-6">
+                          <label>Roof Insulation<span>*</span></label>
+                          <select id="roof_insulation" name="roof_insulation">
+                            <option value="3_inch">3" R10</option>
+                            <option value="4_inch">4" R13"</option>
+                            <option value="6_inch">6" R19</option>
+                            <option value="8_inch">8" R25</option>
+                            <option value="9.5_inch">10" R32</option>
+                            <option value="10_innch">12" R38</option>
+                            <option value="other">Other</option>
+                          </select>
+                        </div>
+                        <div class="col-sm-6">
+                          <label>Wall Insulation<span>*</span></label>
+                          <select id="wall_insulation" name="wall_insulation">
+                            <option value="3_inch">3" R10</option>
+                            <option value="4_inch">4" R13"</option>
+                            <option value="6_inch">6" R19</option>
+                            <option value="8_inch">8" R25</option>
+                            <option value="9.5_inch">10" R32</option>
+                            <option value="10_innch">12" R38</option>
+                            <option value="other">Other</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-3 col-sm-offset-9">
+                      <div class="form-group">
+                        <button class="gab-btn-blue pull-right" type="button" name="button">NEXT</button>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div class="col-md-12">
-                <div class="form-grp">
-                  <label>Company Name</label>
-                  <input id="CompanyName" type="text" placeholder="Company Name" name="Company Name">
+              <div role="tabpanel" class="tab-pane fade" id="options">
+                <div class="billing" style="margin-top: 10px;">
+                  <div class="row">
+                    <div class="col-sm-12 addon">
+                      <div class="form-grp">
+                        <div class="col-sm-7">
+                          <label>Frame Style</label>
+                          <select id="frame_style" name="frame_style">
+                            <option value="test1">Gable</option>
+                            <option value="test2">Single Slope</option>
+                            <option value="test3">Monitor/Western</option>
+                            <option value="test4">Gambrel</option>
+                          </select>
+                        </div>
+                        <div class="col-sm-5">
+                          <label>Frame Coating</label>
+                          <select id="frame_coating" name="frame_coating">
+                            <option value="gray_oxide">Gray Oxide</option>
+                            <option value="red_oxide">Red Oxide</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-12 addon">
+                      <div class="form-grp">
+                        <div class="col-sm-6">
+                          <label>Wainscot <small>Color band across the base.</small></label>
+                          <select id="wainscot" name="wainscot">
+                            <option value="36_inch">36"</option>
+                            <option value="48_inch">48"</option>
+                          </select>
+                        </div>
+                        <div class="col-sm-6">
+                          <label>Gutters/Downspouts</label>
+                          <select id="gutters" name="gutters">
+                            <option value="36_inch">No</option>
+                            <option value="48_inch">Yes</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-12">
+                      <div class="col-sm-12">
+                        <div class="checkbox">
+                          <span>Framed Openings <small>Please describe in detail where you would like them.</small> </span>
+                          <textarea class="form-control" cols="40" rows="5" id="framed_openings" name="framed_openings"></textarea>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-3 col-sm-offset-9">
+                      <div class="form-group">
+                        <button class="gab-btn-blue pull-right" type="button" name="button">NEXT</button>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div class="col-md-12">
-                <div class="form-grp">
-                  <label>Address</label>
-                  <input id="Address" type="text" placeholder="Address" name="Address">
-                  <input id="Address2" type="text" placeholder="Address" name="Address">
+              <div role="tabpanel" class="tab-pane fade" id="personal">
+                <div class="billing" style="margin-top: 10px;">
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <div class="col-sm-12">
+                        <div class="form-grp">
+                          <label>Name<span>*</span></label>
+                          <input id="first_name" placeholder="First and last name" type="text" name="first_name">
+                        </div>
+                      </div>
+                      <div class="col-sm-12">
+                        <div class="form-grp">
+                          <label>Company Name<span>*</span></label>
+                          <input id="company_name" placeholder="Acme Co LLC" type="text" name="company_name">
+                        </div>
+                      </div>
+                      <div class="col-sm-12">
+                        <div class="form-grp">
+                          <label>Email<span>*</span></label>
+                          <input id="email" placeholder="you@example.com" type="email" name="email">
+                        </div>
+                      </div>
+                      <div class="col-sm-12">
+                        <div class="form-grp">
+                          <label>Phone<span>*</span></label>
+                          <input id="phone" placeholder="Your primary phone number" type="text" name="phone">
+                        </div>
+                      </div>
+                      <div class="col-sm-12">
+                        <div class="form-grp">
+                          <label>Zip Code<span>*</span></label>
+                          <input id="zip" placeholder="Zip code where you'll be building" type="text" name="zip">
+                        </div>
+                      </div>
+                      <div class="col-sm-3 col-sm-offset-9">
+                        <div class="form-group">
+                          <button class="gab-btn-blue pull-right" type="submit" name="button">FINISH</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div class="col-md-12">
-                <div class="form-grp">
-                  <label>Town / City<span>*</span></label>
-                  <input id="Town/City" placeholder="Town / City" type="text" name="Town / City">
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-grp">
-                  <label>State / Country <span>*</span></label>
-                  <input id="State/Country" placeholder="State / Country" type="text" name="State / Country">
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-grp">
-                  <label>Postcode / Zip<span>*</span></label>
-                  <input id="Postcode/Zip" placeholder="Postcode / Zip" type="text" name="Postcode / Zip">
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-grp">
-                  <label>Email Address <span>*</span></label>
-                  <input id="Email" placeholder="Email Address" type="text" name="Email ">
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-grp">
-                  <label>Postcode / Zip<span>*</span></label>
-                  <input id="Phone" placeholder="Phone" type="text" name="Phone">
-                </div>
-              </div>
-              <div class="col-md-12">
-                <div class="account">
-                  <input name="check" type="checkbox">
-                  <span>Create an Account?</span>
-                </div>
-              </div>
-              <div class="col-md-12">
-                <div class="diff-add">
-                  <input name="check" type="checkbox">
-                  <h2>Create an Account</h2>
-                </div>
-              </div>
-              <div class="col-md-12">
-                <div class="checkbox">
-                  <span>Order notes</span>
-                  <textarea class="form-control" cols="40" rows="5" id="inputComments"></textarea>
+              <div role="tabpanel" class="tab-pane fade" id="complete">
+                <div class="text-center" style="margin-top: 50px;">
+                  <h3 class="title">All Finished!</h3>
+                  <p>We'll have a quote in your inbox in no time.</p>
+                  <div class="btn-group" role="group" aria-label="choose to go home or contact us">
+                    <button type="button" class="btn gab-btn-blue">Go Home</button>
+                    <button type="button" class="btn gab-btn-yellow">Contact Us</button>
+                  </div>
                 </div>
               </div>
             </div>
-          </form>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="order">
-          <div class="title">
-            <h2>Your Order</h2></div>
-          <div class="details">
-            <ul>
-              <li>
-                <span class="first">Product</span>
-                <span class="second">Total</span>
-              </li>
-              <li>
-                <span class="first-pad">Deep Cut Band Saw - DWM120</span>
-                <span class="second">$45.00</span>
-              </li>
-              <li>
-                <span class="first-pad">Gutter Supply</span>
-                <span class="second">$20.00</span>
-              </li>
-              <li>
-                <span class="first-pad">DeWalt D28755 14" (355mm) Cut-Off Machine</span>
-                <span class="second">$75.00</span>
-              </li>
-              <li>
-                <span class="first">Subtotal</span>
-                <span class="second">$75.00</span>
-              </li>
-              <li class="bordered">
-                <span class="first">Shipping </span>
-                <span class="second-shp">
-                <input name="check" type="checkbox">
-
-              <span>Create an Account?</span>
-                </span>
-                <span class="second-shp">
-                <input name="check" type="checkbox">
-
-              <span>Flat Rate</span>
-                </span>
-              </li>
-              <li>
-                <span class="first">Total</span>
-                <span class="second">$140.00</span>
-              </li>
-              <li>
-                <span class="first-pad">
-              <input name="check" type="checkbox">Direct Bank Transfer</span>
-              </li>
-              <li class="gray">
-                <p>Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order won’t be shipped until the funds have cleared in our account.</p>
-              </li>
-              <li>
-                <span class="first-pad">
-              <input name="check" type="checkbox">Paypal<img src="img/pajpall.jpg" alt="img"/></span>
-                <span class="second-right">What is PayPal?</span>
-              </li>
-              <li>
-                <a class="btn hvr-bounce-to-right" href="#">PLACE ORDER</a>
-              </li>
-            </ul>
           </div>
-        </div>
+          <div class="col-md-6">
+            @include('partials.your-order')
+          </div>
+        </form>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+</div>
+{{ script('./js/quote-request.js') }}
 @endsection
