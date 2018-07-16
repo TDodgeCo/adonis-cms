@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+
+
+
+	<title>Industrial</title>
+	<meta name="description" content="">
+	<meta name="author" content="Laze">
+
+	<meta name="viewport" content="width=device-width; initial-scale=1.0">
+
+  {{ style('./vendor/font-awesome/css/font-awesome.min.css') }}
+  <!-- Owl carousel-->
+  {{ style('./vendor/css/owl.carousel.css') }}
+  {{ style('./vendor/css/owl.theme.default.css') }}
+  {{ style('./vendor/css/hover.css') }}
+  {{ style('./vendor/css/animate.css') }}
+  {{ style('./vendor/css/bootstrap.min.css') }}
+  {{ style('./vendor/css/style.css') }}
+  {{ style('./vendor/css/responsive.css') }}
+
+	<!-- Replace favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
+	<link rel="shortcut icon" href="/favicon.ico">
+	<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+</head>
+
+<body>
+	<header class="main-header">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-3">
+					<div class="logo">
+						<a href="index.html"><img src="img/logo.jpg" alt="logo" /></a>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="general-info">
+						<ul>
+							<li>
+								<div class="icon">
+									<i class="fa fa-map-marker" aria-hidden="true"></i>
+								</div>
+								<div class="text">
+									<p>
+										<span class="add">ADDRESS</span>
+										<br>
+										<span>
+                      20c Factory Street,<br>
+											Newyork, NY 10205
+                    </span>
+									</p>
+								</div>
+							</li>
+							<li>
+								<div class="icon">
+									<i class="fa fa-phone" aria-hidden="true"></i>
+								</div>
+								<div class="text">
+									<p>
+										<span class="add">ADDRESS</span>
+										<br>
+										<span>20c Factory Street,<br>
+												Newyork, NY 10205</span>
+									</p>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="social-icons">
+						<ul>
+							<li>
+								<a href=""><i class="fa fa-facebook" aria-hidden="true"></i></a>
+							</li>
+							<li>
+								<a href=""><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+							</li>
+							<li>
+								<a href=""><i class="fa fa-twitter" aria-hidden="true"></i></a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+	<section class="main-menu-one finance-navbar">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-9">
+					<nav id="main-navigation-wrapper" class="navbar navbar-default">
+						<div class="navbar-header">
+							<button type="button" data-toggle="collapse" data-target="#main-navigation" aria-expanded="false" class="navbar-toggle collapsed">
+									<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+								</button>
+						</div>
+						<div id="main-navigation" class="collapse navbar-collapse">
+							<ul class="nav navbar-nav navbar-left">
+								<li><a href="index.html">Home</a>
+									<ul class="dropdown-submenu">
+										<li><a href="index-two.html">Home Two</a></li>
+										<li><a href="index-three.html">Home Three</a></li>
+										<li><a href="index-four.html">Home Four</a></li>
+									</ul>
+								</li>
+								<li><a href="about_us.html">About
+										</a>
+									<ul class="dropdown-submenu">
+										<li><a href="our_team.html">Our Team</a></li>
+										<li><a href="testimonials.html">Testimonials</a></li>
+										<li><a href="our_faq.html">Our Faq</a></li>
+									</ul>
+								</li>
+								<li><a href="#">Solutions</a>
+									<ul class="dropdown-submenu">
+										<li><a href="Material-Scienceand-Engineering.html">Material Science and Engineering</a></li>
+										<li><a href="chemical-research.html">Chemical Research</a></li>
+										<li><a href="power-and-energy.html">Power and Energy</a></li>
+										<li><a href="Mechanical-Engineering.html">Mechanical Engineering</a></li>
+										<li><a href="Petroleum-and-Gas.html">Petroleum and Gas</a></li>
+										<li><a href="Facture-Process.html">Facture Process</a></li>
+									</ul>
+								</li>
+								<li><a href="projects.html">Projects</a>
+									<ul class="dropdown-submenu">
+										<li><a href="projects.html">Projects</a></li>
+										<li><a href="single-project.html">Single Project</a></li>
+									</ul>
+								</li>
+								<li><a href="news.html">News</a>
+									<ul class="dropdown-submenu">
+										<li><a href="news-big.html">News Big View</a></li>
+										<li><a href="news-single.html">Single News</a></li>
+									</ul>
+								</li>
+								<li><a href="shop.html">Shop</a>
+									<ul class="dropdown-submenu">
+										<li><a href="shop-details.html">Product Details</a></li>
+										<li><a href="card-page.html">Cart Page</a></li>
+										<li><a href="Checkout-Page.html">Checkout Page</a></li>
+									</ul>
+								</li>
+								<li><a href="contact.html">Contact</a></li>
+							</ul>
+						</div>
+					</nav>
+				</div>
+				<div class="col-md-3">
+					<div class="button-wraper pull-right">
+						<div class="button">
+							<a class="hvr-bounce-to-right" href="#">REQUEST A QUOTE</a>
+						</div>
+					</div>
+					<ul class="search">
+						<li class="first">
+              <button id="searchDropdown" class="search dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                  <i class="fa fa-search" aria-hidden="true"></i>
+              </button>
+							<form class="dropdown-menu">
+								<input class="form-control" placeholder="Searcs..." type="text" />
+							</form>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="header-title">
+		<div class="container">
+			<div class="row">
+				<div class="title">
+					<h2>Contact Us</h2>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="page-nav">
+		<div class="container">
+			<div class="row">
+				<ul>
+					<li>
+						Home
+					</li>
+					<li>
+						<i class="fa fa-angle-right" aria-hidden="true"></i>
+					</li>
+					<li>
+						<span>Contact Us</span>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</section>
+	<section class="contact_us-second">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 col-sm-12 col-xs-12">
+					<header>
+						<h2>Contact us today</h2>
+						<p>
+							For more information contact Rapid Nutrition’s Investor Relations team. We value your feedback and will respond to your question as quickly as possible. Alternatively click on the ‘chat box’ at the bottom right corner of your computer.
+						</p>
+					</header>
+					<form action="#" method="POST" class="contact-form">
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-grp">
+									<label>Your Name</label>
+									<input id="name" placeholder="Name" type="text" name="name">
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-grp">
+									<label>Your Email</label>
+									<input id="email" placeholder="E-mail" type="text" name="email">
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-grp">
+									<label>Subject</label>
+									<input id="phone" type="text" placeholder="Phone" name="phone">
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-grp">
+									<label>Subject</label>
+									<input id="subject" type="text" placeholder="Subject" name="subject">
+								</div>
+							</div>
+							<div class="col-md-12">
+								<div class="form-grp">
+									<label>Message</label>
+									<textarea class="form-control" cols="40" rows="5" placeholder="Message" id="inputComments"></textarea>
+								</div>
+							</div>
+							<button class="btn btn-default hvr-bounce-to-right" type="submit">
+  							Send Message
+  						</button>
+						</div>
+					</form>
+				</div>
+				<div class="col-md-4 col-sm-8 col-xs-12 keep-in">
+					<header>
+						<h2>Keep In Touch!</h2>
+					</header>
+					<ul class="social-icons">
+						<li>
+							<a href=""><i class="fa fa-facebook" aria-hidden="true"></i></a>
+						</li>
+						<li>
+							<a href=""><i class="fa fa-twitter" aria-hidden="true"></i></a>
+						</li>
+						<li>
+							<a href=""><i class="fa fa-dribbble" aria-hidden="true"></i></a>
+						</li>
+						<li>
+							<a href=""><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+						</li>
+						<li>
+							<a href=""><i class="fa fa-vimeo" aria-hidden="true"></i></a>
+						</li>
+					</ul>
+					<div class="contact-box">
+						<h2>Locations</h2>
+						<div class="address-box">
+							<div class="icon-box">
+								<i class="fa fa-map-marker" aria-hidden="true"></i>
+							</div>
+							<p class="address-text">
+								For more information contact Rapid Nutrition’s Investor Relations team.
+							</p>
+						</div>
+						<div class="address-box">
+							<div class="icon-box">
+								<i class="fa fa-phone" aria-hidden="true"></i>
+							</div>
+							<p class="address-text">
+								1-888-123-4567
+							</p>
+						</div>
+						<div class="address-box">
+							<div class="icon-box">
+								<i class="fa fa-envelope" aria-hidden="true"></i>
+							</div>
+							<p class="address-text">
+								info@structure.com
+							</p>
+						</div>
+						<div class="address-box">
+							<div class="icon-box">
+								<i class="fa fa-clock-o" aria-hidden="true"></i>
+							</div>
+							<p class="address-text">
+								Mon - Sat: 09.00am to 18.00pm
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="map-section">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="google-map" id="contact-google-map" data-map-lat="33.958372" data-map-lng="-118.341827" data-map-zoom="12" data-icon-path="img/map-marker.png" data-map-title="Hanoi" data-markers="{&quot;marker-1&quot;: [33.958372, -118.341827, &quot;&lt;h4&gt;Main Head Office&lt;/h4&gt;&lt;p&gt;31 South Australia&lt;/p&gt;&quot;],		&quot;marker-2&quot;: [-38.021469, 145.118023, &quot;&lt;h4&gt;Branch Office&lt;/h4&gt;&lt;p&gt;31 Main Boulevar 33154&lt;/p&gt;&quot;]		}">
+          </div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="quote-request">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-9">
+					<h4>Looking for a quality and affordable Services for your next project?</h4>
+				</div>
+				<div class="col-md-3">
+					<a class="btn hvr-bounce-to-right" href="#">REQUEST A QUOTE</a>
+				</div>
+			</div>
+		</div>
+	</section>
+	<footer class="main-footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-3">
+					<figure>
+						<img class="img-responsive" src="img/logo2.png" alt="awsome image" />
+					</figure>
+					<p>
+						Fusce non faucibus lorem. Cras eu velit id diam cursus tincidunt in ut dui. Quisque quis augue placerat, pulvinar dui aliquam, convallis sapien. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+					</p>
+					<div class="social-icons">
+						<ul>
+							<li>
+								<a href=""><i class="fa fa-facebook" aria-hidden="true"></i></a>
+							</li>
+							<li>
+								<a href=""><i class="fa fa-vimeo" aria-hidden="true"></i></a>
+							</li>
+							<li>
+								<a href=""><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+							</li>
+							<li>
+								<a href=""><i class="fa fa-twitter" aria-hidden="true"></i></a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-md-3 sec-tab">
+					<h2>Our Solutions</h2>
+					<ul class="solutions">
+						<li>
+							<a href="#"> Science and Engineering</a>
+						</li>
+						<li>
+							<a href="#">Chemical Research</a>
+						</li>
+						<li>
+							<a href="#">Power and Energy</a>
+						</li>
+						<li>
+							<a href="#">Mechanical Engineering</a>
+						</li>
+						<li>
+							<a href="#">Petroleum and Gas</a>
+						</li>
+						<li>
+							<a href="#">Facture Process</a>
+						</li>
+					</ul>
+				</div>
+				<div class="col-md-3">
+					<h2>Latest news</h2>
+					<div class="footer-news">
+						<p>
+							Fusce non faucibus lorem. Cras eu velit id diam cursus tincidunt in ut dui. Quisque quis augue placerat.
+							<br>
+							<span>July 12, 2016</span>
+						</p>
+						<p>
+							Fusce non faucibus lorem. Cras eu velit id diam cursus tincidunt in ut dui.
+							<br>
+							<span>July 12, 2016</span>
+						</p>
+						<p>
+							Fusce non faucibus lorem. Cras eu velit id diam cursus tincidunt int.
+							<br>
+							<span>July 12, 2016</span>
+						</p>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<h2>Get in Touch</h2>
+					<ul class="contact-info">
+						<li>
+							<i class="fa fa-map-marker" aria-hidden="true"></i>
+							<div class="address">
+								Bristol Town 2578 AGS,
+								<br> New York City
+							</div>
+						</li>
+						<li>
+							<i class="fa fa-phone" aria-hidden="true"></i>
+							<div class="address">
+								(018) 65 524 8503
+								<br> (125) 954 7854
+							</div>
+						</li>
+						<li>
+							<i class="fa fa-clock-o" aria-hidden="true"></i>
+							<div class="address">
+								Mon to Fri - 08:00 to 16:30
+							</div>
+						</li>
+						<li>
+							<i class="fa fa-envelope" aria-hidden="true"></i>
+							<div class="address">
+								<a href="#">contact@factory.com </a>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<section class="footer-bottom">
+		<div class="container">
+			<div class="row">
+				<div class="pull-left">
+					<p>
+						Copyright Industrial 2016. All rights reserved
+					</p>
+				</div>
+				<div class="pull-right">
+					<p>
+						Created by: Lamarena
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+	<a class="scroll-top" href="#"><i class="fa fa-angle-up"></i> </a>
+  <!-- Scripts -->
+  {{ script('../vendor/js/jquery.min.js') }}
+  {{ script('../vendor/js/owl.carousel.min.js') }}
+  {{ script('https://maps.googleapis.com/maps/api/js')}}
+  {{ script('http://cdnjs.cloudflare.com/ajax/libs/gmaps.js/0.4.24/gmaps.min.js')}}
+  {{ script('../vendor/js/bootstrap.min.js') }}
+  {{ script('../vendor/js/plugins/map-helper.js')}}
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC-AVuzYG1-KEYwHw0gLOmlFX2I2YBzZGw&callback=initMap"></script>
+  {{ script('../vendor/js/jquery-validation/dist/jquery.validate.min.js')}}
+  {{ script('../vendor/OwlCarousel/dist/owl.carousel.min.js') }}
+  {{ script('../vendor/js/theme.js') }}
+</body>
+
+</html>

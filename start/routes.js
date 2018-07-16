@@ -15,7 +15,11 @@
 
 const Route = use('Route')
 
-Route.on('/').render('home')
+// Main Pages
+Route.on('/').render('pages.home')
+Route.on('/contact').render('pages.contact')
+
+Route.on('/account-home').render('account-home')
 Route.on('/quote-request').render('pages.quote-request')
 Route.on('/category').render('pages.category-details')
 
