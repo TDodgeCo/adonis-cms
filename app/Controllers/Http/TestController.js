@@ -185,6 +185,129 @@ class TestController {
     }
   }
 
+  async newStore ({ request, response, session, view}) {
+    console.log(await Hash.make(replaceAll(String(Date.now() * 3 ), '/', 't')))
+    const quote = request.all()
+    quote.ip_address = request.ip()
+    quote.captured_from = request.originalUrl()
+    try {
+      const user = await User.findBy(
+        'email', quote.email
+        // {
+        //   first_name: quote.first_name,
+        //   last_name: quote.last_name,
+        //   email: quote.email,
+        //   password: await Hash.make(replaceAll(String(Date.now() * 3 ), '/', 't')) // hash the current date, multiply by 3, replace forward slashes with t
+        // }
+      )
+      console.log('can user be found by email? ' + user == true)
+      if (!user) {
+        console.log('no user found')
+        this.userNotFound({
+          quote
+        })
+      }
+      console.log('user found. userID: ' + user.id)
+      this.userFound({
+        quote
+      })
+    } catch (err) {
+      console.log(
+        'user is: ' + quote.first_name +
+        '\nerr: ' + err
+      )
+    }
+  }
+
+  async userFound ({ quote }) {
+    console.log('userFound method initiated \n user email is: ' + quote.email)
+  }
+
+  async userNotFound ({ quote }) {
+    console.log('userNotFound method initiated \nemail of requested quote: ' + quote.email)
+    let dirtyPass = await Hash.make(replaceAll(String(Date.now() * 3 ), '/', 't'))
+    quote.password = dirtyPass
+    try {
+      const user = await User.create({
+        name: quote.first_name + ' ' + quote.last_name,
+        email: quote.email,
+        password: dirtyPass
+      })
+      console.log('created user: ' + user)
+      return this.createContactInHubSpot({
+        quote
+      })
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
+  async createContactInHubSpot ({quote}) {
+    try {
+      var vid;
+      await axios.post('https://api.hubapi.com/contacts/v1/contact/?hapikey=1456739c-4b72-4610-847f-193a8e3837ec', {
+        properties: [
+          {
+            "property": "email",
+            "value": quote.email
+          },
+          {
+            "property": "firstname",
+            "value": quote.first_name
+          },
+          {
+            "property": "lastname",
+            "value": quote.last_name
+          },
+          {
+            "property": "company",
+            "value": quote.company_name
+          },
+          {
+            "property": "phone",
+            "value": quote.phone
+          }
+        ]
+      }).then( response => {
+        console.log('create contact .then vid are: ' + response.data.vid)
+        vid = response.data.vid
+        console.log('vid = ' + vid)
+      }).catch(err => {
+        console.log('create contact catch message is: ' + err.response.data.message)
+      })
+      quote.vid = vid
+      return this.createDealInHubSpot({quote})
+    } catch (err) {
+      console.log('axios catch err is: ' + err)
+    }
+    console.log('createContactInHubSpot is not initiated: ' + quote)
+  }
+
+  async createDealInHubSpot ({quote}) {
+    console.log(quote.vid)
+    const dealName = Date.now() + ' ' + 'w' + quote.bldg_width + 'l' + quote.bldg_length + 'h' + quote.bldg_height
+    try {
+      axios.post('https://api.hubapi.com/deals/v1/deal?hapikey=' + Env.get('HAPI_KEY'), {
+        "associations": {
+          "associatedVids": [
+            dealName
+          ]
+        },
+        "properties": [
+          {
+            "value": dealName,
+            "name": "dealname"
+          },
+          {
+            "value": "bldg_zip",
+            "value": quote.bldg_zip
+          }
+        ]
+      })
+    } catch (err) {
+      console.log('createDealInHubSpot catch error: ' + err)
+    }
+  }
 }
 
 module.exports = TestController
