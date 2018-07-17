@@ -15,81 +15,82 @@ function replaceAll(str, find, replace) {
 
 class CustomerController {
 
-  async store ({ request, response, session, view }) {
-    const data = request.only(['first_name', 'email', 'phone', 'zip'])
+  async newStore ({ request, response, session, view}) {
+    console.log(await Hash.make(replaceAll(String(Date.now() * 3 ), '/', 't')))
     const quote = request.all()
-    console.log(quote)
-    const user = await User.findBy('email', data.email)
-    if (user) {
-      session.flash({ notification: 'You already have an account. Please log in and do this. We have stored your inputs.'})
-      return response.redirect('login')
-      // TODO send/save input data and present after user authenticates
+    quote.ip_address = request.ip()
+    quote.captured_from = request.originalUrl()
+    try {
+      const user = await User.findBy('email', quote.email)
+      console.log('can user be found by email? ' + user == true)
+      if (!user) {
+        console.log('no user found')
+        this.userNotFound({ quote })
+      }
+      console.log('user found. userID: ' + user.id)
+      this.userFound({ quote })
+    } catch (err) {
+      console.log(
+        'user is: ' + quote.first_name +
+        '\nerr: ' + err
+      )
     }
-    console.log('Attempting to create user ' + data.first_name)
+  }
+
+  async userFound ({ quote }) {
+    console.log('userFound method initiated \n user email is: ' + quote.email)
+    try {
+      this.createDealInHubSpot({ quote })
+    } catch (err) {
+      console.log('userFound Method Error: ' + err)
+    }
 
     try {
-      let dirtyPass = await Hash.make(String(Date.now() * 3))
-      dirtyPass = replaceAll(dirtyPass, '/', 't')
-      data.ip_address = request.ip()
-      data.captured_from = request.originalUrl()
-      data.password = dirtyPass
-      const newUser = await User.create(data)
-      // make sure the hashes match
-      const isSame = await Hash.verify(data.password, newUser.password)
-      console.log('hashed pass is correct: ' + isSame)
-      // TODO UNCOMMENT THIS FOR MAIL FUNCTIONALITY
-      // if (isSame) {
-      //   const userDetails = {
-      //     first_name: data.first_name,
-      //     email: data.email,
-      //     tempPass: dirtyPass,
-      //   }
-      //   await Mail.send('emails.welcome-customer', userDetails, (message) => {
-      //     message
-      //       .to(userDetails.email)
-      //       .from(Env.get('MAIL_USERNAME'))
-      //       .subject('New Account Instructions - Great American Buildings')
-      //   })
-      // }
-      const quoteData = {
-        customer_id: newUser.id,
-        bldg_width: quote.bldg_width,
-        bldg_length: quote.bldg_length,
-        bldg_height: quote.bldg_height,
-        roof_pitch: quote.roof_pitch,
-        overhead_door: quote.overhead_door,
-        overhead_quant: quote.overhead_quant,
-        man_door: quote.man_door,
-        man_door_quant: quote.man_door_quant,
-        bldg_window: quote.bldg_window,
-        bldg_window_quant: quote.bldg_window_quant,
-        roof_insulation: quote.roof_insulation,
-        wall_insulation: quote.wall_insulation,
-        frame_style: quote.frame_style,
-        frame_coating: quote.frame_coating,
-        wainscot: quote.wainscot,
-        gutters: quote.gutters,
-        framed_openings: quote.framed_openings,
-        bldg_zip: quote.zip
-      }
-      const customer = await Quote.create(quoteData) // const only for testing
+      await Mail.send('emails.multiple-quote-requests', quote, (message) => {
+            message
+              .to(quote.email)
+              .from(Env.get('MAIL_USERNAME'))
+              .subject('Additional Quote Requested - Great American Buildings')
+          })
+    } catch (err) {
+      console.log('userFound method mail function error: ' + err)
+    }
+  }
 
-      quoteData.name = newUser.first_name
-      quoteData.email = newUser.email
-      quoteData.phone = newUser.phone
+  async userNotFound ({ quote }) {
+    console.log('userNotFound method initiated \nemail of requested quote: ' + quote.email)
+    let dirtyPass = await Hash.make(replaceAll(String(Date.now() * 3 ), '/', 't'))
+    quote.password = dirtyPass
+    try {
+      const user = await User.create({
+        first_name: quote.first_name,
+        last_name: quote.last_name,
+        email: quote.email,
+        password: dirtyPass
+      })
+      console.log('created user: ' + user.id)
+      return this.createContactInHubSpot({ quote })
+    } catch (err) {
+      console.log('userNotFound Catch Error: ' + err)
+    }
+  }
+
+  async createContactInHubSpot ({ quote }) {
+    try {
+      var vid;
       await axios.post('https://api.hubapi.com/contacts/v1/contact/?hapikey=1456739c-4b72-4610-847f-193a8e3837ec', {
         properties: [
           {
             "property": "email",
-            "value": quoteData.email
+            "value": quote.email
           },
           {
             "property": "firstname",
-            "value": quoteData.first_name
+            "value": quote.first_name
           },
           {
             "property": "lastname",
-            "value": quoteData.last_name
+            "value": quote.last_name
           },
           {
             "property": "company",
@@ -97,103 +98,83 @@ class CustomerController {
           },
           {
             "property": "phone",
-            "value": quoteData.phone
+            "value": quote.phone
           },
           {
-            "property": "bldg_width",
-            "value": quoteData.bldg_width
-          },
-          {
-            "property": "bldg_length",
-            "value": quoteData.bldg_length
-          },
-          {
-            "property": "bldg_height",
-            "value": quoteData.bldg_height
-          },
-          {
-            "property": "roof_pitch",
-            "value": quoteData.roof_pitch
-          },
-          {
-            "property": "overhead_door",
-            "value": quoteData.overhead_door
-          },
-          {
-            "property": "overhead_door_quant",
-            "value": quoteData.overhead_door_quant
-          },
-          {
-            "property": "man_door",
-            "value": quoteData.man_door
-          },
-          {
-            "property": "man_door_quant",
-            "value": quoteData.man_door_quant
-          },
-          {
-            "property": "bldg_window",
-            "value": quoteData.bldg_window
-          },
-          {
-            "property": "bldg_window_quant",
-            "value": quoteData.bldg_window_quant
-          },
-          {
-            "property": "roof_insulation",
-            "value": quoteData.roof_insulation
-          },
-          {
-            "property": "wall_insulation",
-            "value": quoteData.wall_insulation
-          },
-          {
-            "property": "frame_style",
-            "value": quoteData.frame_style
-          },
-          {
-            "property": "frame_coating",
-            "value": quoteData.frame_coating
-          },
-          {
-            "property": "wainscot",
-            "value": quoteData.wainscot
-          },
-          {
-            "property": "gutters",
-            "value": quoteData.gutters
-          },
-          {
-            "property": "framed_openings",
-            "value": quoteData.framed_openings
-          },
-          {
-            "property": "bldg_zip",
-            "value": quoteData.bldg_zip
+            "property": "hubspot_owner_id",
+            "value": 32889852
+
           }
         ]
       }).then( response => {
-        console.log('then response is : ' + response.data)
-        if (response.status == 200 || response.status == '200') {
-          session.flash({ success: 'Request received! We will email your quote as soon as an estimator finishes it. This typically takes less than 24 hours.'})
-          return response.redirect('back')
-        }
-        console.log('the .then response: ' + response.status)
-      }).catch( err => {
-        console.log('error: ' + err)
-        console.log(response.status)
-        session.flash({ failure: 'Looks like that email has been used already. Please log in to your account or contact your rep to request another quote.'})
-        return view.render('pages.quote-request', {
-          quote: quote
-        })
+        console.log('create contact .then vid are: ' + response.data.vid)
+        vid = response.data.vid
+        console.log('vid = ' + vid)
+      }).catch(err => {
+        console.log('create contact catch message is: ' + err.response.data.message)
       })
-    } catch (error) {
-      session.flash({ failure: 'Something went wrong. Please try again.' })
-      response.redirect('back')
-      return console.log('catch error: ' + error)
+      quote.vid = vid
+      return this.createDealInHubSpot({ quote })
+    } catch (err) {
+      console.log('axios catch err is: ' + err)
     }
+    console.log('createContactInHubSpot is not initiated: ' + quote)
   }
 
+  async createDealInHubSpot ({ quote }) {
+    console.log(quote.vid)
+    const dealName = quote.first_name + ' ' + quote.last_name + ' ' + quote.bldg_width + 'x' + quote.bldg_length + 'x' + quote.bldg_height
+    try {
+      axios.post('https://api.hubapi.com/deals/v1/deal?hapikey=' + Env.get('HAPI_KEY'), {
+        "associations": {
+          "associatedVids": [
+            quote.vid
+          ]
+        },
+        "properties": [
+          {
+            "value": dealName,
+            "name": "dealname"
+          },
+          {
+            "value": quote.zip,
+            "name": "bldg_zip"
+          },
+          {
+            "value": 32889852,
+            "name": "hubspot_owner_id"
+          }
+        ]
+      })
+      this.createLocalQuote({ quote })
+    } catch (err) {
+      console.log('createDealInHubSpot catch error: ' + err)
+    }
+  }
+  async createLocalQuote ({ quote }) {
+    try {
+      const user = await User.findBy('email', quote.email)
+      quote.customer_id = user.id
+      quote.bldg_zip = quote.zip
+      delete quote._csrf
+      delete quote.ip_address
+      delete quote.captured_from
+      delete quote.company_name
+      delete quote.email
+      delete quote.first_name
+      delete quote.last_name
+      delete quote.phone
+      delete quote.password
+      delete quote.zip
+      delete quote.vid
+
+      console.log('createLocalQuote test: ' + quote)
+      const newQuote = await Quote.create(quote)
+      console.log('Quote Created! id is: ' + newQuote)
+    } catch (err) {
+      console.log('createLocalQuote err: ' + err)
+    }
+  }
 }
 
 module.exports = CustomerController
