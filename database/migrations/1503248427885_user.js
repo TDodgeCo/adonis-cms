@@ -23,9 +23,10 @@ class UserSchema extends Schema {
       table.string('city')
       table.string('state')
       table.string('zip')
-      table.integer('permissions')
-      table.integer('leads_assigned')
-      table.integer('projects_assigned')
+      table.integer('permissions').unsigned()
+      table.integer('leads_assigned').unsigned()
+      table.integer('projects_assigned').unsigned()
+      table.integer('hubspot_owner_id').unsigned()
       table.timestamps()
     })
   }

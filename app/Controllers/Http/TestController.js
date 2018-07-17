@@ -191,26 +191,14 @@ class TestController {
     quote.ip_address = request.ip()
     quote.captured_from = request.originalUrl()
     try {
-      const user = await User.findBy(
-        'email', quote.email
-        // {
-        //   first_name: quote.first_name,
-        //   last_name: quote.last_name,
-        //   email: quote.email,
-        //   password: await Hash.make(replaceAll(String(Date.now() * 3 ), '/', 't')) // hash the current date, multiply by 3, replace forward slashes with t
-        // }
-      )
+      const user = await User.findBy('email', quote.email)
       console.log('can user be found by email? ' + user == true)
       if (!user) {
         console.log('no user found')
-        this.userNotFound({
-          quote
-        })
+        this.userNotFound({ quote })
       }
       console.log('user found. userID: ' + user.id)
-      this.userFound({
-        quote
-      })
+      this.userFound({ quote })
     } catch (err) {
       console.log(
         'user is: ' + quote.first_name +
@@ -221,6 +209,12 @@ class TestController {
 
   async userFound ({ quote }) {
     console.log('userFound method initiated \n user email is: ' + quote.email)
+    try {
+      this.createDealInHubSpot({ quote })
+      this.createLocalQuote({ quote })
+    } catch (err) {
+      console.log('userFound Method Error: ' + err)
+    }    
   }
 
   async userNotFound ({ quote }) {
@@ -229,20 +223,19 @@ class TestController {
     quote.password = dirtyPass
     try {
       const user = await User.create({
-        name: quote.first_name + ' ' + quote.last_name,
+        first_name: quote.first_name,
+        last_name: quote.last_name,
         email: quote.email,
         password: dirtyPass
       })
-      console.log('created user: ' + user)
-      return this.createContactInHubSpot({
-        quote
-      })
+      console.log('created user: ' + user.id)
+      return this.createContactInHubSpot({ quote })
     } catch (err) {
-      console.log(err)
+      console.log('userNotFound Catch Error: ' + err)
     }
   }
 
-  async createContactInHubSpot ({quote}) {
+  async createContactInHubSpot ({ quote }) {
     try {
       var vid;
       await axios.post('https://api.hubapi.com/contacts/v1/contact/?hapikey=1456739c-4b72-4610-847f-193a8e3837ec', {
@@ -266,6 +259,11 @@ class TestController {
           {
             "property": "phone",
             "value": quote.phone
+          },
+          {
+            "property": "hubspot_owner_id",
+            "value": 32889852
+
           }
         ]
       }).then( response => {
@@ -276,21 +274,21 @@ class TestController {
         console.log('create contact catch message is: ' + err.response.data.message)
       })
       quote.vid = vid
-      return this.createDealInHubSpot({quote})
+      return this.createDealInHubSpot({ quote })
     } catch (err) {
       console.log('axios catch err is: ' + err)
     }
     console.log('createContactInHubSpot is not initiated: ' + quote)
   }
 
-  async createDealInHubSpot ({quote}) {
+  async createDealInHubSpot ({ quote }) {
     console.log(quote.vid)
-    const dealName = Date.now() + ' ' + 'w' + quote.bldg_width + 'l' + quote.bldg_length + 'h' + quote.bldg_height
+    const dealName = quote.first_name + ' ' + quote.last_name + ' ' + quote.bldg_width + 'x' + quote.bldg_length + 'x' + quote.bldg_height
     try {
       axios.post('https://api.hubapi.com/deals/v1/deal?hapikey=' + Env.get('HAPI_KEY'), {
         "associations": {
           "associatedVids": [
-            dealName
+            quote.vid
           ]
         },
         "properties": [
@@ -299,13 +297,42 @@ class TestController {
             "name": "dealname"
           },
           {
-            "value": "bldg_zip",
-            "value": quote.bldg_zip
+            "value": quote.zip,
+            "name": "bldg_zip"
+          },
+          {
+            "value": 32889852,
+            "name": "hubspot_owner_id"
           }
         ]
       })
+      this.createLocalQuote({ quote })
     } catch (err) {
       console.log('createDealInHubSpot catch error: ' + err)
+    }
+  }
+  async createLocalQuote ({ quote }) {
+    try {
+      const user = await User.findBy('email', quote.email)
+      quote.customer_id = user.id
+      quote.bldg_zip = quote.zip
+      delete quote._csrf
+      delete quote.ip_address
+      delete quote.captured_from
+      delete quote.company_name
+      delete quote.email
+      delete quote.first_name
+      delete quote.last_name
+      delete quote.phone
+      delete quote.password
+      delete quote.zip
+      delete quote.vid
+
+      console.log('createLocalQuote test: ' + quote)
+      const newQuote = await Quote.create(quote)
+      console.log('Quote Created! id is: ' + newQuote)
+    } catch (err) {
+      console.log('createLocalQuote err: ' + err)
     }
   }
 }
