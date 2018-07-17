@@ -57,5 +57,5 @@ Route.get('account/quotes', 'QuoteController.index').middleware('auth')
 
 // Test Stuff
 Route.get('/test', 'TestController.index')
-Route.post('/test', 'TestController.save')
+Route.post('/test', 'TestController.store')
 Route.get('/builders/:state/:dealer', 'TestController.test')

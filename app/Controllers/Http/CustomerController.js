@@ -15,7 +15,7 @@ function replaceAll(str, find, replace) {
 
 class CustomerController {
 
-  async store ({ request, response, session }) {
+  async store ({ request, response, session, view }) {
     const data = request.only(['first_name', 'email', 'phone', 'zip'])
     const quote = request.all()
     console.log(quote)
@@ -36,7 +36,7 @@ class CustomerController {
       const newUser = await User.create(data)
       // make sure the hashes match
       const isSame = await Hash.verify(data.password, newUser.password)
-      console.log(isSame)
+      console.log('hashed pass is correct: ' + isSame)
       // TODO UNCOMMENT THIS FOR MAIL FUNCTIONALITY
       // if (isSame) {
       //   const userDetails = {
@@ -90,6 +90,10 @@ class CustomerController {
           {
             "property": "lastname",
             "value": quoteData.last_name
+          },
+          {
+            "property": "company",
+            "value": quote.company_name
           },
           {
             "property": "phone",
@@ -169,17 +173,24 @@ class CustomerController {
           }
         ]
       }).then( response => {
-        if (response.data == 409 || response.data == '409') {
-          session.flash({ notification: 'You already have an account. Please log in and do this. We have stored your inputs.'})
-          return response.redirect('login')
+        console.log('then response is : ' + response.data)
+        if (response.status == 200 || response.status == '200') {
+          session.flash({ success: 'Request received! We will email your quote as soon as an estimator finishes it. This typically takes less than 24 hours.'})
+          return response.redirect('back')
         }
         console.log('the .then response: ' + response.status)
       }).catch( err => {
         console.log('error: ' + err)
+        console.log(response.status)
+        session.flash({ failure: 'Looks like that email has been used already. Please log in to your account or contact your rep to request another quote.'})
+        return view.render('pages.quote-request', {
+          quote: quote
+        })
       })
-      this.testMethod()
     } catch (error) {
-      return console.log('error: ' + error)
+      session.flash({ failure: 'Something went wrong. Please try again.' })
+      response.redirect('back')
+      return console.log('catch error: ' + error)
     }
   }
 

@@ -1,0 +1,31 @@
+var app = new Vue({
+  el: '#app',
+  delimiters: ["{%","%}"],
+  data: {
+    bldg_width: '',
+    bldg_length: '',
+    bldg_height: '',
+    roof_pitch: '',
+    overhead_door: '',
+    overhead_quant: '',
+    overhead_insulation: '',
+    man_door: '',
+    man_door_quant: '',
+    man_door_insulation: '',
+    bldg_window: '',
+    bldg_window_quant: '',
+    roof_insulation: '',
+    wall_insulation: '',
+    frame_style: '',
+    frame_coating: '',
+    wainscot: '',
+    gutters: '',
+    framed_openings: '',
+    first_name: '',
+    last_name: '',
+    email: '',
+    company_name: '',
+    phone: '',
+    zip: ''
+  }
+})

@@ -1,11 +1,19 @@
 @layout('layouts.form-layout')
+@section('head')
+{{ script('https://cdn.jsdelivr.net/npm/vue/dist/vue.js')}}
+@endsection
 @section('content')
 
-<div style="margin: 40px 0;">
+<div id="app" style="margin: 40px 0;">
   <section class="checkout">
     <div class="container">
+      @if(old('failure'))
+        <div class="alert alert-danger">
+          {{ old('failure') }}
+        </div>
+      @endif
       <div class="row">
-        <form action="/quote-request" method="post">
+        <form action="/test" method="post">
           {{ csrfField() }}
           <div class="col-sm-12 col-md-6">
             <div class="title">
@@ -26,25 +34,25 @@
                       <div class="col-sm-12">
                         <div class="form-grp">
                           <label>Building Width<span>*</span></label>
-                          <input id="bldg_width" placeholder="e.g. 40'" type="number" name="bldg_width">
+                          <input v-model="bldg_width" id="bldg_width" placeholder="e.g. 40'" type="number" name="bldg_width" value="{{quoteData.bldg_width}}">
                         </div>
                       </div>
                       <div class="col-sm-12">
                         <div class="form-grp">
                           <label>Building Length<span>*</span></label>
-                          <input class="form-control" id="bldg_length" placeholder="e.g. 60'" type="number" name="bldg_length">
+                          <input v-model="bldg_length" class="form-control" id="bldg_length" placeholder="e.g. 60'" type="number" name="bldg_length" value="{{quoteData.bldg_length}}">
                         </div>
                       </div>
                       <div class="col-sm-12">
                         <div class="form-grp">
                           <label>Building Height<span>*</span></label>
-                          <input id="bldg_height" placeholder="e.g. 14'" type="number" name="bldg_height">
+                          <input v-model="bldg_height" id="bldg_height" placeholder="e.g. 14'" type="number" name="bldg_height">
                         </div>
                       </div>
                       <div class="col-sm-12">
                         <div class="form-grp">
                           <label>Roof Pitch<span>*</span></label>
-                          <input id="roof_pitch" placeholder="e.g. 2:12" type="text" name="roof_pitch">
+                          <input v-model="roof_pitch" id="roof_pitch" placeholder="e.g. 2:12" type="text" name="roof_pitch">
                         </div>
                       </div>
                       <div class="col-sm-3 col-sm-offset-9">
@@ -63,7 +71,7 @@
                       <div class="form-grp">
                         <div class="col-sm-9">
                           <label>Overhead Doors<span>*</span></label>
-                          <select id="overhead_door" name="overhead_door">
+                          <select v-model="overhead_door" id="overhead_door" name="overhead_door">
                             <option value="test1">Test1</option>
                             <option value="test2">Test2</option>
                             <option value="test3">Test3</option>
@@ -72,10 +80,10 @@
                         </div>
                         <div class="col-sm-3">
                           <label>Quantity</label>
-                          <input type="number" name="overhead_quant" placeholder="0">
+                          <input v-model="overhead_quant" type="number" name="overhead_quant" placeholder="0">
                         </div>
                         <div class="col-sm-12">
-                          <input type="checkbox" name="overhead_insulation">
+                          <input v-model="overhead_insulation" type="checkbox" name="overhead_insulation">
                           <label>Insulated?</label>
                         </div>
                       </div>
@@ -84,7 +92,7 @@
                       <div class="form-grp">
                         <div class="col-sm-9">
                           <label>Man Doors<span>*</span></label>
-                          <select id="man_door" name="man_door">
+                          <select v-model="man_door" id="man_door" name="man_door">
                             <option value="test1">Test1</option>
                             <option value="test2">Test2</option>
                             <option value="test3">Test3</option>
@@ -93,10 +101,10 @@
                         </div>
                         <div class="col-sm-3">
                           <label>Quantity</label>
-                          <input type="number" name="man_door_quant" placeholder="0">
+                          <input v-model="man_door_quant" type="number" name="man_door_quant" placeholder="0">
                         </div>
                         <div class="col-sm-12">
-                          <input type="checkbox" name="man_door_insulation">
+                          <input v-model="man_door_insulation" type="checkbox" name="man_door_insulation">
                           <label>Insulated?</label>
                         </div>
                       </div>
@@ -105,7 +113,7 @@
                       <div class="form-grp">
                         <div class="col-sm-9">
                           <label>Windows<span>*</span></label>
-                          <select id="window" name="bldg_window">
+                          <select v-model="bldg_window" id="bldg_window" name="bldg_window">
                             <option value="test1">Test1</option>
                             <option value="test2">Test2</option>
                             <option value="test3">Test3</option>
@@ -114,15 +122,15 @@
                         </div>
                         <div class="col-sm-3">
                           <label>Quantity</label>
-                          <input type="number" name="bldg_window_quant" placeholder="0">
+                          <input v-model="bldg_window_quant" type="number" name="bldg_window_quant" placeholder="0">
                         </div>
                       </div>
                     </div>
                     <div class="col-sm-12 addon">
                       <div class="form-grp">
                         <div class="col-sm-6">
-                          <label>Roof Insulation<span>*</span></label>
-                          <select id="roof_insulation" name="roof_insulation">
+                          <label>Wall Insulation<span>*</span></label>
+                          <select v-model="wall_insulation" id="wall_insulation" name="wall_insulation">
                             <option value="3_inch">3" R10</option>
                             <option value="4_inch">4" R13"</option>
                             <option value="6_inch">6" R19</option>
@@ -133,8 +141,8 @@
                           </select>
                         </div>
                         <div class="col-sm-6">
-                          <label>Wall Insulation<span>*</span></label>
-                          <select id="wall_insulation" name="wall_insulation">
+                          <label>Roof Insulation<span>*</span></label>
+                          <select v-model="roof_insulation" id="roof_insulation" name="roof_insulation">
                             <option value="3_inch">3" R10</option>
                             <option value="4_inch">4" R13"</option>
                             <option value="6_inch">6" R19</option>
@@ -161,16 +169,16 @@
                       <div class="form-grp">
                         <div class="col-sm-7">
                           <label>Frame Style</label>
-                          <select id="frame_style" name="frame_style">
-                            <option value="test1">Gable</option>
-                            <option value="test2">Single Slope</option>
-                            <option value="test3">Monitor/Western</option>
-                            <option value="test4">Gambrel</option>
+                          <select v-model="frame_style" id="frame_style" name="frame_style">
+                            <option value="gable">Gable</option>
+                            <option value="single_slope">Single Slope</option>
+                            <option value="monitor/western">Monitor/Western</option>
+                            <option value="gambrel">Gambrel</option>
                           </select>
                         </div>
                         <div class="col-sm-5">
                           <label>Frame Coating</label>
-                          <select id="frame_coating" name="frame_coating">
+                          <select v-model="frame_coating" id="frame_coating" name="frame_coating">
                             <option value="gray_oxide">Gray Oxide</option>
                             <option value="red_oxide">Red Oxide</option>
                           </select>
@@ -181,16 +189,17 @@
                       <div class="form-grp">
                         <div class="col-sm-6">
                           <label>Wainscot <small>Color band across the base.</small></label>
-                          <select id="wainscot" name="wainscot">
+                          <select v-model="wainscot" id="wainscot" name="wainscot">
+                            <option value="None">None</option>
                             <option value="36_inch">36"</option>
                             <option value="48_inch">48"</option>
                           </select>
                         </div>
                         <div class="col-sm-6">
                           <label>Gutters/Downspouts</label>
-                          <select id="gutters" name="gutters">
-                            <option value="36_inch">No</option>
-                            <option value="48_inch">Yes</option>
+                          <select v-model="gutters" id="gutters" name="gutters">
+                            <option value="No">No</option>
+                            <option value="Yes">Yes</option>
                           </select>
                         </div>
                       </div>
@@ -199,7 +208,7 @@
                       <div class="col-sm-12">
                         <div class="checkbox">
                           <span>Framed Openings <small>Please describe in detail where you would like them.</small> </span>
-                          <textarea class="form-control" cols="40" rows="5" id="framed_openings" name="framed_openings"></textarea>
+                          <textarea v-model="framed_openings" class="form-control" cols="40" rows="5" id="framed_openings" name="framed_openings"></textarea>
                         </div>
                       </div>
                     </div>
@@ -218,37 +227,37 @@
                       <div class="col-sm-12 col-md-6">
                         <div class="form-grp">
                           <label>First Name<span>*</span></label>
-                          <input id="first_name" placeholder="First name" type="text" name="first_name">
+                          <input v-model="first_name" id="first_name" placeholder="First name" type="text" name="first_name">
                         </div>
                       </div>
                       <div class="col-sm-12 col-md-6">
                         <div class="form-grp">
-                          <label>Name<span>*</span></label>
-                          <input id="last_name" placeholder="Last name" type="text" name="last_name">
+                          <label>Last Name<span>*</span></label>
+                          <input v-model="last_name" id="last_name" placeholder="Last name" type="text" name="last_name">
                         </div>
                       </div>
                       <div class="col-sm-12">
                         <div class="form-grp">
                           <label>Company Name<span>*</span></label>
-                          <input id="company_name" placeholder="Acme Co LLC" type="text" name="company_name">
+                          <input v-model="company_name" id="company_name" placeholder="Acme Co LLC" type="text" name="company_name">
                         </div>
                       </div>
                       <div class="col-sm-12">
                         <div class="form-grp">
                           <label>Email<span>*</span></label>
-                          <input id="email" placeholder="you@example.com" type="email" name="email">
+                          <input v-model="email" id="email" placeholder="you@example.com" type="email" name="email">
                         </div>
                       </div>
                       <div class="col-sm-12">
                         <div class="form-grp">
                           <label>Phone<span>*</span></label>
-                          <input id="phone" placeholder="Your primary phone number" type="text" name="phone">
+                          <input v-model="phone" id="phone" placeholder="Your primary phone number" type="text" name="phone">
                         </div>
                       </div>
                       <div class="col-sm-12">
                         <div class="form-grp">
                           <label>Zip Code<span>*</span></label>
-                          <input id="zip" placeholder="Zip code where you'll be building" type="text" name="zip">
+                          <input v-model="zip" id="zip" placeholder="Zip code where you'll be building" type="text" name="zip">
                         </div>
                       </div>
                       <div class="col-sm-3 col-sm-offset-9">
@@ -280,5 +289,7 @@
     </div>
   </section>
 </div>
+{{ script('./js/quote-vue.js') }}
 {{ script('./js/quote-request.js') }}
+
 @endsection
