@@ -14,14 +14,15 @@ function replaceAll(str, find, replace) {
 
 
 class CustomerController {
+
   async store ({ request, response, session }) {
     const data = request.only(['first_name', 'email', 'phone', 'zip'])
     const quote = request.all()
     console.log(quote)
     const user = await User.findBy('email', data.email)
     if (user) {
-      return response.redirect('login')
       session.flash({ notification: 'You already have an account. Please log in and do this. We have stored your inputs.'})
+      return response.redirect('login')
       // TODO send/save input data and present after user authenticates
     }
     console.log('Attempting to create user ' + data.first_name)
@@ -36,19 +37,20 @@ class CustomerController {
       // make sure the hashes match
       const isSame = await Hash.verify(data.password, newUser.password)
       console.log(isSame)
-      if (isSame) {
-        const userDetails = {
-          first_name: data.first_name,
-          email: data.email,
-          tempPass: dirtyPass,
-        }
-        await Mail.send('emails.welcome-customer', userDetails, (message) => {
-          message
-            .to(userDetails.email)
-            .from(Env.get('MAIL_USERNAME'))
-            .subject('New Account Instructions - Great American Buildings')
-        })
-      }
+      // TODO UNCOMMENT THIS FOR MAIL FUNCTIONALITY
+      // if (isSame) {
+      //   const userDetails = {
+      //     first_name: data.first_name,
+      //     email: data.email,
+      //     tempPass: dirtyPass,
+      //   }
+      //   await Mail.send('emails.welcome-customer', userDetails, (message) => {
+      //     message
+      //       .to(userDetails.email)
+      //       .from(Env.get('MAIL_USERNAME'))
+      //       .subject('New Account Instructions - Great American Buildings')
+      //   })
+      // }
       const quoteData = {
         customer_id: newUser.id,
         bldg_width: quote.bldg_width,
@@ -75,19 +77,112 @@ class CustomerController {
       quoteData.name = newUser.first_name
       quoteData.email = newUser.email
       quoteData.phone = newUser.phone
-      console.log(quoteData)
-      axios.post('https://api.hubapi.com/contacts/v1/contact/?hapikey=' + Env.get('HAPI_KEY'), {
-        quoteData
+      await axios.post('https://api.hubapi.com/contacts/v1/contact/?hapikey=1456739c-4b72-4610-847f-193a8e3837ec', {
+        properties: [
+          {
+            "property": "email",
+            "value": quoteData.email
+          },
+          {
+            "property": "firstname",
+            "value": quoteData.first_name
+          },
+          {
+            "property": "lastname",
+            "value": quoteData.last_name
+          },
+          {
+            "property": "phone",
+            "value": quoteData.phone
+          },
+          {
+            "property": "bldg_width",
+            "value": quoteData.bldg_width
+          },
+          {
+            "property": "bldg_length",
+            "value": quoteData.bldg_length
+          },
+          {
+            "property": "bldg_height",
+            "value": quoteData.bldg_height
+          },
+          {
+            "property": "roof_pitch",
+            "value": quoteData.roof_pitch
+          },
+          {
+            "property": "overhead_door",
+            "value": quoteData.overhead_door
+          },
+          {
+            "property": "overhead_door_quant",
+            "value": quoteData.overhead_door_quant
+          },
+          {
+            "property": "man_door",
+            "value": quoteData.man_door
+          },
+          {
+            "property": "man_door_quant",
+            "value": quoteData.man_door_quant
+          },
+          {
+            "property": "bldg_window",
+            "value": quoteData.bldg_window
+          },
+          {
+            "property": "bldg_window_quant",
+            "value": quoteData.bldg_window_quant
+          },
+          {
+            "property": "roof_insulation",
+            "value": quoteData.roof_insulation
+          },
+          {
+            "property": "wall_insulation",
+            "value": quoteData.wall_insulation
+          },
+          {
+            "property": "frame_style",
+            "value": quoteData.frame_style
+          },
+          {
+            "property": "frame_coating",
+            "value": quoteData.frame_coating
+          },
+          {
+            "property": "wainscot",
+            "value": quoteData.wainscot
+          },
+          {
+            "property": "gutters",
+            "value": quoteData.gutters
+          },
+          {
+            "property": "framed_openings",
+            "value": quoteData.framed_openings
+          },
+          {
+            "property": "bldg_zip",
+            "value": quoteData.bldg_zip
+          }
+        ]
       }).then( response => {
-        console.log(response)
+        if (response.data == 409 || response.data == '409') {
+          session.flash({ notification: 'You already have an account. Please log in and do this. We have stored your inputs.'})
+          return response.redirect('login')
+        }
+        console.log('the .then response: ' + response.status)
       }).catch( err => {
         console.log('error: ' + err)
       })
-
+      this.testMethod()
     } catch (error) {
       return console.log('error: ' + error)
     }
   }
+
 }
 
 module.exports = CustomerController
