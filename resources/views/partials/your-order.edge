@@ -7,32 +7,32 @@
         <span class="first-pad"><b>Building Details</b></span>
         <br>
         <span class="first-pad">Construction Site Zip</span>
-        <span class="second">{%  %}</span>
+        <span class="second">{% zip %}</span>
         <span class="first-pad">Dimensions</span>
-        <span class="second">30x40x12 1:12</span>
+        <span v-if="roof_pitch" class="second">{% bldg_width %}x{% bldg_length %}x{% bldg_height %} Pitch {% roof_pitch %}</span>
         <span class="first-pad">Frame Style</span>
-        <span class="second">Gable</span>
+        <span class="second">{% frame_style %}</span>
         <span class="first-pad">Wainscot</span>
-        <span class="second">No</span>
+        <span class="second">{% wainscot %}</span>
         <span class="first-pad">Frame Coating</span>
-        <span class="second">Gray Oxide</span>
+        <span class="second">{% frame_coating %}</span>
         <span class="first-pad">Secondary Finish</span>
-        <span class="second">G90 Galvanized</span>
+        <span v-if="frame_coating" class="second">G90 Galvanized</span>
         <span class="first-pad">Gutters</span>
-        <span class="second">Yes</span>
+        <span class="second">{% gutters %}</span>
       </li>
       <li>
         <span class="first-pad"><b>Accessory</b></span>
         <span class="second"><b>Quantity</b></span>
         <br>
-        <span class="first-pad">12x12 Overhead</span>
-        <span class="second">2</span>
-        <span class="first-pad">3070 Man Door</span>
-        <span class="second">2</span>
-        <span class="first-pad">4040 Window</span>
-        <span class="second">2</span>
-        <span class="first-pad">Wall/Roof Insulation</span>
-        <span class="second">4"/6"</span>
+        <span class="first-pad">{% overhead_door %}</span>
+        <span class="second">{% overhead_quant %}</span>
+        <span class="first-pad">{% man_door %}</span>
+        <span class="second">{% man_door_quant %}</span>
+        <span class="first-pad">{% bldg_window %}</span>
+        <span class="second">{% bldg_window_quant %}</span>
+        <span v-if="roof_insulation" class="first-pad">Wall/Roof Insulation</span>
+        <span v-if="roof_insulation" class="second">{% wall_insulation %}/{% roof_insulation %}</span>
       </li>
     </ul>
   </div>
