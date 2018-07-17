@@ -12,11 +12,11 @@
               <h2>Building Details</h2>
             </div>
             <ul class="nav nav-pills nav-wizard" role="tablist">
-              <li class="active"><a href="#quote" data-toggle="tab">Quote</a></li>
-              <li><a href="#addons" data-toggle="tab">Addons</a></li>
-              <li><a href="#options" data-toggle="tab">Options</a></li>
-              <li><a href="#personal" data-toggle="tab">Details</a></li>
-              <li><a href="#complete" data-toggle="tab">Complete</a></li>
+              <li id="quoteTab" class="active"><a href="#quote" data-toggle="tab">Quote</a></li>
+              <li id="addonsTab"><a href="#addons" data-toggle="tab">Addons</a></li>
+              <li id="optionsTab"><a href="#options" data-toggle="tab">Options</a></li>
+              <li id="personalTab"><a href="#personal" data-toggle="tab">Details</a></li>
+              <li id="completeTab"><a href="#complete" data-toggle="tab">Complete</a></li>
             </ul>
             <div class="tab-content">
               <div role="tabpanel" class="tab-pane fade in active" id="quote">
@@ -49,7 +49,7 @@
                       </div>
                       <div class="col-sm-3 col-sm-offset-9">
                         <div class="form-group details">
-                          <button class="gab-btn-blue pull-right" type="button" name="button">NEXT</button>
+                          <a href="#addons" data-toggle="tab"><button id="quoteButton" class="gab-btn-blue pull-right" type="button">NEXT</button></a>
                         </div>
                       </div>
                     </div>
@@ -148,7 +148,7 @@
                     </div>
                     <div class="col-sm-3 col-sm-offset-9">
                       <div class="form-group">
-                        <button class="gab-btn-blue pull-right" type="button" name="button">NEXT</button>
+                        <a href="#options" data-toggle="tab"><button id="addonsButton" class="gab-btn-blue pull-right" type="button" name="button">NEXT</button></a>
                       </div>
                     </div>
                   </div>
@@ -205,7 +205,7 @@
                     </div>
                     <div class="col-sm-3 col-sm-offset-9">
                       <div class="form-group">
-                        <button class="gab-btn-blue pull-right" type="button" name="button">NEXT</button>
+                        <a href="#personal" data-toggle="tab"><button id="optionsButton" class="gab-btn-blue pull-right" type="button" name="button">NEXT</button></a>
                       </div>
                     </div>
                   </div>
@@ -253,7 +253,7 @@
                       </div>
                       <div class="col-sm-3 col-sm-offset-9">
                         <div class="form-group">
-                          <button class="gab-btn-blue pull-right" type="submit" name="button">FINISH</button>
+                          <button id="submitButton" class="gab-btn-blue pull-right" type="submit" name="button">FINISH</button>
                         </div>
                       </div>
                     </div>
