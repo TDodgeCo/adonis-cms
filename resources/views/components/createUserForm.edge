@@ -42,6 +42,17 @@
             {{-- TODO minimum password length --}}
             <span id="confirmMessage" class="alert-danger"></span>
           </div>
+          <div class="form-group">
+            <label>User Type</label>
+            <select class="form-control" name="permissions">
+              <option value="0">None</option>
+              <option value="1">Editor</option>
+              <option value="2">Project Manager</option>
+              <option value="3">Salesperson</option>
+              <option value="4">Estimator</option>
+              <option value="5">Dealer</option>
+            </select>
+          </div>
           <div class="form-group form-check">
             <input type="checkbox" class="form-check-input" name="admin" id="admin">
             <label class="form-check-label">Admin?</label>

@@ -15,7 +15,7 @@ function replaceAll(str, find, replace) {
 
 class CustomerController {
 
-  async newStore ({ request, response, session, view}) {
+  async store ({ request, response, session, view}) {
     console.log(await Hash.make(replaceAll(String(Date.now() * 3 ), '/', 't')))
     const quote = request.all()
     quote.ip_address = request.ip()
@@ -62,10 +62,23 @@ class CustomerController {
     let dirtyPass = await Hash.make(replaceAll(String(Date.now() * 3 ), '/', 't'))
     quote.password = dirtyPass
     try {
+      await Mail.send('emails.welcome-customer', quote, (message) => {
+            message
+              .to(quote.email)
+              .from(Env.get('MAIL_USERNAME'))
+              .subject('Quote Requested - Great American Buildings')
+          })
+    } catch (err) {
+      console.log('userFound method mail function error: ' + err)
+    }
+    try {
       const user = await User.create({
         first_name: quote.first_name,
         last_name: quote.last_name,
+        phone: quote.phone,
+        company: quote.company_name,
         email: quote.email,
+        permissions: 6,
         password: dirtyPass
       })
       console.log('created user: ' + user.id)

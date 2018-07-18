@@ -55,7 +55,11 @@ Route.get('/logout', 'Usercontroller.logout')
 Route.post('/quote-request', 'CustomerController.store')
 Route.get('account/quotes', 'QuoteController.index').middleware('auth')
 
+// External API stuff
+Route.group(() => {
+  Route.get('ownerid/:email', 'HubSpotController.getOwnerId')
+}).prefix('/hubspot')
+
 // Test Stuff
-Route.get('/test', 'TestController.index')
-Route.post('/test', 'TestController.newStore')
+Route.get('/test', 'TestController.test')
 Route.get('/builders/:state/:dealer', 'TestController.test')

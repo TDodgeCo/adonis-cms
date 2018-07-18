@@ -6,6 +6,7 @@ const Hash = use('Hash')
 const Mail = use('Mail')
 const Env = use('Env')
 const { validateAll } = use('Validator')
+const axios = use('axios')
 
 class UserController {
   /**
@@ -46,7 +47,8 @@ class UserController {
         message: 'You are not authorized to do that.'
       })
     }
-    let userData = request.only([ 'first_name', 'last_name', 'email', 'password', 'admin' ])
+    let userData = request.only([ 'first_name', 'last_name', 'email', 'password', 'admin', 'permissions' ])
+    userData.permissions = parseInt(userData.permissions)
     if (userData.admin) {
       userData.admin = true
       await User.create(userData)
@@ -59,7 +61,10 @@ class UserController {
       session.flash({ notification: 'Admin User Added!'})
       return response.redirect('/account')
       }
-    await User.create(userData)
+    const user = await User.create(userData)
+    if (userData.permissions == 3) {
+      this.getOwnerId(user.email, user.id)
+    }
     await Mail.send('emails.welcome', userData, (message) => {
           message
             .to(userData.email)
@@ -157,6 +162,21 @@ class UserController {
     }
     session.flash({ notification: 'Something went wrong. Try again.'})
     return response.redirect('back')
+  }
+
+  async getOwnerId (email, id) {
+    const user = await User.find(id)
+    const hubspotUsers =
+    await axios.get('http://api.hubapi.com/owners/v2/owners?hapikey=1456739c-4b72-4610-847f-193a8e3837ec')
+    console.log('typeof hubspotUsers: ' + typeof hubspotUsers)
+    const findUser = function (arr) {
+      return arr.email == email
+    }
+    const userIndex = hubspotUsers.data.findIndex(findUser)
+    const userOwnerId = hubspotUsers.data[userIndex].ownerId
+
+    user.hubspot_owner_id = userOwnerId
+    return await user.save()
   }
 
 }

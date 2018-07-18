@@ -2,10 +2,11 @@
 
 User Permissions Column on User Migration:
 1 Editor
-2 Salesperson
-3 Project Manager
-4 Dealer
-5 Customer
+2 Project Manager
+3 Salesperson
+4 Estimator
+5 Dealer
+6 Customer
 
 # Adonis fullstack application
 
