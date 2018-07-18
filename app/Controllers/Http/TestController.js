@@ -13,19 +13,33 @@ function replaceAll(str, find, replace) {
 }
 
 class TestController {
-  async test ({ params, response }) {
-    const email = 'crm-test@grambuildings.com'
-    const hubspotUsers =
-    await axios.get('http://api.hubapi.com/owners/v2/owners?hapikey=1456739c-4b72-4610-847f-193a8e3837ec')
-    console.log('typeof hubspotUsers: ' + typeof hubspotUsers)
-    const findUser = function (arr) {
-      return arr.email == email
+  async test ({ response }) {
+    try {
+      const salespeople = await User
+        .query()
+        .where('permissions', 3)
+        .fetch()
+      const salesArr = salespeople.rows
+      let repObj = []
+      for (let i = 0; i < salesArr.length; i++) {
+        console.log('Salesperson: ' + salesArr[i].$attributes.email)
+        console.log('leads assigned: ' + salesArr[i].$attributes.leads_assigned)
+        repObj.push({
+          id: salesArr[i].$attributes.id,
+          email: salesArr[i].$attributes.email,
+          leads_assigned: salesArr[i].$attributes.leads_assigned
+        })
+      }
+      console.log(repObj)
+      const leastLeadsObj =
+        repObj.reduce((l, e) => e.leads_assigned > l.leads_assigned ? l : e);
+      const repToAssignTo = await User.find(leastLeadsObj.id)
+      repToAssignTo.leads_assigned = repToAssignTo.leads_assigned + 1
+      repToAssignTo.save()
+      console.log(repToAssignTo.$attributes.leads_assigned)
+    } catch (err) {
+      console.log(err)
     }
-    const userIndex = hubspotUsers.data.findIndex(findUser)
-    const userOwnerId = hubspotUsers.data[userIndex].ownerId
-    response.json({
-      ownerId: userOwnerId
-    })
   }
 }
 

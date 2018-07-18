@@ -82,15 +82,39 @@ class CustomerController {
         password: dirtyPass
       })
       console.log('created user: ' + user.id)
-      return this.createContactInHubSpot({ quote })
+      return this.createContactInHubSpot({ quote, user })
     } catch (err) {
       console.log('userNotFound Catch Error: ' + err)
     }
   }
 
-  async createContactInHubSpot ({ quote }) {
+  async createContactInHubSpot ({ quote, user }) {
+
     try {
       var vid;
+      // Fetch all salespeople
+      const salespeople = await User
+        .query()
+        .where('permissions', 3)
+        .fetch()
+      const salesArr = salespeople.rows
+      let repObj = []
+      // push sales reps ids, emails and leads assigned to array
+      for (let i = 0; i < salesArr.length; i++) {
+        console.log('Salesperson: ' + salesArr[i].$attributes.email)
+        console.log('leads assigned: ' + salesArr[i].$attributes.leads_assigned)
+        repObj.push({
+          id: salesArr[i].$attributes.id,
+          email: salesArr[i].$attributes.email,
+          leads_assigned: salesArr[i].$attributes.leads_assigned
+        })
+      }
+      // determine sales rep object with lowest amount of leads assigned
+      const leastLeadsObj = repObj.reduce((l, e) => e.leads_assigned > l.leads_assigned ? l : e)
+      // find that sales rep in users table
+      const repToAssignTo = await User.find(leastLeadsObj.id)
+      repToAssignTo.leads_assigned = repToAssignTo.leads_assigned + 1
+      // send new quote and assigned rep to hubspot
       await axios.post('https://api.hubapi.com/contacts/v1/contact/?hapikey=1456739c-4b72-4610-847f-193a8e3837ec', {
         properties: [
           {
@@ -115,8 +139,7 @@ class CustomerController {
           },
           {
             "property": "hubspot_owner_id",
-            "value": 32889852
-
+            "value": repToAssignTo.hubspot_owner_id
           }
         ]
       }).then( response => {
@@ -126,15 +149,16 @@ class CustomerController {
       }).catch(err => {
         console.log('create contact catch message is: ' + err.response.data.message)
       })
+      await repToAssignTo.save()
       quote.vid = vid
-      return this.createDealInHubSpot({ quote })
+      return this.createDealInHubSpot({ quote, repToAssignTo })
     } catch (err) {
       console.log('axios catch err is: ' + err)
     }
     console.log('createContactInHubSpot is not initiated: ' + quote)
   }
 
-  async createDealInHubSpot ({ quote }) {
+  async createDealInHubSpot ({ quote, repToAssignTo }) {
     console.log(quote.vid)
     const dealName = quote.first_name + ' ' + quote.last_name + ' ' + quote.bldg_width + 'x' + quote.bldg_length + 'x' + quote.bldg_height
     try {
@@ -154,7 +178,7 @@ class CustomerController {
             "name": "bldg_zip"
           },
           {
-            "value": 32889852,
+            "value": repToAssignTo.hubspot_owner_id,
             "name": "hubspot_owner_id"
           }
         ]
