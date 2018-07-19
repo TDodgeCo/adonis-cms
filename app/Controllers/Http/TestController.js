@@ -36,7 +36,6 @@ class TestController {
       const repToAssignTo = await User.find(leastLeadsObj.id)
       repToAssignTo.leads_assigned = repToAssignTo.leads_assigned + 1
       repToAssignTo.save()
-      console.log(repToAssignTo.$attributes.leads_assigned)
     } catch (err) {
       console.log(err)
     }

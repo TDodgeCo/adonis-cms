@@ -101,8 +101,6 @@ class CustomerController {
       let repObj = []
       // push sales reps ids, emails and leads assigned to array
       for (let i = 0; i < salesArr.length; i++) {
-        console.log('Salesperson: ' + salesArr[i].$attributes.email)
-        console.log('leads assigned: ' + salesArr[i].$attributes.leads_assigned)
         repObj.push({
           id: salesArr[i].$attributes.id,
           email: salesArr[i].$attributes.email,
@@ -150,22 +148,26 @@ class CustomerController {
         console.log('create contact catch message is: ' + err.response.data.message)
       })
       await repToAssignTo.save()
+      const customer = await User.findBy('email', quote.email)
+      customer.hubspot_owner_id = repToAssignTo.hubspot_owner_id
+      await customer.save()
       quote.vid = vid
-      return this.createDealInHubSpot({ quote, repToAssignTo })
+      return this.createDealInHubSpot({ quote })
     } catch (err) {
       console.log('axios catch err is: ' + err)
     }
     console.log('createContactInHubSpot is not initiated: ' + quote)
   }
 
-  async createDealInHubSpot ({ quote, repToAssignTo }) {
-    console.log(quote.vid)
+  async createDealInHubSpot ({ quote }) {
+    const customer = await User.findBy('email', quote.email)
+    console.log(customer.vid)
     const dealName = quote.first_name + ' ' + quote.last_name + ' ' + quote.bldg_width + 'x' + quote.bldg_length + 'x' + quote.bldg_height
     try {
       axios.post('https://api.hubapi.com/deals/v1/deal?hapikey=' + Env.get('HAPI_KEY'), {
         "associations": {
           "associatedVids": [
-            quote.vid
+            customer.hubspot_vid
           ]
         },
         "properties": [
@@ -178,7 +180,7 @@ class CustomerController {
             "name": "bldg_zip"
           },
           {
-            "value": repToAssignTo.hubspot_owner_id,
+            "value": customer.hubspot_owner_id,
             "name": "hubspot_owner_id"
           }
         ]

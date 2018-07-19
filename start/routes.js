@@ -23,6 +23,14 @@ Route.on('/account-home').render('account-home')
 Route.on('/quote-request').render('pages.quote-request')
 Route.on('/category').render('pages.category-details')
 
+Route.group(() => {
+  Route.get('/', 'PortalController.index')
+  Route.get('/quotes', 'PortalController.quotes')
+  Route.get('/projects', 'PortalController.projects')
+}).prefix('/portal').middleware('auth')
+
+
+
 Route.get('/posts', 'PostController.index')
 Route.get('/posts/add', 'PostController.add').middleware('auth')
 Route.get('/posts/edit/:id', 'PostController.edit').middleware('auth')

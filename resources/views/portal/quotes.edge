@@ -1,0 +1,42 @@
+@layout('layouts.portal')
+@section('head')
+@endsection
+@section('content')
+
+<div class="content-wrapper">
+    <div class="container-fluid">
+      <!-- Breadcrumbs-->
+      @include('partials.portal.breadcrumb')
+    </div>
+    <!-- /.container-fluid-->
+    <div class="row">
+      <div class="col-12">
+        @each(quote in quotes)
+        <h1>{{ quote.bldg_width }}x{{ quote.bldg_length }}x{{ quote.bldg_height }}</h1>
+        @endeach
+      </div>
+    </div>
+    <!-- /.content-wrapper-->
+    @include('partials.portal.footer')
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fa fa-angle-up"></i>
+    </a>
+    <!-- Logout Modal-->
+    @include('partials.portal.logout-modal')
+    <!-- Bootstrap core JavaScript-->
+    {{ script('./portal/vendor/jquery/jquery.min.js') }}
+    {{ script('/portal/vendor/bootstrap/js/bootstrap.bundle.min.js')}}
+    <!-- Core plugin JavaScript-->
+    {{ script('./portal/vendor/jquery-easing/jquery.easing.min.js') }}
+    <!-- Page level plugin JavaScript-->
+    {{ script('./portal/vendor/chart.js/Chart.min.js')}}
+    {{ script('./portal/vendor/datatables/jquery.dataTables.js') }}
+    {{ script('./portal/vendor/datatables/dataTables.bootstrap4.js') }}
+    <!-- Custom scripts for all pages-->
+    {{ script('./portal/js/sb-admin.min.js') }}
+    <!-- Custom scripts for this page-->
+    {{ script('./portal/js/sb-admin-datatables.min.js') }}
+    {{ script('./portal/js/sb-admin-charts.min.js') }}
+  </div>
+@endsection

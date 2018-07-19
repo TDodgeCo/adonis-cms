@@ -89,6 +89,9 @@ class UserController {
       user_id: auth.user.id
     }
     await Activity.create(activityDetails)
+    if (userSession.permissions === 6) {
+      return response.redirect('/portal')
+    }
     return response.redirect('account')
   }
   /**
@@ -96,7 +99,7 @@ class UserController {
   **/
   async logout ({ auth, response }) {
     await auth.logout()
-    return response.redirect('/')
+    return response.redirect('/login')
   }
   /**
   **  shows the account page. admins can view and edit users

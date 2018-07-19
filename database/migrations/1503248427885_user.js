@@ -27,6 +27,7 @@ class UserSchema extends Schema {
       table.integer('leads_assigned').unsigned().defaultTo(0)
       table.integer('projects_assigned').unsigned().defaultTo(0)
       table.integer('hubspot_owner_id').unsigned()
+      table.integer('hubspot_vid').unsigned()
       table.timestamps()
     })
   }
