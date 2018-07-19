@@ -32,7 +32,7 @@ class CustomerController {
     } catch (err) {
       console.log(
         'user is: ' + quote.first_name +
-        '\nerr: ' + err
+        '\nstore err: ' + err
       )
     }
   }
@@ -59,7 +59,8 @@ class CustomerController {
 
   async userNotFound ({ quote }) {
     console.log('userNotFound method initiated \nemail of requested quote: ' + quote.email)
-    let dirtyPass = await Hash.make(replaceAll(String(Date.now() * 3 ), '/', 't'))
+    let dirtyPass = await Hash.make(String(Date.now() * 3 ))
+    dirtyPass = replaceAll(dirtyPass, '/', 't')
     quote.password = dirtyPass
     try {
       await Mail.send('emails.welcome-customer', quote, (message) => {
@@ -92,6 +93,7 @@ class CustomerController {
 
     try {
       var vid;
+      // TODO need to add new field to DB for daily_assigned_leads and delete at midnight, otherwise new salespeople will get all of the leads
       // Fetch all salespeople
       const salespeople = await User
         .query()

@@ -1,5 +1,7 @@
 # APP SPECIFIC STUFF
 
+MAKE SURE TO CREATE USERS IN CRM BEFORE TRYING TO TEST CUSTOMER CENTRIC FEATURES!
+
 User Permissions Column on User Migration:
 1 Editor
 2 Project Manager
