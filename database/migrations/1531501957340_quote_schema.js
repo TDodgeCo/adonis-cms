@@ -7,7 +7,7 @@ class QuoteSchema extends Schema {
     this.create('quotes', (table) => {
       table.increments()
       table.integer('customer_id').notNullable()
-      // This will become "assigned_to" and point to the sales person
+      table.integer('hubspot_owner_id').unsigned().notNullable()
       table.string('estimator')
       table.string('bldg_street_address').notNullable()
       table.string('bldg_street_address_2')
@@ -47,6 +47,7 @@ class QuoteSchema extends Schema {
       table.integer('live_load').unsigned().defaultTo(20)
       table.integer('other_load').unsigned().defaultTo(0)
       table.integer('freight').unsigned()
+      table.integer('cost').unsigned()
       table.integer('price').unsigned()
       table.integer('deposit').unsigned()
       table.timestamps()

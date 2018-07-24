@@ -187,16 +187,17 @@ class CustomerController {
           }
         ]
       })
-      this.createLocalQuote({ quote })
+      this.createLocalQuote({ quote, customer })
     } catch (err) {
       console.log('createDealInHubSpot catch error: ' + err)
     }
   }
-  async createLocalQuote ({ quote }) {
+  async createLocalQuote ({ quote, customer }) {
     try {
       const user = await User.findBy('email', quote.email)
       quote.customer_id = user.id
       quote.bldg_zip = quote.zip
+      quote.hubspot_owner_id = customer.hubspot_owner_id
       delete quote._csrf
       delete quote.ip_address
       delete quote.captured_from
