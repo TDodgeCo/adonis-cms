@@ -25,6 +25,7 @@ class UserSchema extends Schema {
       table.string('zip')
       table.integer('permissions').unsigned()
       table.integer('leads_assigned').unsigned().defaultTo(0)
+      table.integer('leads_assigned_today').unsigned().defaultTo(0)
       table.integer('projects_assigned').unsigned().defaultTo(0)
       table.integer('hubspot_owner_id').unsigned()
       table.integer('hubspot_vid').unsigned()

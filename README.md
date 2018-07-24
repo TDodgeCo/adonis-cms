@@ -1,6 +1,6 @@
 # APP SPECIFIC STUFF
 
-MAKE SURE TO CREATE USERS IN CRM BEFORE TRYING TO TEST CUSTOMER CENTRIC FEATURES!
+MAKE SURE TO CREATE SALES USERS IN CRM AND LOCAL DB BEFORE TRYING TO TEST CUSTOMER CENTRIC FEATURES!
 
 User Permissions Column on User Migration:
 1 Editor
@@ -9,6 +9,10 @@ User Permissions Column on User Migration:
 4 Estimator
 5 Dealer
 6 Customer
+
+### Cron Jobs
+Lead assignment is rotated on a round robin that is based off daily leads assigned. This column is deleted at 11:59PM every night.
+In order for this to function properly, you must run `adonis run:scheduler` in the background.
 
 # Adonis fullstack application
 

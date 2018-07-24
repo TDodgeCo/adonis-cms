@@ -29,6 +29,7 @@
     "@adonisjs/session": "^1.0.25",
     "@adonisjs/shield": "^1.0.6",
     "@adonisjs/validator": "^5.0.3",
+    "adonis-scheduler": "^3.0.2",
     "axios": "^0.18.0",
     "mysql": "^2.15.0"
   },
