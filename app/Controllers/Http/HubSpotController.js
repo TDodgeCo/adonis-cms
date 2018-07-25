@@ -5,7 +5,7 @@ class HubSpotController {
   async getOwnerId ({ params, response }) {
     const email = params.email
     const hubspotUsers =
-    await axios.get('http://api.hubapi.com/owners/v2/owners?hapikey=1456739c-4b72-4610-847f-193a8e3837ec')
+    await axios.get('http://api.hubapi.com/owners/v2/owners?hapikey=' + Env.get('HAPI_KEY'))
     console.log('typeof hubspotUsers: ' + typeof hubspotUsers)
     const findUser = function (arr) {
       return arr.email == email

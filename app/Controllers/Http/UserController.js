@@ -89,7 +89,7 @@ class UserController {
       user_id: auth.user.id
     }
     await Activity.create(activityDetails)
-    if (userSession.permissions === 6 || userSession.permissions === 3 || userSession.permissions === 4) {
+    if (userSession.permissions === 6 || userSession.permissions === 3 || userSession.permissions === 4 || userSession.permissions === null) {
       return response.redirect('/portal')
     }
     return response.redirect('account')

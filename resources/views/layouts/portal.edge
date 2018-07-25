@@ -203,6 +203,23 @@
             <a class="dropdown-item small" href="#">View all alerts</a>
           </div>
         </li>
+
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle mr-lg-2" id="settingsDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fa fa-fw fa-gear"></i>            
+          </a>
+          <div class="dropdown-menu" aria-labelledby="settingsDropdown">
+            <h6 class="dropdown-header">Settings:</h6>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" data-toggle="modal" data-target="#createUserModal" style="cursor: pointer;">                
+              <i class="fa fa-user fa-fw"></i><span >Create User
+            </a>
+            <div class="dropdown-divider"></div>
+          </div>
+
+
+        </li>
         <li class="nav-item">
           <form class="form-inline my-2 my-lg-0 mr-lg-2">
             <div class="input-group">
@@ -216,7 +233,7 @@
           </form>
         </li>
         <li class="nav-item">
-          <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
+          <a class="nav-link" data-toggle="modal" data-target="#logoutModal">
             <i class="fa fa-fw fa-sign-out"></i>Logout</a>
         </li>
       </ul>

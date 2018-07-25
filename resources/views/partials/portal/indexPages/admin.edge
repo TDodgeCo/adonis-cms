@@ -74,6 +74,43 @@
         </div>
       </div>
     </div>
+    <!-- Example DataTables Card-->
+    <div class="card mb-3">
+      <div class="card-header">
+        <i class="fa fa-table"></i> Data Table Example</div>
+      <div class="card-body">         
+        <div class="table-responsive">
+          <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Admin</th>
+                <th>Created</th>
+                <th>Updated</th>
+                <th>Password</th>
+                <th>User</th>
+              </tr>
+            </thead>
+            <tfoot>
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Admin</th>
+                <th>Created</th>
+                <th>Updated</th>
+                <th>Password</th>
+                <th>User</th>
+              </tr>
+            </tfoot>
+            <tbody>
+              @!each(user in users, include = 'partials.usersTable')
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+    </div>
     <!-- Area Chart Example-->
     <div class="card mb-3">
       <div class="card-header">
@@ -398,6 +435,14 @@
                 <td>2011/04/25</td>
                 <td>$320,800</td>
               </tr>
+              <tr>
+                <td>Aaron Rodgers</td>
+                <td>Quarterback</td>
+                <td>Green Bay</td>
+                <td>38</td>
+                <td>2010/04/25</td>
+                <td>$2,320,800</td>
+              </tr>
             </tbody>
           </table>
         </div>
@@ -413,7 +458,8 @@
     <i class="fa fa-angle-up"></i>
   </a>
   <!-- Logout Modal-->
-  @include('partials.portal.logout-modal')
+  @include('partials.portal.createUserModal')
+   @include('partials.portal.logoutModal')
   <!-- Bootstrap core JavaScript-->
   {{ script('./portal/vendor/jquery/jquery.min.js') }}
   {{ script('/portal/vendor/bootstrap/js/bootstrap.bundle.min.js')}}

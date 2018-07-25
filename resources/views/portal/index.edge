@@ -5,7 +5,6 @@
 @endsection
 
 @section('content')
-  Hello World
   @if(auth.user.admin)
     @include('partials.portal.indexPages.admin')
   @elseif(auth.user.permissions == 3)

@@ -5,6 +5,13 @@ const axios = use('axios')
 
 class PortalController {
   async index ({ view, auth }) {
+    const user = auth.user
+    const users = await User.all()
+    if (user.admin) {
+      return view.render('portal.index', {
+        users: users.toJSON()
+      })
+    }
     return view.render('portal.index')
   }
 
@@ -20,7 +27,6 @@ class PortalController {
      */
     const user = auth.user
     switch (user.permissions) {
-      
       case 3:
         const quotes = await Quote
           .query()
