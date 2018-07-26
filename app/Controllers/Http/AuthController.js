@@ -80,7 +80,41 @@ class AuthController {
     }
   }
 
-  async resetPassword({ auth, request, response, session }) {}
+  async resetPassword({ auth, request, response, session }) {
+    let pass = request.input('password')
+    const user = auth.user
+    try {
+      function validatePassword() {
+        var newPassword = pass
+        var minNumberofChars = 6
+        var maxNumberofChars = 16
+        var regularExpression  = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/
+        if (newPassword.length < minNumberofChars || newPassword.length > maxNumberofChars) {
+          session.flash({ error: 'Password should be between 6 and 16 characters.'})
+          return response.redirect('back')
+        }
+        if (!regularExpression.test(newPassword)) {
+          session.flash({ error: 'Password should contain atleast one number and one special character.'})
+          return response.redirect('back')
+        }
+        return true
+      }
+      if (validatePassword()) {
+        console.log('password valid')
+        user.password = await Hash.make(pass)
+        user.save()
+        const isSame = await Hash.verify(pass, user.password)
+        if (isSame) {
+          return response.redirect('/portal')
+        }
+      }
+      sessions.flash({ error: 'Something went wrong. Try again.'})
+      return response.redirect('back')
+    } catch (err) {
+      sessions.flash({ error: 'We caught an error. Try again.'})
+      return response.redirect('back')
+    }
+  }
 }
 
 module.exports = AuthController
