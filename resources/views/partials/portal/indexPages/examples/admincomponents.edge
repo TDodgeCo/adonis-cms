@@ -74,6 +74,43 @@
         </div>
       </div>
     </div>
+    <!-- Example DataTables Card-->
+    <div class="card mb-3">
+      <div class="card-header">
+        <i class="fa fa-table"></i> Data Table Example</div>
+      <div class="card-body">         
+        <div class="table-responsive">
+          <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Admin</th>
+                <th>Created</th>
+                <th>Updated</th>
+                <th>Password</th>
+                <th>User</th>
+              </tr>
+            </thead>
+            <tfoot>
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Admin</th>
+                <th>Created</th>
+                <th>Updated</th>
+                <th>Password</th>
+                <th>User</th>
+              </tr>
+            </tfoot>
+            <tbody>
+              @!each(user in users, include = 'partials.usersTable')
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+    </div>
     <!-- Area Chart Example-->
     <div class="card mb-3">
       <div class="card-header">
@@ -362,70 +399,9 @@
         </div>
       </div>
     </div>
-    <!-- Example DataTables Card-->
-    <div class="card mb-3">
-      <div class="card-header">
-        <i class="fa fa-table"></i> Data Table Example</div>
-      <div class="card-body">
-        <div class="table-responsive">
-          <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Position</th>
-                <th>Office</th>
-                <th>Age</th>
-                <th>Start date</th>
-                <th>Salary</th>
-              </tr>
-            </thead>
-            <tfoot>
-              <tr>
-                <th>Name</th>
-                <th>Position</th>
-                <th>Office</th>
-                <th>Age</th>
-                <th>Start date</th>
-                <th>Salary</th>
-              </tr>
-            </tfoot>
-            <tbody>
-              <tr>
-                <td>Tiger Nixon</td>
-                <td>System Architect</td>
-                <td>Edinburgh</td>
-                <td>61</td>
-                <td>2011/04/25</td>
-                <td>$320,800</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-      <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
-    </div>
   </div>
-  <!-- /.container-fluid-->
-  <!-- /.content-wrapper-->
-  @include('partials.portal.footer')
   <!-- Scroll to Top Button-->
   <a class="scroll-to-top rounded" href="#page-top">
     <i class="fa fa-angle-up"></i>
   </a>
-  <!-- Logout Modal-->
-  @include('partials.portal.logout-modal')
-  <!-- Bootstrap core JavaScript-->
-  {{ script('./portal/vendor/jquery/jquery.min.js') }}
-  {{ script('/portal/vendor/bootstrap/js/bootstrap.bundle.min.js')}}
-  <!-- Core plugin JavaScript-->
-  {{ script('./portal/vendor/jquery-easing/jquery.easing.min.js') }}
-  <!-- Page level plugin JavaScript-->
-  {{ script('./portal/vendor/chart.js/Chart.min.js')}}
-  {{ script('./portal/vendor/datatables/jquery.dataTables.js') }}
-  {{ script('./portal/vendor/datatables/dataTables.bootstrap4.js') }}
-  <!-- Custom scripts for all pages-->
-  {{ script('./portal/js/sb-admin.min.js') }}
-  <!-- Custom scripts for this page-->
-  {{ script('./portal/js/sb-admin-datatables.min.js') }}
-  {{ script('./portal/js/sb-admin-charts.min.js') }}
 </div>

@@ -4,9 +4,12 @@ const Quote = use('App/Models/Quote')
 const axios = use('axios')
 
 class PortalController {
-  async index ({ view, auth }) {
+  async index({ view, auth }) {
     const user = auth.user
     const users = await User.all()
+    if (!user.auth) {
+      return view.render('portal.index')
+    }
     if (user.admin) {
       return view.render('portal.index', {
         users: users.toJSON()
@@ -15,7 +18,7 @@ class PortalController {
     return view.render('portal.index')
   }
 
-  async quotes ({ view, auth }) {
+  async quotes({ view, auth }) {
     /**
      * PERMISSIONS LEGEND
      * 6 - customer
@@ -28,8 +31,7 @@ class PortalController {
     const user = auth.user
     switch (user.permissions) {
       case 3:
-        const quotes = await Quote
-          .query()
+        const quotes = await Quote.query()
           .where('hubspot_owner_id', user.hubspot_owner_id)
           .fetch()
         console.log(quotes)
@@ -37,10 +39,9 @@ class PortalController {
           user: auth.user,
           quotes: quotes.toJSON()
         })
-        break;
+        break
       case 4:
-        const quotes = await Quote
-          .query()
+        const quotes = await Quote.query()
           .where('cost', null)
           .fetch()
         console.log(quotes)
@@ -48,22 +49,21 @@ class PortalController {
           user: auth.user,
           quotes: quotes.toJSON()
         })
-        break;      
+        break
       case 6:
-        const quotes = await Quote
-        .query()
-        .where('customer_id', user.id)
-        .fetch()
+        const quotes = await Quote.query()
+          .where('customer_id', user.id)
+          .fetch()
         console.log(quotes)
         return view.render('portal.quotes', {
           quotes: quotes.toJSON()
         })
-        break;
+        break
       default:
-        return view.render('account')  
+        return view.render('account')
     }
   }
-  async projects ({ view }) {
+  async projects({ view }) {
     return view.render('portal.quotes')
   }
 }

@@ -23,14 +23,35 @@ Route.on('/account-home').render('account-home')
 Route.on('/quote-request').render('pages.quote-request')
 Route.on('/category').render('pages.category-details')
 
+// Non Auth Portal Routes
+Route.group(() => {
+  Route.on('/login').render('portal.authPages.login')
+  Route.get('/login/:tempPass', async ({ params, view }) => {
+    return view.render('portal.authPages.login', {
+      tempPass: params.tempPass
+    })
+  })
+  Route.post('/login', 'AuthController.login')
+  Route.on('/forgot-password').render('portal.authPages.forgotPassword')
+  Route.on('/temp-password').render('portal.authPages.tempPassword')
+  Route.on('/reset-password').render('portal.authPages.resetPassword')
+  Route.post('/forgot-password', 'AuthController.forgotPassword')
+  Route.post('/temp-password', 'AuthController.tempPassword')
+  Route.on('/register').render('portal.authPages.register')
+  Route.get('/logout', 'Usercontroller.logout')
+}).prefix('/portal')
+
+// Auth Portal Routes
 Route.group(() => {
   Route.get('/', 'PortalController.index')
+  Route.get('/profile', 'UserController.profile')
   Route.get('/quotes', 'PortalController.quotes')
   Route.get('/projects', 'PortalController.projects')
-}).prefix('/portal').middleware('auth')
+})
+  .prefix('/portal')
+  .middleware('auth')
 
-
-
+// Post/Page Routes
 Route.get('/posts', 'PostController.index')
 Route.get('/posts/add', 'PostController.add').middleware('auth')
 Route.get('/posts/edit/:id', 'PostController.edit').middleware('auth')
@@ -48,9 +69,13 @@ Route.get('/metal-buildings/:slug', 'PostController.details')
 Route.get('/signup', 'UserController.index')
 Route.post('/signup', 'UserController.store')
 Route.post('/invite', 'UserController.invite').middleware('auth')
-Route.on('/set-password').render('user.set-password').middleware('auth')
+Route.on('/set-password')
+  .render('user.set-password')
+  .middleware('auth')
 Route.put('/set-password', 'UserController.resetPassword').middleware('auth')
-Route.on('/login').render('user.login')
+Route.get('/login', async ({ response }) => {
+  return response.redirect('/portal/login')
+})
 Route.get('/login/:tempPass', async ({ params, view }) => {
   return view.render('user.login', {
     tempPass: params.tempPass
@@ -58,15 +83,23 @@ Route.get('/login/:tempPass', async ({ params, view }) => {
 })
 Route.post('/login', 'UserController.login')
 Route.get('/account', 'UserController.account').middleware('auth')
-Route.get('/logout', 'Usercontroller.logout')
 
 Route.post('/quote-request', 'CustomerController.store')
-Route.get('account/quotes', 'QuoteController.index').middleware('auth')
 
 // External API stuff
 Route.group(() => {
   Route.get('ownerid/:email', 'HubSpotController.getOwnerId')
 }).prefix('/hubspot')
+
+// Redirects
+Route.get('/login', async ({ response }) => {
+  return response.redirect('/portal/login')
+})
+Route.get('/login/:tempPass', async ({ params, view }) => {
+  return response.redirect('portal/login', {
+    tempPass: params.tempPass
+  })
+})
 
 // Test Stuff
 Route.get('/test', 'TestController.test')

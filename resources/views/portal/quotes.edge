@@ -1,4 +1,4 @@
-@layout('layouts.portal')
+@layout('layouts.portal-layout')
 @section('head')
 {{-- {{ style('./portal/css/custom.css') }} --}}
 @endsection
@@ -38,8 +38,9 @@
   <a class="scroll-to-top rounded" href="#page-top">
     <i class="fa fa-angle-up"></i>
   </a>
-  <!-- Logout Modal-->
-  @include('partials.portal.logout-modal')
+</div>
+@endsection
+@section('scripts')
   <!-- Bootstrap core JavaScript-->
   {{ script('./portal/vendor/jquery/jquery.min.js') }}
   {{ script('/portal/vendor/bootstrap/js/bootstrap.bundle.min.js')}}
@@ -54,5 +55,4 @@
   <!-- Custom scripts for this page-->
   {{ script('./portal/js/sb-admin-datatables.min.js') }}
   {{ script('./portal/js/sb-admin-charts.min.js') }}
-</div>
 @endsection

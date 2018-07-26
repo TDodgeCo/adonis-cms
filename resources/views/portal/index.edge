@@ -1,4 +1,4 @@
-@layout('layouts.portal')
+@layout('layouts.portal-layout')
 
 @section('head')
 
@@ -16,4 +16,21 @@
   @else
     <h1>Your usertype doesn't exist in our database.</h1>  
   @endif
+@endsection
+
+@section('scripts')
+  <!-- Bootstrap core JavaScript-->
+  {{ script('./portal/vendor/jquery/jquery.min.js') }}
+  {{ script('/portal/vendor/bootstrap/js/bootstrap.bundle.min.js')}}
+  <!-- Core plugin JavaScript-->
+  {{ script('./portal/vendor/jquery-easing/jquery.easing.min.js') }}
+  <!-- Page level plugin JavaScript-->
+  {{ script('./portal/vendor/chart.js/Chart.min.js')}}
+  {{ script('./portal/vendor/datatables/jquery.dataTables.js') }}
+  {{ script('./portal/vendor/datatables/dataTables.bootstrap4.js') }}
+  <!-- Custom scripts for all pages-->
+  {{ script('./portal/js/sb-admin.min.js') }}
+  <!-- Custom scripts for this page-->
+  {{ script('./portal/js/sb-admin-datatables.min.js') }}
+  {{ script('./portal/js/sb-admin-charts.min.js') }}
 @endsection

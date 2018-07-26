@@ -1,19 +1,23 @@
+@layout('layouts.portal-layout')
+@section('head')
+@endsection
+@section('content')
+
 <div class="content-wrapper">
-  <div class="container-fluid">
-    <!-- Breadcrumbs-->
-    @include('partials.portal.breadcrumb')
+    <div class="container-fluid">
+      <!-- Breadcrumbs-->
+      @include('partials.portal.breadcrumb')
+    </div>
+    <!-- /.container-fluid-->
+    <!-- /.content-wrapper-->
+    <h1>User Profile</h1>
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fa fa-angle-up"></i>
+    </a>
   </div>
-  <!-- /.container-fluid-->
-  <!-- /.content-wrapper-->
-  <h1>Estimator</h1>
-  <!-- Footer -->
-  @include('partials.portal.footer')
-  <!-- Scroll to Top Button-->
-  <a class="scroll-to-top rounded" href="#page-top">
-    <i class="fa fa-angle-up"></i>
-  </a>
-  <!-- Logout Modal-->
-  @include('partials.portal.logout-modal')
+@endsection
+@section('scripts')
   <!-- Bootstrap core JavaScript-->
   {{ script('./portal/vendor/jquery/jquery.min.js') }}
   {{ script('/portal/vendor/bootstrap/js/bootstrap.bundle.min.js')}}
@@ -28,4 +32,4 @@
   <!-- Custom scripts for this page-->
   {{ script('./portal/js/sb-admin-datatables.min.js') }}
   {{ script('./portal/js/sb-admin-charts.min.js') }}
-</div>
+@endsection
