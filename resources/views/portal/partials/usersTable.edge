@@ -1,5 +1,6 @@
 <tr>
   <td>{{user.first_name}}</td>
+  <td>{{user.last_name}}</td>
   <td>{{user.email}}</td>
   <td>
     @unless(user.admin)
@@ -10,16 +11,6 @@
   </td>
   <td>{{user.created_at}}</td>
   <td>{{user.updated_at}}</td>
-  <td>
-    <form onsubmit="confirm('Are you sure you want to reset this users password?')" action="{{'/portal/set-password/?_method=PUT'}}" method="POST">
-      {{ csrfField() }}
-      <input type="number" name="id" value="{{user.id}}" hidden>
-      <button type="submit" name="button">
-        Reset
-      </button>
-      {{-- TODO preventDefault on form. --}}
-    </form>
-  </td>
   <td>
     <button type="button" data-toggle="modal" data-target="#editModal{{user.id}}">
       Edit
