@@ -115,7 +115,7 @@ class UserController {
    **/
   async logout({ auth, response }) {
     await auth.logout()
-    return response.redirect('/login')
+    return response.redirect('/portal/login')
   }
   /**
    **  shows the account page. admins can view and edit users

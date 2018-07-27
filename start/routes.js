@@ -41,7 +41,7 @@ Route.group(() => {
 }).prefix('/portal')
 
 // Auth Portal Routes
-Route.group(() => {  
+Route.group(() => {
   Route.on('/reset-password').render('portal.authPages.resetPassword')
   Route.post('/reset-password', 'AuthController.resetPassword')
   Route.post('/get-hubspot-id', 'HubSpotController.getOwnerId')
@@ -83,8 +83,6 @@ Route.get('/login/:tempPass', async ({ params, view }) => {
     tempPass: params.tempPass
   })
 })
-Route.post('/login', 'UserController.login')
-Route.get('/account', 'UserController.account').middleware('auth')
 
 Route.post('/quote-request', 'CustomerController.store')
 
@@ -102,7 +100,8 @@ Route.get('/login/:tempPass', async ({ params, view }) => {
     tempPass: params.tempPass
   })
 })
-
+Route.get('/logout', 'Usercontroller.logout')
 // Test Stuff
 Route.get('/test', 'TestController.test')
 Route.get('/builders/:state/:dealer', 'TestController.test')
+Route.get('/test-hash', 'AuthController.testHash')

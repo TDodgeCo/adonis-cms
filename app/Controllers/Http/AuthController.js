@@ -81,7 +81,7 @@ class AuthController {
   }
 
   async resetPassword({ auth, request, response, session }) {
-    let pass = request.input('password')
+    const pass = request.input('password')
     const user = auth.user
     try {
       function validatePassword() {
@@ -101,20 +101,23 @@ class AuthController {
       }
       if (validatePassword()) {
         console.log('password valid')
-        user.password = await Hash.make(pass)
-        user.save()
+        user.password = pass
+        await user.save()
         const isSame = await Hash.verify(pass, user.password)
+        console.log(isSame)
         if (isSame) {
           return response.redirect('/portal')
         }
       }
-      sessions.flash({ error: 'Something went wrong. Try again.'})
+      session.flash({ error: 'Something went wrong. Try again.'})
       return response.redirect('back')
     } catch (err) {
-      sessions.flash({ error: 'We caught an error. Try again.'})
+      session.flash({ error: 'We caught an error. Try again.'})
       return response.redirect('back')
     }
   }
 }
 
 module.exports = AuthController
+
+
