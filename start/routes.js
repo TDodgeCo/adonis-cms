@@ -34,14 +34,14 @@ Route.group(() => {
   Route.post('/login', 'AuthController.login')
   Route.on('/forgot-password').render('portal.authPages.forgotPassword')
   Route.post('/forgot-password', 'AuthController.forgotPassword')
+  Route.on('/temp-password').render('portal.authPages.tempPassword')
+  Route.post('/temp-password', 'AuthController.tempPassword')
   Route.on('/register').render('portal.authPages.register')
   Route.get('/logout', 'Usercontroller.logout')
 }).prefix('/portal')
 
 // Auth Portal Routes
-Route.group(() => {
-  Route.on('/temp-password').render('portal.authPages.tempPassword')
-  Route.post('/temp-password', 'AuthController.tempPassword')
+Route.group(() => {  
   Route.on('/reset-password').render('portal.authPages.resetPassword')
   Route.post('/reset-password', 'AuthController.resetPassword')
   Route.get('/', 'PortalController.index')

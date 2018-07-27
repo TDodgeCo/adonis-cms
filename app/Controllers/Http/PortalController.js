@@ -7,8 +7,9 @@ class PortalController {
   async index({ view, auth }) {
     const user = auth.user
     const users = await User.all()
-    if (!user.auth) {
-      return view.render('portal.index')
+    if (!user.admin) {
+      console.log('!user.admin')
+      return view.render('/')
     }
     if (user.admin) {
       return view.render('portal.index', {

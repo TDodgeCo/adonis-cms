@@ -3,3 +3,8 @@
     {{ old('notification') }}
   </div>
 @endif
+@if(old('error'))
+  <div class="alert alert-danger">
+    {{ old('error') }}
+  </div>
+@endif

@@ -77,7 +77,7 @@ class UserController {
     if (userData.permissions == 3) {
       this.getOwnerId(user.email, user.id)
     }
-    await Mail.send('emails.welcome', userData, message => {
+    await Mail.send('emails.welcome-invite', userData, message => {
       message
         .to(userData.email)
         .from(Env.get('MAIL_USERNAME'))

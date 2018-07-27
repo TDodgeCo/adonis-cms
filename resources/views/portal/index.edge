@@ -5,6 +5,7 @@
 @endsection
 
 @section('content')
+  @include('components.alert')
   @if(auth.user.admin)
     @include('portal.indexPages.admin')
   @elseif(auth.user.permissions == 3)
@@ -14,7 +15,7 @@
   @elseif(auth.user.permissions == 6)
     @include('portal.indexPages.customer')
   @else
-    <h1>Your usertype doesn't exist in our database.</h1>  
+    <h1>Your usertype doesn't exist in our database.</h1>
   @endif
 @endsection
 
