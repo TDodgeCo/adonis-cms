@@ -71,7 +71,7 @@ class UserController {
           .subject('New Account Created - Great American Buildings')
       })
       session.flash({ notification: 'Admin User Added!' })
-      return response.redirect('/account')
+      return response.redirect('back')
     }
     const user = await User.create(userData)
     if (userData.permissions == 3) {
@@ -84,7 +84,7 @@ class UserController {
         .subject('New Account Created - Great American Buildings')
     })
     session.flash({ notification: 'User Added!' })
-    return response.redirect('/account')
+    return response.redirect('back')
   }
   /**
    **  Logs the user in

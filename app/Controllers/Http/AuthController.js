@@ -72,7 +72,7 @@ class AuthController {
   async tempPassword({ auth, request, response, session }) {
     const { email, tempPass } = request.all()
     try {
-      auth.attempt(email, tempPass)
+      await auth.attempt(email, tempPass)
       return response.redirect('/portal/reset-password')
     } catch (err) {
       session.flash({ error: 'Incorrect credentials.' + err })
