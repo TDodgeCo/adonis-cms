@@ -1,4 +1,4 @@
-@layout('layouts.portal-layout')
+@layout('portal.layouts.portal-layout')
 @section('head')
 @endsection
 @section('content')
@@ -6,16 +6,15 @@
 <div class="content-wrapper">
     <div class="container-fluid">
       <!-- Breadcrumbs-->
-      @include('partials.portal.breadcrumb')
+      @include('portal.partials.breadcrumb')
+      <h1>User Profile</h1>
     </div>
-    <!-- /.container-fluid-->
-    <!-- /.content-wrapper-->
-    <h1>User Profile</h1>
+
     <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">
       <i class="fa fa-angle-up"></i>
     </a>
-  </div>
+</div>
 @endsection
 @section('scripts')
   <!-- Bootstrap core JavaScript-->

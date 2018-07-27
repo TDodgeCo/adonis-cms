@@ -28,17 +28,17 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
     <!-- Sidebar Nav -->
-      @include('layouts.layoutPartials.portalSidebarNav')
+      @include('portal.layouts.layoutPartials.portalSidebarNav')
       <!-- Top Nav -->
-      @include('layouts.layoutPartials.portalTopNav') 
+      @include('portal.layouts.layoutPartials.portalTopNav')
     </div>
   </nav>
-  @include('partials.portal.footer')
+  @include('portal.partials.footer')
   @!section('content')
 
   <!-- Logout Modal-->
-  @include('partials.portal.createUserModal')
-  @include('partials.portal.logoutModal')
+  @include('portal.partials.createUserModal')
+  @include('portal.partials.logoutModal')
 
   @!section('scripts')
 </body>

@@ -1,20 +1,20 @@
-@layout('layouts.portal-layout')
+@layout('portal.layouts.portal-layout')
 @section('head')
 @endsection
 @section('content')
 
 <div class="content-wrapper">
-    <div class="container-fluid">
-      <!-- Breadcrumbs-->
-      @include('partials.portal.breadcrumb')
-    </div>
-    <!-- /.container-fluid-->
-    <!-- /.content-wrapper-->
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-      <i class="fa fa-angle-up"></i>
-    </a>
+  <div class="container-fluid">
+    <!-- Breadcrumbs-->
+    @include('portal.partials.breadcrumb')
+    <h1>Single Quote</h1>
   </div>
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fa fa-angle-up"></i>
+  </a>
+</div>
 @endsection
 @section('scripts')
   <!-- Bootstrap core JavaScript-->

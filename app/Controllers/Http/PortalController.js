@@ -18,7 +18,7 @@ class PortalController {
     return view.render('portal.index')
   }
 
-  async quotes({ view, auth }) {
+  async quotesPage({ view, auth }) {
     /**
      * PERMISSIONS LEGEND
      * 6 - customer
@@ -28,10 +28,12 @@ class PortalController {
      * 2 - project manager
      * 1 - editor
      */
+    // TODO SWITCH WONT WORK - IF ELSE
     const user = auth.user
+    let quotes;
     switch (user.permissions) {
       case 3:
-        const quotes = await Quote.query()
+        quotes = await Quote.query()
           .where('hubspot_owner_id', user.hubspot_owner_id)
           .fetch()
         console.log(quotes)
@@ -41,7 +43,7 @@ class PortalController {
         })
         break
       case 4:
-        const quotes = await Quote.query()
+        quotes = await Quote.query()
           .where('cost', null)
           .fetch()
         console.log(quotes)
@@ -51,7 +53,7 @@ class PortalController {
         })
         break
       case 6:
-        const quotes = await Quote.query()
+        quotes = await Quote.query()
           .where('customer_id', user.id)
           .fetch()
         console.log(quotes)
@@ -60,11 +62,12 @@ class PortalController {
         })
         break
       default:
-        return view.render('account')
+        console.log('permissions not recognized. redirecting to homepage.')
+        return view.render('/')
     }
   }
   async projects({ view }) {
-    return view.render('portal.quotes')
+    return view.render('portal.projects')
   }
 }
 

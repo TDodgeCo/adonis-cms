@@ -1,4 +1,4 @@
-@layout('layouts.portal-layout')
+@layout('portal.layouts.portal-layout')
 
 @section('head')
 
@@ -6,13 +6,13 @@
 
 @section('content')
   @if(auth.user.admin)
-    @include('partials.portal.indexPages.admin')
+    @include('portal.indexPages.admin')
   @elseif(auth.user.permissions == 3)
-    @include('partials.portal.indexPages.salesperson')
+    @include('portal.indexPages.salesperson')
   @elseif(auth.user.permissions == 4)
-    @include('partials.portal.indexPages.estimator')
+    @include('portal.indexPages.estimator')
   @elseif(auth.user.permissions == 6)
-    @include('partials.portal.indexPages.customer')
+    @include('portal.indexPages.customer')
   @else
     <h1>Your usertype doesn't exist in our database.</h1>  
   @endif
