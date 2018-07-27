@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Great American Buildings - Forgot Password">
+  <meta name="author" content="">
+  <title>Forgot Password - Great American Buildings</title>
+  <!-- Bootstrap core CSS-->
+  {{ style('./portal/vendor/bootstrap/css/bootstrap.min.css') }}
+  <!-- Custom fonts for this template-->
+  {{ style('./portal/vendor/font-awesome/css/font-awesome.min.css') }}
+  <!-- Custom styles for this template-->
+  {{ style('./portal/css/sb-admin.css') }}
+</head>
+
+<body class="bg-dark">
+  <div class="container">
+    @if(old('notification'))
+      <div class="alert alert-success">
+        {{ old('notification') }}
+      </div>
+    @endif
+    @if(old('error'))
+      <div class="alert alert-danger">
+        {{ old('error') }}
+      </div>
+    @endif
+    @!section('content')
+  </div>
+  <!-- Bootstrap core JavaScript-->
+  {{ script('./portal/vendor/jquery/jquery.min.js') }}
+  {{ script('./portal/vendor/bootstrap/js/bootstrap.bundle.min.js') }}
+  <!-- Core plugin JavaScript-->
+  {{ script('./portal/vendor/jquery-easing/jquery.easing.min.js') }}
+  <!-- Custome JS-->
+  {{ script('./js/auth-helpers.js')}}
+  @!section('scripts')
+</body>
+
+</html>
