@@ -5,18 +5,30 @@
 @endsection
 
 @section('content')
-  @include('components.alert')
-  @if(auth.user.admin)
-    @include('portal.indexPages.admin')
-  @elseif(auth.user.permissions == 3)
-    @include('portal.indexPages.salesperson')
-  @elseif(auth.user.permissions == 4)
-    @include('portal.indexPages.estimator')
-  @elseif(auth.user.permissions == 6)
-    @include('portal.indexPages.customer')
-  @else
-    <h1>Your usertype doesn't exist in our database.</h1>
-  @endif
+  <div class="content-wrapper">
+    <div class="container-fluid">
+      <!-- Breadcrumbs-->
+      @include('portal.partials.breadcrumb')
+      <!-- User specific index pages -->
+      @include('components.alert')
+      @if(auth.user.admin)
+        @include('portal.indexPages.admin')
+      @elseif(auth.user.permissions == 3)
+        @include('portal.indexPages.salesperson')
+      @elseif(auth.user.permissions == 4)
+        @include('portal.indexPages.estimator')
+      @elseif(auth.user.permissions == 6)
+        @include('portal.indexPages.customer')
+      @else
+        <h1>Your usertype doesn't exist in our database.</h1>
+      @endif
+    </div>
+  </div>
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fa fa-angle-up"></i>
+  </a>
+  </div>
 @endsection
 
 @section('scripts')

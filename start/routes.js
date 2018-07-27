@@ -44,6 +44,7 @@ Route.group(() => {
 Route.group(() => {  
   Route.on('/reset-password').render('portal.authPages.resetPassword')
   Route.post('/reset-password', 'AuthController.resetPassword')
+  Route.post('/get-hubspot-id', 'HubSpotController.getOwnerId')
   Route.get('/', 'PortalController.index')
   Route.get('/profile', 'UserController.profile')
   Route.get('/quotes', 'PortalController.quotesPage')
