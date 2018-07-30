@@ -5,16 +5,16 @@ const Quote = use('App/Models/Quote')
 const Database = use('Database')
 
 class QuoteController {
-
-  async index ({ response, auth, view }) {
-    const user = auth.current.user
-    const quotes = await Database.from('quotes').where('user_id', user.id)
-    return view.render('account.quotes', {
-      quotes: quotes,
-      user: user
+  async details({ view, params }) {
+    const quote = await Quote.findBy('id', params.id)
+    const user = await User.findBy('id', quote.customer_id)
+    const salesperson = await User.findBy('id', quote.hubspot_owner_id)
+    return view.render('portal.quote', {
+      quote,
+      user,
+      salesperson
     })
   }
-
 }
 
 module.exports = QuoteController

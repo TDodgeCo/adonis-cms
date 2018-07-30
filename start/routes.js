@@ -48,6 +48,7 @@ Route.group(() => {
   Route.get('/', 'PortalController.index')
   Route.get('/profile', 'UserController.profile')
   Route.get('/quotes', 'PortalController.quotesPage')
+  Route.get('/quotes/:id', 'QuoteController.details')
   Route.get('/projects', 'PortalController.projects')
 })
   .prefix('/portal')
@@ -102,6 +103,7 @@ Route.get('/login/:tempPass', async ({ params, view }) => {
 })
 Route.get('/logout', 'Usercontroller.logout')
 // Test Stuff
+Route.get('/build', 'BuildController.index')
 Route.get('/test', 'TestController.test')
 Route.get('/builders/:state/:dealer', 'TestController.test')
 Route.get('/test-hash', 'AuthController.testHash')

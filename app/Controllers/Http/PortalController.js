@@ -24,11 +24,18 @@ class PortalController {
      * 3 - salesperson
      * 2 - project manager
      * 1 - editor
+     * 0 - admin
      */
     // TODO SWITCH WONT WORK - IF ELSE
     const user = auth.user
-    let quotes;
+    let quotes
     switch (user.permissions) {
+      case 0:
+        quotes = await Quote.all()
+        return view.render('portal.quotes', {
+          user: user,
+          quotes: quotes.toJSON()
+        })
       case 3:
         quotes = await Quote.query()
           .where('hubspot_owner_id', user.hubspot_owner_id)

@@ -15,11 +15,13 @@
           @each(quote in quotes)
           <div class="col-3">
             <div class="card" style="margin-bottom: 25px;">
-              <img class="card-img-top" src="http://via.placeholder.com/250x150" alt="Quote Image">
-              <div class="card-body">
-                <h5 class="card-title">{{ quote.bldg_width }}x{{ quote.bldg_length }}x{{ quote.bldg_height }} <span class="float-right">$123123</span> </h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              </div>
+              <a style="color: inherit; text-decoration: inherit;" href="/portal/quotes/{{quote.id}}">
+                <img class="card-img-top" src="http://via.placeholder.com/250x150" alt="Quote Image">
+                <div class="card-body">
+                  <h5 class="card-title">{{ quote.bldg_width }}x{{ quote.bldg_length }}x{{ quote.bldg_height }} <span class="float-right">$123123</span> </h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+              </a>
               <div class="card-footer">
                 <small class="text-muted">Last updated 3 mins ago</small>
                 <a href="#" class="btn btn-primary float-right">Buy Now</a>

@@ -1,6 +1,8 @@
 # APP SPECIFIC STUFF
 
-MAKE SURE TO CREATE SALES USERS IN CRM AND LOCAL DB BEFORE TRYING TO TEST CUSTOMER CENTRIC FEATURES!
+After installing npm packages and setting up your .env file, run `adonis serve --dev` and submit a get request to http://localhost:3333/build
+
+This will build your essential users rows and capture hubspot ids
 
 User Permissions Column on User Migration:
 1 Editor
@@ -11,6 +13,7 @@ User Permissions Column on User Migration:
 6 Customer
 
 ### Cron Jobs
+
 Lead assignment is rotated on a round robin that is based off daily leads assigned. This column is deleted at 11:59PM every night.
 In order for this to function properly, you must run `adonis run:scheduler` in the background.
 
@@ -18,14 +21,14 @@ In order for this to function properly, you must run `adonis run:scheduler` in t
 
 This is the fullstack boilerplate for AdonisJs, it comes pre-configured with.
 
-1. Bodyparser
-2. Session
-3. Authentication
-4. Web security middleware
-5. CORS
-6. Edge template engine
-7. Lucid ORM
-8. Migrations and seeds
+1.  Bodyparser
+2.  Session
+3.  Authentication
+4.  Web security middleware
+5.  CORS
+6.  Edge template engine
+7.  Lucid ORM
+8.  Migrations and seeds
 
 ## Setup
 
@@ -37,7 +40,6 @@ adonis new yardstick
 
 or manually clone the repo and then run `npm install`.
 
-
 ### Migrations
 
 Run the following command to run startup migrations.
@@ -46,8 +48,8 @@ Run the following command to run startup migrations.
 adonis migration:run
 ```
 
-
 # ToDo
+
 - Create models for leads, customers, salespeople and managers
 - Create
 - Create lead account view
