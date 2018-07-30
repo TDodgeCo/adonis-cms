@@ -1,0 +1,159 @@
+<form method="POST" action="/portal/quotes/{{quote.id}}?_method=PUT">
+    {{ csrfField() }}
+    <input name="estimator" type="text" value="{{auth.user.first_name}} {{auth.user.last_name}}" hidden>
+    <div class="form-group">
+        <label>Street Address</label>
+        <input name="bldg_street_address" type="text" class="form-control" value="{{quote.bldg_street_address}}">
+    </div>
+    <div class="form-group">
+        <label>Street Address 2</label>
+        <input name="bldg_street_address_2" type="text" class="form-control" value="{{quote.bldg_street_address_2}}">
+    </div>
+    <div class="form-group">
+        <label>City</label>
+        <input name="bldg_city" type="text" class="form-control" value="{{quote.bldg_city}}">
+    </div>
+    <div class="form-group">
+        <label>State</label>
+        <input name="bldg_state" type="text" class="form-control" value="{{quote.bldg_state}}">
+    </div>
+    <div class="form-group">
+        <label>Zip</label>
+        <input name="bldg_zip" type="text" class="form-control" value="{{quote.bldg_zip}}">
+    </div>
+    <div class="form-group">
+        <label>Width</label>
+        <input name="bldg_width" type="number" class="form-control" value="{{quote.bldg_width}}">
+    </div>
+    <div class="form-group">
+        <label>Length</label>
+        <input name="bldg_length" type="number" class="form-control" value="{{quote.bldg_length}}">
+    </div>
+    <div class="form-group">
+        <label>Height</label>
+        <input name="bldg_height" type="number" class="form-control" value="{{quote.bldg_height}}">
+    </div>
+    <div class="form-group">
+        <label>Roof Pitch</label>
+        <input name="roof_pitch" type="text" class="form-control" value="{{quote.roof_pitch}}">
+    </div>
+    <div class="form-group">
+        <label>Overhead Door</label>
+        <input name="overhead_door" type="text" class="form-control" value="{{quote.overhead_door}}">
+    </div>
+    <div class="form-group">
+        <label>Overhead Quantity</label>
+        <input name="overhead_quant" type="number" class="form-control" value="{{quote.overhead_quant}}">
+    </div>
+    <div class="form-group">
+        <label>Overhead Insulation</label>
+        <input name="overhead_insulation" type="checkbox" class="form-control" value="{{quote.overhead_insulation}}">
+    </div>
+    <div class="form-group">
+        <label>Man Door</label>
+        <input name="man_door" type="text" class="form-control" value="{{quote.man_door}}">
+    </div>
+    <div class="form-group">
+        <label>Man Door Quantity</label>
+        <input name="man_door_quant" type="number" class="form-control" value="{{quote.man_door_quant}}">
+    </div>
+    <div class="form-group">
+        <label>Windows</label>
+        <input name="bldg_window" type="text" class="form-control" value="{{quote.bldg_window}}">
+    </div>
+    <div class="form-group">
+        <label>Window Quantity</label>
+        <input name="bldg_window_quant" type="number" class="form-control" value="{{quote.bldg_window_quant}}">
+    </div>
+    <div class="form-group">
+        <label>Roof Insulation</label>
+        <input name="roof_insulation" type="text" class="form-control" value="{{quote.roof_insulation}}">
+    </div>
+    <div class="form-group">
+        <label>Wall Insulation</label>
+        <input name="wall_insulation" type="text" class="form-control" value="{{quote.wall_insulation}}">
+    </div>
+    <div class="form-group">
+        <label>Frame Style</label>
+        <input name="frame_style" type="text" class="form-control" value="{{quote.frame_style}}">
+    </div>
+    <div class="form-group">
+        <label>Wainscot</label>
+        <input name="wainscot" type="text" class="form-control" value="{{quote.wainscot}}">
+    </div>
+    <div class="form-group">
+        <label>Roof Snow</label>
+        <input name="roof_snow_load" type="number" class="form-control" value="{{quote.roof_snow_load}}">
+    </div>
+    <div class="form-group">
+        <label>Ground Snow</label>
+        <input name="ground_snow_load" type="number" class="form-control" value="{{quote.ground_snow_load}}">
+    </div>
+    <div class="form-group">
+        <label>Wind Load</label>
+        <input name="wind_load" type="number" class="form-control" value="{{quote.wind_load}}">
+    </div>
+    <div class="form-group">
+        <label>Exposure</label>
+        <input name="exposure" type="text" class="form-control" value="{{quote.exposure}}">
+    </div>
+    <div class="form-group">
+        <label>Seismic</label>
+        <input name="seismic" type="text" class="form-control" value="{{quote.seismic}}">
+    </div>
+    <div class="form-group">
+        <label>Building Code</label>
+        <input name="building_code" type="text" class="form-control" value="{{quote.building_code}}">
+    </div>
+    <div class="form-group">
+        <label>Frame Coating</label>
+        <input name="frame_coating" type="text" class="form-control" value="{{quote.frame_coating}}">
+    </div>
+    <div class="form-group">
+        <label>Secondary Coating</label>
+        <input name="secondary_coating" type="text" class="form-control" value="{{quote.secondary_coating}}">
+    </div>
+    <div class="form-group">
+        <label>Gutters</label>
+        <input name="gutters" type="text" class="form-control" value="{{quote.gutters}}">
+    </div>
+    <div class="form-group">
+        <label>Framed Openings</label>
+        <textarea class="form-control" name="framed_openings" cols="30" rows="10">{{quote.framed_openings}}</textarea>
+    </div>
+    <div class="form-group">
+        <label>Weight</label>
+        <input name="weight" type="number" class="form-control" value="{{quote.weight}}">
+    </div>
+    <div class="form-group">
+        <label>Collateral Load</label>
+        <input name="collateral_load" type="number" class="form-control" value="{{quote.collateral_load}}">
+    </div>
+    <div class="form-group">
+        <label>Live Load</label>
+        <input name="live_load" type="number" class="form-control" value="{{quote.live_load}}">
+    </div>
+    <div class="form-group">
+        <label>Other Load</label>
+        <input name="other_load" type="number" class="form-control" value="{{quote.other_load}}">
+    </div>
+    <div class="form-group">
+        <label>Freight</label>
+        <input name="freight" type="number" class="form-control" value="{{quote.freight}}">
+    </div>
+    <div class="form-group">
+        <label>Building Cost</label>
+        <input name="cost" type="text" class="form-control" value="{{quote.cost}}">
+    </div>
+    <div class="form-group">
+        <label>Accessories Cost</label>
+        <input name="accessories_cost" type="text" class="form-control" value="{{quote.accessories_cost}}">
+    </div>
+    <div class="form-group">
+        <label>Engineering Cost</label>
+        <input name="engineering_cost" type="text" class="form-control" value="{{quote.engineering_cost}}">
+    </div>
+    <div class="form-group">
+        <button class="btn btn-primary btn-block" type="submit">Submit</button>
+    </div>
+</form>

@@ -7,10 +7,19 @@
 <div class="content-wrapper">
   <div class="container-fluid">
     <!-- Breadcrumbs-->
-    @include('portal.partials.breadcrumb')
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="/portal">Dashboard</a>
+      </li>
+      <li class="breadcrumb-item active">
+        Quotes
+      </li>
+    </ol>
+
   </div>
     <!-- /.container-fluid-->
     <div class="container-fluid">
+    @include('components.alert')
       <div class="row">
           @each(quote in quotes)
           <div class="col-3">
@@ -24,7 +33,9 @@
               </a>
               <div class="card-footer">
                 <small class="text-muted">Last updated 3 mins ago</small>
-                <a href="#" class="btn btn-primary float-right">Buy Now</a>
+                @if(user.permissions == 6)
+                  <a href="#" class="btn btn-primary float-right">Buy Now</a>
+                @endif
               </div>
             </div>
             </div>

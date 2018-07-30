@@ -5,12 +5,26 @@
 
 <div class="content-wrapper">
   <div class="container-fluid">
+    @include('components.alert')
     <!-- Breadcrumbs-->
-    @include('portal.partials.breadcrumb')
-    <h1>Single Quote</h1>
-    <h3>Quote ID: {{quote.id}}</h3>
-    <h3>Customer Name: {{user.first_name}} {{user.last_name}}</h3>
-    <h3>Salesperson: {{salesperson.first_name}} {{salesperson.last_name}}</h3>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="/portal">Dashboard</a>
+      </li>
+      <li class="breadcrumb-item">
+        <a href="/portal/quotes/">Quotes</a>
+      </li>
+      <li class="breadcrumb-item active">
+        Quote ID: {{quote.id}}
+      </li>
+    </ol>
+    @unless(user.permissions == 6)
+      <h1>Single Quote</h1>
+      <h3>Quote ID: {{quote.id}}</h3>
+      <h3>Customer Name: {{user.first_name}} {{user.last_name}}</h3>
+      <h3>Salesperson: {{salesperson.first_name}} {{salesperson.last_name}}</h3>
+    @endunless
+    @include('portal.partials.quote.estimator-quote')
   </div>
 
   <!-- Scroll to Top Button-->

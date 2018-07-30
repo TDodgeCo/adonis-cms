@@ -6,10 +6,25 @@ const axios = use('axios')
 class PortalController {
   async index({ view, auth }) {
     const user = auth.user
-    const users = await User.all()
-    if (user.admin) {
+
+    if (user.permissions != 6 || user.permission != 5) {
+      const users = await User.all()
+      const quotes = await Quote.all()
+      const openQuotes = await Quote.query()
+        .where('cost', null)
+        .getCount()
+
+      // salesQuotes for displaying to a salesperson quotes that need a price
+      const salesQuotes = await Quote.query()
+        .where('salesperson', user.id)
+        .where('price', null)
+        .getCount()
+
       return view.render('portal.index', {
-        users: users.toJSON()
+        users: users.toJSON(),
+        quotes: quotes.toJSON(),
+        openQuotes,
+        salesQuotes
       })
     }
     return view.render('portal.index')
