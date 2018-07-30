@@ -1,8 +1,6 @@
 # APP SPECIFIC STUFF
 
-After installing npm packages and setting up your .env file, run `adonis serve --dev` and submit a get request to http://localhost:3333/build
-
-This will build your essential users rows and capture hubspot ids
+After installing npm packages and setting up your .env file, run `npm run dev-build`. This will create essential development users and seed the database with fake data.
 
 User Permissions Column on User Migration:
 1 Editor
