@@ -1,6 +1,6 @@
 @layout('portal.layouts.portal-layout')
 @section('head')
-{{-- {{ style('./portal/css/custom.css') }} --}}
+
 @endsection
 @section('content')
 
@@ -32,7 +32,7 @@
                 </div>
               </a>
               <div class="card-footer">
-                <small class="text-muted">Last updated 3 mins ago</small>
+                <small class="text-muted">Updated at {{quote.updated_at.toLocaleString('en-US', {year: 'numeric', month: '2-digit', day: '2-digit'})}}</small>
                 @if(user.permissions == 6)
                   <a href="#" class="btn btn-primary float-right">Buy Now</a>
                 @endif
@@ -68,4 +68,5 @@
   <!-- Custom scripts for this page-->
   {{ script('./portal/js/sb-admin-datatables.min.js') }}
   {{ script('./portal/js/sb-admin-charts.min.js') }}
+
 @endsection
