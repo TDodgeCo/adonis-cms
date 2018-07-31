@@ -10,12 +10,12 @@
 |
 */
 
-const Factory = use('Factory')
+// const Factory = use('Factory')
 
-class FaqSeeder {
-  async run () {
-    const faqs = await Factory.model('App/Models/Faq').createMany(80)
-  }
-}
+// class FaqSeeder {
+//   async run () {
+//     const faqs = await Factory.model('App/Models/Faq').createMany(80)
+//   }
+// }
 
-module.exports = FaqSeeder
+// module.exports = FaqSeeder

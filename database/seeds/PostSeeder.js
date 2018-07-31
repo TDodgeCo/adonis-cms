@@ -10,12 +10,12 @@
 |
 */
 
-const Factory = use('Factory')
+// const Factory = use('Factory')
 
-class PostSeeder {
-  async run () {
-    const posts = await Factory.model('App/Models/Post').createMany(5)
-  }
-}
+// class PostSeeder {
+//   async run () {
+//     const posts = await Factory.model('App/Models/Post').createMany(5)
+//   }
+// }
 
-module.exports = PostSeeder
+// module.exports = PostSeeder
